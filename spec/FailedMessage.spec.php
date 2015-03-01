@@ -20,27 +20,56 @@ describe('FailedMessage', function() {
         });
     });
 
-    xdescribe('#appendValue', function() {
-        xit('return expect\FailedMessage instance');
-
-        xcontext('when string value', function() {
-            xit('append string with quote');
+    describe('#appendValue', function() {
+        beforeEach(function() {
+            $this->message = new FailedMessage();
         });
-        xcontext('when bool value', function() {
-            xcontext('when true', function() {
-                xit('append true text');
-            });
-            xcontext('when false', function() {
-                xit('append false text');
+        it('return expect\FailedMessage instance', function() {
+            $result = $this->message->appendValue('expected');
+            Assertion::isInstanceOf($result, 'expect\FailedMessage');
+        });
+        context('when integer value', function() {
+            it('append string', function() {
+                $result = $this->message->appendValue(100);
+                Assertion::same((string) $result, "100");
             });
         });
-        xcontext('when null value', function() {
-            xit('append null text');
+        context('when string value', function() {
+            it('append string with quote', function() {
+                $result = $this->message->appendValue('foo');
+                Assertion::same((string) $result, "'foo'");
+            });
+        });
+        context('when bool value', function() {
+            context('when true', function() {
+                it('append true text', function() {
+                    $result = $this->message->appendValue(true);
+                    Assertion::same((string) $result, 'true');
+                });
+            });
+            context('when false', function() {
+                it('append false text', function() {
+                    $result = $this->message->appendValue(false);
+                    Assertion::same((string) $result, 'false');
+                });
+            });
+        });
+        context('when null value', function() {
+            it('append null text', function() {
+                $result = $this->message->appendValue(null);
+                Assertion::same((string) $result, "null");
+            });
         });
     });
 
-    xdescribe('#__toString', function() {
-        xit('return message string');
+    describe('#__toString', function() {
+        beforeEach(function() {
+            $this->message = new FailedMessage();
+        });
+        it('return message string', function () {
+            $this->message->appendText('message');
+            Assertion::same($this->message->__toString(), 'message');
+        });
     });
 
 });
