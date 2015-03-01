@@ -12,7 +12,9 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
+    "require": {
+        "easyframework/collections": "~3.2"
+    },
     "require-dev": {
         "peridot-php/peridot": "~1.15",
         "beberlei/assert": "~2.3",

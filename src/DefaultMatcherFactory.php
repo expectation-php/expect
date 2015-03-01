@@ -3,21 +3,24 @@
 namespace expect;
 
 
+use Easy\Collections\Dictionary;
+
+
 class DefaultMatcherFactory implements MatcherFactory
 {
 
-    private $dictionary;
+    private $matchers;
 
 
-    public function __construct(array $dictionary)
+    public function __construct(array $matchers)
     {
-        $this->dictionary = $dictionary;
+        $this->matchers = Dictionary::fromArray($matchers);
     }
 
     public function create($name, array $arguments = [])
     {
         $matcher = null;
-        $matcherClassName = $this->dictionary[$name];
+        $matcherClassName = $this->matchers->get($name);
 
         if (count($arguments) <= 0) {
             $matcher = new $matcherClassName();
