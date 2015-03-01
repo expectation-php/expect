@@ -1,10 +1,23 @@
 <?php
 
-xdescribe('FailedMessage', function() {
+use expect\FailedMessage;
+use Assert\Assertion;
 
-    xdescribe('#appendText', function() {
-        xit('append text');
-        xit('return expect\FailedMessage instance');
+
+describe('FailedMessage', function() {
+
+    describe('#appendText', function() {
+        beforeEach(function() {
+            $this->message = new FailedMessage();
+        });
+        it('append text', function() {
+            $this->message->appendText('expected');
+            Assertion::same((string) $this->message, 'expected');
+        });
+        it('return expect\FailedMessage instance', function() {
+            $result = $this->message->appendText('expected');
+            Assertion::isInstanceOf($result, 'expect\FailedMessage');
+        });
     });
 
     xdescribe('#appendValue', function() {
