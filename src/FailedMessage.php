@@ -14,7 +14,7 @@ class FailedMessage implements Message
 
     public function __construct()
     {
-        $this->message = '';
+        $this->message = "\n";
     }
 
     public function appendText($text)
