@@ -15,14 +15,14 @@ namespace expect\matcher;
 use expect\Matcher;
 
 
-class ToBeTrue implements Matcher
+class ToBeNull implements Matcher
 {
 
     use CompareEqual;
 
     public function __construct()
     {
-        $this->equalMatcher = new ToEqual(true);
+        $this->equalMatcher = new ToEqual(null);
     }
 
 }

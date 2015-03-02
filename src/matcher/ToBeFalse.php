@@ -13,7 +13,6 @@ namespace expect\matcher;
 
 
 use expect\Matcher;
-use expect\FailedMessage;
 
 
 class ToBeFalse implements Matcher
