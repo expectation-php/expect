@@ -50,4 +50,22 @@ describe('Result', function() {
         });
     });
 
+    describe('#reportTo', function() {
+        beforeEach(function() {
+            $this->prophet = new Prophet();
+
+            $matcher = $this->prophet->prophesize('expect\Matcher');
+            $this->result = new Result(true, false, $matcher->reveal(), false);
+
+            $resultReporter = $this->prophet->prophesize('expect\ResultReporter');
+            $resultReporter->report($this->result)->shouldBeCalled();
+
+            $this->resultReporter = $resultReporter->reveal();
+        });
+        it('report by result reporter', function() {
+            $this->result->reportTo($this->resultReporter);
+            $this->prophet->checkPredictions();
+        });
+    });
+
 });
