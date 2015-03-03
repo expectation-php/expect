@@ -20,7 +20,7 @@ class MatcherEvaluator implements Evaluator
     private $factory;
 
 
-    public function __construct(Factory $factory)
+    public function __construct(MatcherFactory $factory)
     {
         $this->actual = null;
         $this->negated = false;
@@ -43,7 +43,7 @@ class MatcherEvaluator implements Evaluator
     {
         $matcher = $this->factory->create($name, $arguments);
 
-        $matcherResult = $this->matcher->match($this->actual);
+        $matcherResult = $matcher->match($this->actual);
         $expected = $this->negated ? false : true;
 
         $result = $matcherResult !== $expected;
