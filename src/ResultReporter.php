@@ -12,7 +12,7 @@
 namespace expect;
 
 
-interface Reporter
+interface ResultReporter
 {
 
     public function report(Result $result);
