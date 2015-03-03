@@ -24,6 +24,12 @@ describe('MatcherEvaluator', function() {
                 Assertion::isInstanceOf($result, 'expect\Result');
             });
         });
+        context('when negative evaluate', function() {
+            it('return expect\Result instance', function() {
+                $result = $this->evaluator->actual(true)->not()->toEqual(true);
+                Assertion::isInstanceOf($result, 'expect\Result');
+            });
+        });
     });
 
 });
