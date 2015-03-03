@@ -15,9 +15,24 @@ namespace expect;
 class Result
 {
 
+    /**
+     * @var mixed
+     */
     private $actual;
+
+    /**
+     * @var bool
+     */
     private $negated;
+
+    /**
+     * @var \expect\Matcher
+     */
     private $matcher;
+
+    /**
+     * @var bool
+     */
     private $result;
 
 
@@ -39,7 +54,7 @@ class Result
         return $this->isPassed() === false;
     }
 
-    public function reportTo(Reporter $reporter)
+    public function reportTo(ResultReporter $reporter)
     {
         $reporter->report($this);
     }
