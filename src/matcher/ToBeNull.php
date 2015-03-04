@@ -9,12 +9,20 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect;
+namespace expect\matcher;
 
 
-interface MatcherFactory
+use expect\Matcher;
+
+
+class ToBeNull implements Matcher
 {
 
-    public function create($name, array $arguments = []);
+    use CompareEqual;
+
+    public function __construct()
+    {
+        $this->equalMatcher = new ToEqual(null);
+    }
 
 }
