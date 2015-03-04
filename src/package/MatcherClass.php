@@ -29,4 +29,14 @@ class MatcherClass
         return $this->namespace . '\\' . $this->className;
     }
 
+    public function getClassName()
+    {
+        return $this->className;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
 }
