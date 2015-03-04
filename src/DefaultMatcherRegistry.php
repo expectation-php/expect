@@ -18,7 +18,7 @@ use expect\package\MatcherClass;
 
 
 
-class DefaultMatcherRegistry implements MatcherRegistry
+final class DefaultMatcherRegistry implements MatcherRegistry
 {
 
     private $matcherClasses;
@@ -31,13 +31,13 @@ class DefaultMatcherRegistry implements MatcherRegistry
 
     public function register(MatcherClass $matcherClass)
     {
-        $key = $matcherClass->getClassName();
+        $name = $matcherClass->getClassName();
 
         if ($this->has($name)) {
             throw new MatcherAlreadyRegistered("$name is not registered");
         }
 
-        $this->matcherClasses[$key] = $matcherClass;
+        $this->matcherClasses[$name] = $matcherClass;
     }
 
     public function has($name)
