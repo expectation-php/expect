@@ -12,6 +12,7 @@
 namespace expect;
 
 
+use expect\package\MatcherClass;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use IteratorAggregate;
@@ -52,7 +53,7 @@ class MatcherPackage
     private function getProvideMatchers()
     {
         $matchers = [];
-        $classFileIterator = $this->createIterator($namespaceDirectory);
+        $classFileIterator = $this->createIterator($this->namespaceDirectory);
 
         foreach ($classFileIterator as $classFile) {
             $className = $this->getClassFullNameFromFile($classFile);

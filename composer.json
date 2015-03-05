@@ -29,6 +29,11 @@
             "expect\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "expect\\matcher\\fixture\\": "spec/fixtures/matcher"
+        }
+    },
     "scripts": {
         "test": "vendor/bin/robo spec:all",
         "coveralls": "vendor/bin/robo coveralls:upload"
