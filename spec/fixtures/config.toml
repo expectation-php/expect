@@ -1,0 +1,9 @@
+#
+# Expect Configuration
+#
+
+packages = [
+  "\\expect\\package\\CustomPackage"
+]
+
+reporter = "\\expect\\reporter\\CustomReporter"
