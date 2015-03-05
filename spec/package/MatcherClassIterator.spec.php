@@ -4,25 +4,39 @@ use expect\package\MatcherClassIterator;
 use Assert\Assertion;
 
 
-xdescribe('MatcherClassIterator', function() {
+describe('MatcherClassIterator', function() {
     beforeEach(function() {
-        $this->iterator = new MatcherClassIterator('expect\\matcher', __DIR__ . '../../src/matcher');
+        $this->path = realpath(__DIR__ . '/../fixtures/matcher/ToEql.php');
+        $this->iterator = new MatcherClassIterator('expect\\matcher\\fixture', __DIR__ . '/../fixtures/matcher');
     });
-    xdescribe('#current', function() {
-        xit('return current matcher class');
+    describe('#current', function() {
+        beforeEach(function() {
+            $this->matcherClass = $this->iterator->current();
+        });
+        it('return current matcher class', function() {
+            Assertion::isInstanceOf($this->matcherClass, 'expect\package\MatcherClass');
+            Assertion::same($this->matcherClass->getName(), 'expect\matcher\fixture\ToEql');
+            Assertion::same($this->matcherClass->getClassName(), 'ToEql');
+        });
     });
-    xdescribe('#key', function() {
-        xit('return current key');
+    describe('#key', function() {
+        it('return current key', function() {
+            Assertion::same($this->iterator->key(), $this->path);
+        });
     });
-    xdescribe('#next', function() {
-        xit('move next matcher class');
+    describe('#next', function() {
+        it('move next matcher class', function() {
+            $this->iterator->next();
+            $this->iterator->next();
+            Assertion::false($this->iterator->valid());
+        });
     });
-    xdescribe('#rewind', function() {
-        xit('move first');
-    });
-    xdescribe('#valid', function() {
-        xcontext('when have elements', function() {
-            xit('return true');
+    describe('#rewind', function() {
+        it('move first　matcher class', function() {
+            $this->iterator->next();
+            $this->iterator->next();
+            $this->iterator->rewind();
+            Assertion::true($this->iterator->valid());
         });
     });
 });

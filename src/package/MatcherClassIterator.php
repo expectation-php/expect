@@ -11,15 +11,21 @@
 
 namespace expect\package;
 
-use \Iterator;
+
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use Iterator;
+use SplFileInfo;
+use FilesystemIterator;
 
 
 class MatcherClassIterator implements Iterator
 {
 
+
     private $iterator;
     private $namespace;
-    private $namespaceDirectory;
+
 
     /**
      * @param string $namespace
@@ -28,7 +34,7 @@ class MatcherClassIterator implements Iterator
     public function __construct($namespace, $namespaceDirectory)
     {
         $this->namespace = $namespace;
-        $this->namespaceDirectory = $namespaceDirectory;
+        $this->iterator = $this->createIterator($namespaceDirectory);
     }
 
     /**
@@ -36,22 +42,51 @@ class MatcherClassIterator implements Iterator
      */
     public function current()
     {
+        $classFile = $this->iterator->current();
+
+        $fileName = $classFile->getFilename();
+        $fileName = str_replace('.php', '', $fileName);
+
+        $matcherClass = new MatcherClass($this->namespace, $fileName);
+        return $matcherClass;
     }
 
     public function key()
     {
+        return realpath($this->iterator->key());
     }
 
     public function next()
     {
+        $this->iterator->next();
     }
 
     public function rewind()
     {
+        $this->iterator->rewind();
     }
 
     public function valid()
     {
+        return $this->iterator->valid();
+    }
+
+    /**
+     * @param string $directory
+     * @return RecursiveIteratorIterator
+     */
+    private function createIterator($directory)
+    {
+        $directoryIterator = new RecursiveDirectoryIterator($directory,
+            FilesystemIterator::CURRENT_AS_FILEINFO |
+            FilesystemIterator::KEY_AS_PATHNAME |
+            FilesystemIterator::SKIP_DOTS
+        );
+
+        $filterIterator = new RecursiveIteratorIterator($directoryIterator,
+            RecursiveIteratorIterator::LEAVES_ONLY);
+
+        return $filterIterator;
     }
 
 }
