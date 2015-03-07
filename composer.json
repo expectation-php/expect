@@ -14,7 +14,7 @@
     "minimum-stability": "stable",
     "require": {
         "easyframework/collections": "~3.2",
-        "yosymfony/toml": "~0.2"
+        "yosymfony/toml": "~0.3"
     },
     "require-dev": {
         "peridot-php/peridot": "~1.15",
