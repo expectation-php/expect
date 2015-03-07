@@ -11,10 +11,13 @@ describe('EvaluateContext', function() {
         $this->context = EvaluateContext::fromConfiguration($config);
     });
     describe('#fromConfiguration', function() {
-        describe('#getResultReporter', function() {
-            it('return expect\ResultReporter', function() {
-                Assertion::isInstanceOf($this->context->getResultReporter(), 'expect\ResultReporter');
-            });
+        it('return expect\EvaluateContext', function() {
+            Assertion::isInstanceOf($this->context, 'expect\EvaluateContext');
+        });
+    });
+    describe('#getResultReporter', function() {
+        it('return expect\ResultReporter', function() {
+            Assertion::isInstanceOf($this->context->getResultReporter(), 'expect\ResultReporter');
         });
     });
 });
