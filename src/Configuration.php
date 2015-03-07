@@ -11,7 +11,7 @@
 
 namespace expect;
 
-use expect\config\ConfigurationFileNotFoundException
+use expect\config\ConfigurationFileNotFoundException;
 use Yosymfony\Toml\Toml;
 use Easy\Collections\Dictionary;
 
@@ -28,12 +28,12 @@ class Configuration
         $config = Dictionary::fromArray($values);
 
         if ($config->containsKey('packages')) {
-            $packages = $config->containsKey('packages');
+            $packages = $config->get('packages');
             $this->loadPackages($packages);
         }
 
         if ($config->containsKey('reporter')) {
-            $reporter = $config->containsKey('reporter');
+            $reporter = $config->get('reporter');
             $this->loadReporter($reporter);
         }
     }
@@ -50,6 +50,7 @@ class Configuration
 
     private function loadReporter($reporter)
     {
+
         $this->resultReporter = new $reporter();
     }
 
@@ -69,6 +70,7 @@ class Configuration
             throw new ConfigurationFileNotFoundException("$file not found");
         }
         $values = Toml::parse($file);
+
         return new Configuration($values);
     }
 

@@ -17,7 +17,7 @@ describe('MatcherPackage', function() {
                 ->shouldBeCalledTimes(1); //ToEql only
 
             $this->registry = $registry->reveal();
-            $this->package = new MatcherPackage('expect\matcher\fixture', __DIR__ . '/fixtures/matcher');
+            $this->package = new MatcherPackage('expect\fixture\matcher', __DIR__ . '/fixtures/matcher');
         });
         it('package register', function() {
             $this->package->registerTo($this->registry);

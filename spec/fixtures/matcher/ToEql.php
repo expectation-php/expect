@@ -10,7 +10,7 @@
  */
 
 
-namespace expect\matcher\fixture;
+namespace expect\fixture\matcher;
 
 
 use expect\Matcher;

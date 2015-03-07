@@ -32,7 +32,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "expect\\matcher\\fixture\\": "spec/fixtures/matcher"
+            "expect\\fixture\\matcher\\": "spec/fixtures/matcher",
+            "expect\\fixture\\package\\": "spec/fixtures/package",
+            "expect\\fixture\\reporter\\": "spec/fixtures/reporter"
         }
     },
     "scripts": {
