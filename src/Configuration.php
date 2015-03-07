@@ -38,6 +38,7 @@ class Configuration
         }
     }
 
+    //FIXME Too miscellaneous
     private function loadPackages(array $packages)
     {
         $matcherPackages = [];
@@ -48,9 +49,9 @@ class Configuration
         $this->matcherPackages = $matcherPackages;
     }
 
+    //FIXME Too miscellaneous
     private function loadReporter($reporter)
     {
-
         $this->resultReporter = new $reporter();
     }
 
