@@ -12,6 +12,7 @@
 namespace expect;
 
 
+use expect\MatcherDictionary;
 use expect\registry\MatcherNotRegistered;
 use expect\registry\MatcherAlreadyRegistered;
 use expect\package\MatcherClass;
@@ -37,6 +38,17 @@ final class DefaultMatcherRegistry implements MatcherRegistry
         }
 
         $this->matchers->set($name, $matcherClass);
+    }
+
+    public function count()
+    {
+        return count($this->matchers);
+    }
+
+    public function toDictionary()
+    {
+        $matchers = $this->matchers->toArray();
+        return new MatcherDictionary($matchers);
     }
 
 }

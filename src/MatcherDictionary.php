@@ -15,7 +15,7 @@ namespace expect;
 use Easy\Collections\Dictionary;
 
 
-class MatcherDictionary implements MatcherContainer
+final class MatcherDictionary implements MatcherContainer
 {
 
     use MatcherLookupTable;
@@ -23,6 +23,11 @@ class MatcherDictionary implements MatcherContainer
     public function __construct(array $matchers)
     {
         $this->matchers = Dictionary::fromArray($matchers);
+    }
+
+    public function count()
+    {
+        return count($this->matchers);
     }
 
 }

@@ -12,7 +12,10 @@
 namespace expect;
 
 
-interface MatcherContainer
+use Countable;
+
+
+interface MatcherContainer extends Countable
 {
     public function has($name);
     public function get($name);
