@@ -12,13 +12,21 @@
 namespace expect;
 
 
-class DefaultContextFactory implements ContextFactory
+class DefaultConfigurator implements Configurator
 {
 
-    public function createFromConfiguration(Configuration $config)
+    private $config;
+
+
+    public function __construct($configFile)
+    {
+        $this->config = Configuration::loadFromFile($configFile);
+    }
+
+    public function configure()
     {
         $registry = new DefaultMatcherRegistry();
-        $packages = $config->getMatcherPackages();
+        $packages = $this->config->getMatcherPackages();
 
         foreach ($packages as $package) {
             $package->registerTo($registry);
@@ -27,7 +35,7 @@ class DefaultContextFactory implements ContextFactory
         $dictionary = $registry->toDictionary();
         $matcherFactory = new DefaultMatcherFactory($dictionary);
 
-        $resultReporter = $config->getResultReporter();
+        $resultReporter = $this->config->getResultReporter();
 
         return new EvaluateContext($matcherFactory, $resultReporter);
     }

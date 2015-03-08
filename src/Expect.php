@@ -20,11 +20,14 @@ final class Expect
     /**
      * @param string $configFile
      */
-    public static function configure($configFile)
+    public static function configure(Configurator $configurator)
     {
-        $config = Configuration::loadFromFile($configFile);
-        $contextFactory = new DefaultContextFactory();
-        static::$context = $contextFactory->createFromConfiguration($config);
+//        $config = Configuration::loadFromFile($configFile);
+        //$configurator->configure();
+
+
+//        $contextFactory = new DefaultConfigurator();
+        static::$context = $configurator->configure();
     }
 
     /**
