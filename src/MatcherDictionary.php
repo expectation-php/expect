@@ -11,10 +11,18 @@
 
 namespace expect;
 
-use expect\package\MatcherClass;
+
+use Easy\Collections\Dictionary;
 
 
-interface MatcherRegistry extends MatcherContainer
+class MatcherDictionary implements MatcherContainer
 {
-    public function register(MatcherClass $matcherClass);
+
+    use MatcherLookupTable;
+
+    public function __construct(array $matchers)
+    {
+        $this->matchers = Dictionary::fromArray($matchers);
+    }
+
 }

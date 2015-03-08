@@ -15,18 +15,17 @@ namespace expect;
 use expect\registry\MatcherNotRegistered;
 use expect\registry\MatcherAlreadyRegistered;
 use expect\package\MatcherClass;
-
+use Easy\Collections\Dictionary;
 
 
 final class DefaultMatcherRegistry implements MatcherRegistry
 {
 
-    private $matcherClasses;
+    use MatcherLookupTable;
 
-
-    public function __construct()
+    public function __construct(array $matchers)
     {
-        $this->matcherClasses = [];
+        $this->matchers = Dictionary::fromArray($matchers);
     }
 
     public function register(MatcherClass $matcherClass)
@@ -37,28 +36,7 @@ final class DefaultMatcherRegistry implements MatcherRegistry
             throw new MatcherAlreadyRegistered("$name is not registered");
         }
 
-        $this->matcherClasses[$name] = $matcherClass;
-    }
-
-    public function has($name)
-    {
-        return array_key_exists($name, $this->matcherClasses);
-    }
-
-    public function hasNot($name)
-    {
-        return $this->has($name) === false;
-    }
-
-    public function get($name)
-    {
-        if ($this->hasNot($name)) {
-            throw new MatcherNotRegistered("$name is not registered");
-        }
-
-        $matcherClass = $this->matcherClasses[$name];
-
-        return $matcherClass;
+        $this->matchers->set($name, $matcherClass);
     }
 
 }
