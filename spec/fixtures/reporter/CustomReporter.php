@@ -20,10 +20,6 @@ use expect\FailedMessage;
 class CustomReporter implements ResultReporter
 {
 
-//    public function report(Result $result)
-//    {
-//    }
-
     public function reportFailed(FailedMessage $message)
     {
     }
