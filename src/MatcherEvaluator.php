@@ -60,4 +60,11 @@ class MatcherEvaluator implements Evaluator
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public static function fromContext(Context $context)
+    {
+    }
+
 }
