@@ -18,7 +18,10 @@ describe('MatcherEvaluator', function() {
                     $factory->create('toEqual', [ true ])
                         ->willReturn( new toEqual(true) );
 
-                    $this->evaluator = new MatcherEvaluator( $factory->reveal() );
+                    $context = $this->prophet->prophesize('expect\Context');
+                    $context->getMatcherFactory()->willReturn( $factory->reveal() );
+
+                    $this->evaluator = MatcherEvaluator::fromContext( $context->reveal() );
                     $this->result = $this->evaluator->actual(true)->toEqual(true);
                 });
                 it('return expect\Result instance', function() {
@@ -36,7 +39,10 @@ describe('MatcherEvaluator', function() {
                     $factory->create('toEqual', [ false ])
                         ->willReturn( new toEqual(false) );
 
-                    $this->evaluator = new MatcherEvaluator( $factory->reveal() );
+                    $context = $this->prophet->prophesize('expect\Context');
+                    $context->getMatcherFactory()->willReturn( $factory->reveal() );
+
+                    $this->evaluator = MatcherEvaluator::fromContext( $context->reveal() );
                     $this->result = $this->evaluator->actual(true)->toEqual(false);
                 });
                 it('return expect\Result instance', function() {
@@ -55,7 +61,10 @@ describe('MatcherEvaluator', function() {
                 $factory->create('toEqual', [ true ])
                     ->willReturn( new toEqual(true) );
 
-                $this->evaluator = new MatcherEvaluator( $factory->reveal() );
+                $context = $this->prophet->prophesize('expect\Context');
+                $context->getMatcherFactory()->willReturn( $factory->reveal() );
+
+                $this->evaluator = MatcherEvaluator::fromContext( $context->reveal() );
             });
             it('return expect\Result instance', function() {
                 $result = $this->evaluator->actual(true)->not()->toEqual(true);
