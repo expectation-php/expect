@@ -17,9 +17,9 @@ final class Expect implements Configurable
 
     private static $context;
 
-    public static function configure(Configurator $configurator)
+    public static function configure(ContextLoader $loader)
     {
-        static::$context = $configurator->configure();
+        static::$context = $loader->load();
     }
 
     /**

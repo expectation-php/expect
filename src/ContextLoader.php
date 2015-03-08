@@ -12,9 +12,9 @@
 namespace expect;
 
 
-interface Configurator
+interface ContextLoader
 {
 
-    public function configure();
+    public function load();
 
 }

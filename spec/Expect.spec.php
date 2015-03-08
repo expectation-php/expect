@@ -1,15 +1,15 @@
 <?php
 
 use expect\Expect;
-use expect\DefaultConfigurator;
+use expect\DefaultContextLoader;
 use Assert\Assertion;
 
 
 describe('Expect', function() {
     beforeEach(function() {
         $toml = __DIR__ . '/fixtures/config.toml';
-        $configurator = new DefaultConfigurator($toml);
-        Expect::configure($configurator);
+        $loader = new DefaultContextLoader($toml);
+        Expect::configure($loader);
     });
     describe('#that', function() {
         it('configure expect package', function() {

@@ -12,7 +12,7 @@
 namespace expect;
 
 
-class DefaultConfigurator implements Configurator
+class DefaultContextLoader implements ContextLoader
 {
 
     private $config;
@@ -23,7 +23,7 @@ class DefaultConfigurator implements Configurator
         $this->config = Configuration::loadFromFile($configFile);
     }
 
-    public function configure()
+    public function load()
     {
         $registry = new DefaultMatcherRegistry();
         $packages = $this->config->getMatcherPackages();

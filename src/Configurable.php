@@ -16,8 +16,8 @@ interface Configurable
 {
 
     /**
-     * @param Configurator $configurator
+     * @param ContextLoader $configurator
      */
-    public static function configure(Configurator $configurator);
+    public static function configure(ContextLoader $loader);
 
 }
