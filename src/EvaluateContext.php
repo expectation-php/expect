@@ -20,37 +20,24 @@ use expect\DefaultMatcherRegistry;
 class EvaluateContext implements Context
 {
 
-    private $config;
+    private $factory;
+    private $reporter;
 
 
-    public function __construct(Configuration $config)
+    public function __construct(MatcherFactory $factory, ResultReporter $reporter)
     {
-        $this->config = $config;
+        $this->factory = $factory;
+        $this->reporter = $reporter;
     }
 
     public function getMatcherFactory()
     {
-        $registry = new DefaultMatcherRegistry();
-        $packages = $this->config->getMatcherPackages();
-
-        foreach ($packages as $package) {
-            $package->registerTo($registry);
-        }
-
-        $dictionary = $registry->toDictionary();
-        $factory = new DefaultMatcherFactory($dictionary);
-
-        return $factory;
+        return $this->factory;
     }
 
     public function getResultReporter()
     {
-        return $this->config->getResultReporter();
-    }
-
-    public static function fromConfiguration(Configuration $config)
-    {
-        return new self($config);
+        return $this->reporter;
     }
 
 }

@@ -23,7 +23,8 @@ final class Expect
     public static function configure($configFile)
     {
         $config = Configuration::loadFromFile($configFile);
-        static::$context = EvaluateContext::fromConfiguration($config);
+        $contextFactory = new DefaultContextFactory();
+        static::$context = $contextFactory->createFromConfiguration($config);
     }
 
     /**

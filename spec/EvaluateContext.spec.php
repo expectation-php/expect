@@ -3,16 +3,24 @@
 use expect\Configuration;
 use expect\EvaluateContext;
 use Assert\Assertion;
+use Prophecy\Prophet;
 
 
 describe('EvaluateContext', function() {
     beforeEach(function() {
-        $config = Configuration::loadFromFile(__DIR__ . '/fixtures/config.toml');
-        $this->context = EvaluateContext::fromConfiguration($config);
+        $this->prophet = new Prophet();
+
+        $factory = $this->prophet->prophesize('expect\MatcherFactory');
+        $reporter = $this->prophet->prophesize('expect\ResultReporter');
+
+        $this->context = new EvaluateContext(
+            $factory->reveal(),
+            $reporter->reveal()
+        );
     });
-    describe('#fromConfiguration', function() {
-        it('return expect\EvaluateContext', function() {
-            Assertion::isInstanceOf($this->context, 'expect\EvaluateContext');
+    describe('#getMatcherFactory', function() {
+        it('return expect\MatcherFactory', function() {
+            Assertion::isInstanceOf($this->context->getMatcherFactory(), 'expect\MatcherFactory');
         });
     });
     describe('#getResultReporter', function() {
