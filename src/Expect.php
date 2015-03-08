@@ -33,7 +33,7 @@ final class Expect
     public static function that($actual)
     {
         $evaluator = MatcherEvaluator::fromContext(static::$context);
-        return $evaluator->aactual($actual);
+        return $evaluator->actual($actual);
     }
 
 }
