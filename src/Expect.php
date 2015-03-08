@@ -12,21 +12,13 @@
 namespace expect;
 
 
-final class Expect
+final class Expect implements Configurable
 {
 
     private static $context;
 
-    /**
-     * @param string $configFile
-     */
     public static function configure(Configurator $configurator)
     {
-//        $config = Configuration::loadFromFile($configFile);
-        //$configurator->configure();
-
-
-//        $contextFactory = new DefaultConfigurator();
         static::$context = $configurator->configure();
     }
 
