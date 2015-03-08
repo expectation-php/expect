@@ -14,12 +14,21 @@ namespace expect\fixture\reporter;
 
 use expect\Result;
 use expect\ResultReporter;
+use expect\FailedMessage;
 
 
 class CustomReporter implements ResultReporter
 {
 
-    public function report(Result $result)
+//    public function report(Result $result)
+//    {
+//    }
+
+    public function reportFailed(FailedMessage $message)
+    {
+    }
+
+    public function reportNegativeFailed(FailedMessage $message)
     {
     }
 
