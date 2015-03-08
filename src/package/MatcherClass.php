@@ -12,6 +12,9 @@
 namespace expect\package;
 
 
+use ReflectionClass;
+
+
 class MatcherClass
 {
 
@@ -32,6 +35,14 @@ class MatcherClass
     public function getClassName()
     {
         return $this->className;
+    }
+
+    public function newInstance(array $arguments = [])
+    {
+        $className = $this->getName();
+        $reflectionClass = new ReflectionClass($className);
+
+        return $reflectionClass->newInstanceArgs($arguments);
     }
 
     public function __toString()

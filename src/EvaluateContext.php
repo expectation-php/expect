@@ -37,7 +37,8 @@ class EvaluateContext implements Context
             $package->registerTo($registry);
         }
 
-        $factory = new DefaultMatcherFactory($registry);
+        $dictionary = $registry->toDictionary();
+        $factory = new DefaultMatcherFactory($dictionary);
 
         return $factory;
     }

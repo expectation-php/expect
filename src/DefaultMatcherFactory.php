@@ -13,7 +13,6 @@ namespace expect;
 
 
 
-
 class DefaultMatcherFactory implements MatcherFactory
 {
 
@@ -27,16 +26,10 @@ class DefaultMatcherFactory implements MatcherFactory
 
     public function create($name, array $arguments = [])
     {
-        $matcher = null;
-        $matcherClassName = $this->container->get($name);
+        $matcherName = ucfirst($name);
 
-        if (count($arguments) <= 0) {
-            $matcher = new $matcherClassName();
-        } else if (count($arguments) === 1) {
-            $matcher = new $matcherClassName($arguments[0]);
-        } else {
-            $matcher = new $matcherClassName($arguments);
-        }
+        $matcherClass = $this->container->get($matcherName);
+        $matcher = $matcherClass->newInstance($arguments);
 
         return $matcher;
     }
