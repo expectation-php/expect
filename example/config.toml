@@ -3,7 +3,7 @@
 #
 
 packages = [
-    "\\expect\\fixture\\package\\CustomPackage"
+    "expect\\DefaultMatcherPackage"
 ]
 
 reporter = "\\expect\\reporter\\TextMessageReporter"

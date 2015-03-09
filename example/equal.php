@@ -7,8 +7,8 @@ require_once __DIR__ . "/../vendor/autoload.php";
 use expect\Expect;
 use expect\DefaultContextLoader;
 
-$contextLoader = new DefaultContextLoader(__DIR__ . '/config.toml');
-Expect::configure($contextLoader);
+$loader = new DefaultContextLoader(__DIR__ . '/config.toml');
+Expect::configure($loader);
 
-Expect::that(true)->toEql(true);
-Expect::that(false)->toEql(true);
+Expect::that(true)->toEqual(true);
+Expect::that(false)->toEqual(true);
