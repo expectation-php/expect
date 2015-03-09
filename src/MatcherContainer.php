@@ -12,11 +12,11 @@
 namespace expect;
 
 
-interface ResultReporter
+use Countable;
+
+
+interface MatcherContainer extends Countable
 {
-
-    public function reportFailed(FailedMessage $message);
-
-    public function reportNegativeFailed(FailedMessage $message);
-
+    public function has($name);
+    public function get($name);
 }

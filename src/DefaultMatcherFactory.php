@@ -12,32 +12,24 @@
 namespace expect;
 
 
-use Easy\Collections\Dictionary;
-
 
 class DefaultMatcherFactory implements MatcherFactory
 {
 
-    private $matchers;
+    private $container;
 
 
-    public function __construct(array $matchers)
+    public function __construct(MatcherContainer $container)
     {
-        $this->matchers = Dictionary::fromArray($matchers);
+        $this->container = $container;
     }
 
     public function create($name, array $arguments = [])
     {
-        $matcher = null;
-        $matcherClassName = $this->matchers->get($name);
+        $matcherName = ucfirst($name);
 
-        if (count($arguments) <= 0) {
-            $matcher = new $matcherClassName();
-        } else if (count($arguments) === 1) {
-            $matcher = new $matcherClassName($arguments[0]);
-        } else {
-            $matcher = new $matcherClassName($arguments);
-        }
+        $matcherClass = $this->container->get($matcherName);
+        $matcher = $matcherClass->newInstance($arguments);
 
         return $matcher;
     }

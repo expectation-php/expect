@@ -12,11 +12,12 @@
 namespace expect;
 
 
-interface ResultReporter
+interface Configurable
 {
 
-    public function reportFailed(FailedMessage $message);
-
-    public function reportNegativeFailed(FailedMessage $message);
+    /**
+     * @param ContextLoader $loader
+     */
+    public static function configure(ContextLoader $loader);
 
 }

@@ -14,4 +14,7 @@ namespace expect;
 
 interface Evaluator
 {
+
+    public static function fromContext(Context $context);
+
 }

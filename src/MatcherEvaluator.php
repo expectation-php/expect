@@ -17,14 +17,14 @@ class MatcherEvaluator implements Evaluator
 
     private $actual;
     private $negated;
-    private $factory;
+    private $context;
 
 
-    public function __construct(MatcherFactory $factory)
+    public function __construct(Context $context)
     {
         $this->actual = null;
         $this->negated = false;
-        $this->factory = $factory;
+        $this->context = $context;
     }
 
     public function actual($actual)
@@ -41,7 +41,8 @@ class MatcherEvaluator implements Evaluator
 
     protected function evaluate($name, array $arguments = [])
     {
-        $matcher = $this->factory->create($name, $arguments);
+        $factory = $this->context->getMatcherFactory();
+        $matcher = $factory->create($name, $arguments);
 
         $matcherResult = $matcher->match($this->actual);
         $expected = $this->negated ? false : true;
@@ -58,6 +59,14 @@ class MatcherEvaluator implements Evaluator
         } else {
             return $this->evaluate($name, $arguments);
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function fromContext(Context $context)
+    {
+        return new self($context);
     }
 
 }

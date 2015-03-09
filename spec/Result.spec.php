@@ -3,6 +3,7 @@
 use expect\Matcher;
 use expect\Result;
 use Prophecy\Prophet;
+use Prophecy\Argument;
 use Assert\Assertion;
 
 
@@ -51,20 +52,41 @@ describe('Result', function() {
     });
 
     describe('#reportTo', function() {
-        beforeEach(function() {
-            $this->prophet = new Prophet();
+        context('when positive failed', function() {
+            beforeEach(function() {
+                $this->prophet = new Prophet();
 
-            $matcher = $this->prophet->prophesize('expect\Matcher');
-            $this->result = new Result(true, false, $matcher->reveal(), false);
+                $matcher = $this->prophet->prophesize('expect\Matcher');
+                $this->result = new Result(true, false, $matcher->reveal(), false);
 
-            $resultReporter = $this->prophet->prophesize('expect\ResultReporter');
-            $resultReporter->report($this->result)->shouldBeCalled();
+                $resultReporter = $this->prophet->prophesize('expect\ResultReporter');
+                $resultReporter->reportFailed(Argument::type('expect\FailedMessage'))
+                    ->shouldBeCalled();
 
-            $this->resultReporter = $resultReporter->reveal();
+                $this->resultReporter = $resultReporter->reveal();
+            });
+            it('report by result reporter', function() {
+                $this->result->reportTo($this->resultReporter);
+                $this->prophet->checkPredictions();
+            });
         });
-        it('report by result reporter', function() {
-            $this->result->reportTo($this->resultReporter);
-            $this->prophet->checkPredictions();
+        context('when nagative failed', function() {
+            beforeEach(function() {
+                $this->prophet = new Prophet();
+
+                $matcher = $this->prophet->prophesize('expect\Matcher');
+                $this->result = new Result(true, true, $matcher->reveal(), false);
+
+                $resultReporter = $this->prophet->prophesize('expect\ResultReporter');
+                $resultReporter->reportNegativeFailed(Argument::type('expect\FailedMessage'))
+                    ->shouldBeCalled();
+
+                $this->resultReporter = $resultReporter->reveal();
+            });
+            it('report by result reporter', function() {
+                $this->result->reportTo($this->resultReporter);
+                $this->prophet->checkPredictions();
+            });
         });
     });
 

@@ -1,5 +1,7 @@
 <?php
 
+use expect\package\MatcherClass;
+use expect\MatcherDictionary;
 use expect\DefaultMatcherFactory;
 use Assert\Assertion;
 
@@ -8,10 +10,11 @@ describe('DefaultMatcherFactory', function() {
 
     describe('#create', function() {
         beforeEach(function() {
-            $this->factory = new DefaultMatcherFactory([
-                'ToBeTrue' => 'expect\matcher\ToBeTrue',
-                'ToEqual' => 'expect\matcher\ToEqual'
+            $dictionary = new MatcherDictionary([
+                'ToBeTrue' => new MatcherClass('expect\matcher', 'ToBeTrue'),
+                'ToEqual'  => new MatcherClass('expect\matcher', 'ToEqual')
             ]);
+            $this->factory = new DefaultMatcherFactory($dictionary);
         });
         context('when no arguments', function() {
             beforeEach(function() {

@@ -14,9 +14,7 @@ namespace expect;
 use expect\package\MatcherClass;
 
 
-interface MatcherRegistry
+interface MatcherRegistry extends MatcherContainer
 {
     public function register(MatcherClass $matcherClass);
-    public function has($name);
-    public function get($name);
 }

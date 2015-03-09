@@ -22,7 +22,7 @@ use ReflectionClass;
 use ArrayIterator;
 
 
-class MatcherPackage
+class MatcherPackage implements RegisterablePackage
 {
 
 
@@ -40,6 +40,9 @@ class MatcherPackage
     }
 
 
+    /**
+     * {@inheritdoc}
+     */
     public function registerTo(MatcherRegistry $registry)
     {
         $provideMatchers = $this->getProvideMatchers();

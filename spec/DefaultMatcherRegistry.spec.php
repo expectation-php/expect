@@ -81,5 +81,21 @@ describe('DefaultMatcherRegistry', function() {
             });
         });
     });
+    describe('#toDictionary', function() {
+        beforeEach(function() {
+            $registry = new DefaultMatcherRegistry();
+            $registry->register( new MatcherClass('\\expect\\matcher', 'ToEqual') );
+
+            $this->dictionary = $registry->toDictionary();
+        });
+        it('return expect\MatcherContainer instance', function() {
+            Assertion::isInstanceOf($this->dictionary, 'expect\MatcherContainer');
+        });
+        context('when have one matcher', function() {
+            it('return dictionay have one matcher', function() {
+                Assertion::count($this->dictionary, 1);
+            });
+        });
+    });
 
 });

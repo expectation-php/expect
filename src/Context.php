@@ -12,11 +12,17 @@
 namespace expect;
 
 
-interface ResultReporter
+interface Context
 {
 
-    public function reportFailed(FailedMessage $message);
+    /**
+     * @return \expect\MatcherFactory
+     */
+    public function getMatcherFactory();
 
-    public function reportNegativeFailed(FailedMessage $message);
+    /**
+     * @return \expect\ResultReporter
+     */
+    public function getResultReporter();
 
 }

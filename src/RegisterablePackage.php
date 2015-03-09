@@ -12,11 +12,9 @@
 namespace expect;
 
 
-interface ResultReporter
+interface RegisterablePackage
 {
 
-    public function reportFailed(FailedMessage $message);
-
-    public function reportNegativeFailed(FailedMessage $message);
+    public function registerTo(MatcherRegistry $registry);
 
 }
