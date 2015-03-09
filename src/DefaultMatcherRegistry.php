@@ -24,7 +24,7 @@ final class DefaultMatcherRegistry implements MatcherRegistry
 
     use MatcherLookupTable;
 
-    public function __construct(array $matchers)
+    public function __construct(array $matchers = [])
     {
         $this->matchers = Dictionary::fromArray($matchers);
     }
