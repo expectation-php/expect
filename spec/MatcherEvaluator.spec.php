@@ -3,6 +3,7 @@
 use expect\MatcherEvaluator;
 use expect\matcher\toEqual;
 use Prophecy\Prophet;
+use Prophecy\Argument;
 use Assert\Assertion;
 
 
@@ -18,8 +19,11 @@ describe('MatcherEvaluator', function() {
                     $factory->create('toEqual', [ true ])
                         ->willReturn( new toEqual(true) );
 
+                    $reporter = $this->prophet->prophesize('expect\ResultReporter');
+
                     $context = $this->prophet->prophesize('expect\Context');
                     $context->getMatcherFactory()->willReturn( $factory->reveal() );
+                    $context->getResultReporter()->willReturn( $reporter->reveal() );
 
                     $this->evaluator = MatcherEvaluator::fromContext( $context->reveal() );
                     $this->result = $this->evaluator->actual(true)->toEqual(true);
@@ -39,8 +43,12 @@ describe('MatcherEvaluator', function() {
                     $factory->create('toEqual', [ false ])
                         ->willReturn( new toEqual(false) );
 
+                    $reporter = $this->prophet->prophesize('expect\ResultReporter');
+                    $reporter->reportFailed(Argument::type('expect\FailedMessage'));
+
                     $context = $this->prophet->prophesize('expect\Context');
                     $context->getMatcherFactory()->willReturn( $factory->reveal() );
+                    $context->getResultReporter()->willReturn( $reporter->reveal() );
 
                     $this->evaluator = MatcherEvaluator::fromContext( $context->reveal() );
                     $this->result = $this->evaluator->actual(true)->toEqual(false);
@@ -61,8 +69,12 @@ describe('MatcherEvaluator', function() {
                 $factory->create('toEqual', [ true ])
                     ->willReturn( new toEqual(true) );
 
+                $reporter = $this->prophet->prophesize('expect\ResultReporter');
+                $reporter->reportNegativeFailed(Argument::type('expect\FailedMessage'));
+
                 $context = $this->prophet->prophesize('expect\Context');
                 $context->getMatcherFactory()->willReturn( $factory->reveal() );
+                $context->getResultReporter()->willReturn( $reporter->reveal() );
 
                 $this->evaluator = MatcherEvaluator::fromContext( $context->reveal() );
             });
