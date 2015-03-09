@@ -12,3 +12,12 @@ Expect::configure($loader);
 
 Expect::that(true)->toEqual(true);
 Expect::that(false)->toEqual(true);
+
+Expect::that(true)->toBeTrue();
+Expect::that(false)->toBeTrue();
+
+Expect::that(false)->toBeFalse();
+Expect::that(true)->toBeFalse();
+
+Expect::that(null)->toBeNull();
+Expect::that(100)->toBeNull();
