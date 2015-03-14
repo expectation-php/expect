@@ -13,7 +13,7 @@ namespace expect\configurator;
 
 use expect\Configurator;
 use expect\Configuration;
-use expect\DefaultMatcherRegistry;
+use expect\registry\DefaultMatcherRegistry;
 use expect\DefaultMatcherFactory;
 use expect\DefaultContextFactory;
 

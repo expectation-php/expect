@@ -9,13 +9,15 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect;
+namespace expect\registry;
 
 
 use expect\MatcherDictionary;
 use expect\registry\MatcherNotRegistered;
 use expect\registry\MatcherAlreadyRegistered;
 use expect\package\MatcherClass;
+use expect\MatcherRegistry;
+use expect\MatcherLookupTable;
 use Easy\Collections\Dictionary;
 
 
