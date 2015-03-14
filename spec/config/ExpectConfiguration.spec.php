@@ -1,24 +1,24 @@
 <?php
 
-use expect\Configuration;
+use expect\config\ExpectConfiguration;
 use expect\config\ConfigurationFileNotFoundException;
 use Assert\Assertion;
 
 
-describe('Configuration', function() {
+describe('ExpectConfiguration', function() {
     beforeEach(function() {
-        $this->config = Configuration::loadFromFile(__DIR__ . '/fixtures/config.toml');
+        $this->config = ExpectConfiguration::loadFromFile(__DIR__ . '/../fixtures/config.toml');
     });
     describe('#loadFromFile', function() {
-        it('return Configuration instance', function() {
-            Assertion::isInstanceOf($this->config, 'expect\Configuration');
+        it('return ExpectConfiguration instance', function() {
+            Assertion::isInstanceOf($this->config, 'expect\config\ExpectConfiguration');
         });
         context('when config file not found', function() {
             it('throw ConfigurationFileNotFoundException', function() {
                 $throwExpection = false;
 
                 try {
-                    Configuration::loadFromFile(__DIR__ . '/fixtures/not_found_config.toml');
+                    ExpectConfiguration::loadFromFile(__DIR__ . '/fixtures/not_found_config.toml');
                 } catch (ConfigurationFileNotFoundException $exception) {
                     $throwExpection = true;
                 }
