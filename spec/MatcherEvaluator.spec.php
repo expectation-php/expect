@@ -2,6 +2,7 @@
 
 use expect\MatcherEvaluator;
 use Prophecy\Prophet;
+use Prophecy\Argument;
 use Assert\Assertion;
 
 

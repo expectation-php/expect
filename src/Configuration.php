@@ -20,7 +20,7 @@ class Configuration
 {
 
     private $resultReporter;
-    private $matcherPackages;
+    private $matcherPackages = [];
 
 
     public function __construct(array $values)
@@ -29,7 +29,7 @@ class Configuration
 
         if ($config->containsKey('packages')) {
             $packages = $config->get('packages');
-            $this->loadPackages($packages);
+            $this->loadPackages( $packages->toArray() );
         }
 
         if ($config->containsKey('reporter')) {
