@@ -12,9 +12,12 @@
 namespace expect;
 
 
-interface ContextLoader
+interface ContextFactory
 {
 
-    public function load();
+    /**
+     * @return \expect\Context
+     */
+    public function newContext();
 
 }

@@ -12,12 +12,9 @@
 namespace expect;
 
 
-interface Configurable
+interface Configurator
 {
 
-    /**
-     * @param Configurator $configurator
-     */
-    public static function configure(Configurator $configurator);
+    public function configure();
 
 }

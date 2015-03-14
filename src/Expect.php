@@ -15,21 +15,22 @@ namespace expect;
 final class Expect implements Configurable
 {
 
-    private static $context;
+    private static $contextFactory;
 
-    public static function configure(ContextLoader $loader)
+
+    public static function configure(Configurator $configurator)
     {
-        static::$context = $loader->load();
+        static::$contextFactory = $configurator->configure();
     }
 
     /**
      * @param mixed $actual
-     * @return MatcherEvaluator
+     * @return Context
      */
     public static function that($actual)
     {
-        $evaluator = MatcherEvaluator::fromContext(static::$context);
-        return $evaluator->actual($actual);
+        $context = static::$contextFactory->newContext();
+        return $context->actual($actual);
     }
 
 }

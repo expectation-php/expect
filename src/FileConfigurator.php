@@ -12,7 +12,7 @@
 namespace expect;
 
 
-class DefaultContextLoader implements ContextLoader
+class FileConfigurator implements Configurator
 {
 
     private $config;
@@ -23,7 +23,7 @@ class DefaultContextLoader implements ContextLoader
         $this->config = Configuration::loadFromFile($configFile);
     }
 
-    public function load()
+    public function configure()
     {
         $registry = new DefaultMatcherRegistry();
         $packages = $this->config->getMatcherPackages();
@@ -37,7 +37,7 @@ class DefaultContextLoader implements ContextLoader
 
         $resultReporter = $this->config->getResultReporter();
 
-        return new EvaluateContext($matcherFactory, $resultReporter);
+        return new DefaultContextFactory($matcherFactory, $resultReporter);
     }
 
 }
