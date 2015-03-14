@@ -9,7 +9,14 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect;
+namespace expect\configurator;
+
+use expect\Configurator;
+use expect\Configuration;
+use expect\DefaultMatcherRegistry;
+use expect\DefaultMatcherFactory;
+use expect\DefaultContextFactory;
+
 
 
 class FileConfigurator implements Configurator

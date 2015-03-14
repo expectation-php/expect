@@ -1,7 +1,7 @@
 <?php
 
 use expect\Expect;
-use expect\FileConfigurator;
+use expect\configurator\FileConfigurator;
 use Assert\Assertion;
 
 
