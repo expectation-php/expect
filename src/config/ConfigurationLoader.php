@@ -30,7 +30,10 @@ class ConfigurationLoader
         }
         $values = Toml::parse($file);
 
-        return $this->loadFromArray($values);
+        $defaultConfig = new DefaultConfiguration();
+        $runtimeConfig = $this->loadFromArray($values);
+
+        return $defaultConfig->merge($runtimeConfig);
     }
 
     public function loadFromArray(array $values)
