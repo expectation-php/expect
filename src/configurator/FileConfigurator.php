@@ -15,7 +15,7 @@ use expect\Configurator;
 use expect\Configuration;
 use expect\registry\DefaultMatcherRegistry;
 use expect\DefaultMatcherFactory;
-use expect\DefaultContextFactory;
+use expect\context\DefaultContextFactory;
 
 
 

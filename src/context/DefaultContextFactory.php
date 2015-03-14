@@ -9,7 +9,13 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect;
+namespace expect\context;
+
+
+use expect\ContextFactory;
+use expect\MatcherFactory;
+use expect\ResultReporter;
+
 
 
 class DefaultContextFactory implements ContextFactory

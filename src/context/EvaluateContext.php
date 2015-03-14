@@ -9,11 +9,13 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect;
+namespace expect\context;
 
 
-use expect\DefaultMatcherFactory;
-use expect\DefaultMatcherRegistry;
+use expect\Context;
+use expect\MatcherFactory;
+use expect\ResultReporter;
+use expect\MatcherEvaluator;
 
 
 
