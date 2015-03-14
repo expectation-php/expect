@@ -12,7 +12,7 @@
 namespace expect\configurator;
 
 use expect\Configurator;
-use expect\Configuration;
+use expect\config\ConfigurationLoader;
 use expect\registry\DefaultMatcherRegistry;
 use expect\factory\DefaultMatcherFactory;
 use expect\context\DefaultContextFactory;
@@ -27,7 +27,8 @@ class FileConfigurator implements Configurator
 
     public function __construct($configFile)
     {
-        $this->config = Configuration::loadFromFile($configFile);
+        $loader = new ConfigurationLoader();
+        $this->config = $loader->loadFromFile($configFile);
     }
 
     public function configure()

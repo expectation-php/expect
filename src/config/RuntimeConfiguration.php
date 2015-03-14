@@ -13,21 +13,20 @@ namespace expect\config;
 
 
 use expect\Configuration;
+use expect\ResultReporter;
 use expect\reporter\TextMessageReporter;
-use expect\package\DefaultMatcherPackage;
 
 
-
-class DefaultConfiguration implements Configuration
+class RuntimeConfiguration implements Configuration
 {
 
     use ConfigurableConfiguration;
 
 
-    public function __construct()
+    public function __construct(array $matcherPackages, ResultReporter $resultReporter)
     {
-        $this->resultReporter = new TextMessageReporter;
-        $this->matcherPackages[] = new DefaultMatcherPackage;
+        $this->resultReporter = $resultReporter;
+        $this->matcherPackages = $matcherPackages;
     }
 
 }

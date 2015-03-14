@@ -11,31 +11,46 @@
 
 namespace expect\config;
 
-use expect\config\ConfigurationFileNotFoundException;
+
+use expect\config\RuntimeConfiguration;
+use expect\reporter\TextMessageReporter;
+use expect\package\DefaultMatcherPackage;
 use Yosymfony\Toml\Toml;
 use Easy\Collections\Dictionary;
 
 
-class ExpectConfiguration
+
+class ConfigurationLoader
 {
 
-    private $resultReporter;
-    private $matcherPackages = [];
+    public function loadFromFile($file)
+    {
+        if (file_exists($file) === false) {
+            throw new ConfigurationFileNotFoundException("$file not found");
+        }
+        $values = Toml::parse($file);
 
+        return $this->loadFromArray($values);
+    }
 
-    public function __construct(array $values)
+    public function loadFromArray(array $values)
     {
         $config = Dictionary::fromArray($values);
+        $loadedPackages = [];
+        $loadedReporter = null;
+
 
         if ($config->containsKey('packages')) {
             $packages = $config->get('packages');
-            $this->loadPackages( $packages->toArray() );
+            $loadedpPackages = $this->loadPackages( $packages->toArray() );
         }
 
         if ($config->containsKey('reporter')) {
             $reporter = $config->get('reporter');
-            $this->loadReporter($reporter);
+            $loadedReporter = $this->loadReporter($reporter);
         }
+
+        return new RuntimeConfiguration($loadedPackages, $loadedReporter);
     }
 
     //FIXME Too miscellaneous
@@ -46,33 +61,14 @@ class ExpectConfiguration
         foreach ($packages as $package) {
             $matcherPackages[] = new $package();
         }
-        $this->matcherPackages = $matcherPackages;
+
+        return $matcherPackages;
     }
 
     //FIXME Too miscellaneous
     private function loadReporter($reporter)
     {
-        $this->resultReporter = new $reporter();
-    }
-
-    public function getMatcherPackages()
-    {
-        return $this->matcherPackages;
-    }
-
-    public function getResultReporter()
-    {
-        return $this->resultReporter;
-    }
-
-    public static function loadFromFile($file)
-    {
-        if (file_exists($file) === false) {
-            throw new ConfigurationFileNotFoundException("$file not found");
-        }
-        $values = Toml::parse($file);
-
-        return new ExpectConfiguration($values);
+        return new $reporter();
     }
 
 }
