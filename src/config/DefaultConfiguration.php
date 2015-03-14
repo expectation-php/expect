@@ -13,7 +13,7 @@ namespace expect\config;
 
 
 use expect\Configuration;
-use expect\reporter\TextMessageReporter;
+use expect\reporter\ExceptionReporter;
 use expect\package\DefaultMatcherPackage;
 
 
@@ -26,7 +26,7 @@ class DefaultConfiguration implements Configuration
 
     public function __construct()
     {
-        $this->resultReporter = new TextMessageReporter;
+        $this->resultReporter = new ExceptionReporter;
         $this->matcherPackages[] = new DefaultMatcherPackage;
     }
 

@@ -9,8 +9,8 @@ describe('DefaultConfiguration', function() {
         $this->config = new DefaultConfiguration();
     });
     describe('#getResultReporter', function() {
-        it('return expect\ResultReporter', function() {
-            Assertion::isInstanceOf($this->config->getResultReporter(), 'expect\ResultReporter');
+        it('return expect\ExceptionReporter', function() {
+            Assertion::isInstanceOf($this->config->getResultReporter(), 'expect\reporter\ExceptionReporter');
         });
     });
     describe('#getMatcherPackages', function() {
