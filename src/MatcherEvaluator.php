@@ -38,7 +38,7 @@ class MatcherEvaluator implements Evaluator
 
         $result = $matcherResult === $expected;
 
-        return new Result($actual, $this->negated, $matcher, $result);
+        return new Result($actual, $this->negated, $this->matcher, $result);
     }
 
     /**
