@@ -21,9 +21,9 @@ class FailedMessage implements Message
     private $message;
 
 
-    public function __construct()
+    public function __construct($message = '')
     {
-        $this->message = "\n";
+        $this->message = $message;
     }
 
     public function appendText($text)
@@ -50,6 +50,19 @@ class FailedMessage implements Message
         return $this;
     }
 
+    public function concat(FailedMessage $message)
+    {
+        $prefix = (string) $this;
+        $concatenatedMessage = $prefix . (string) $message;
+
+        return static::fromString($concatenatedMessage);
+    }
+
+    public static function fromString($value)
+    {
+        return new self($value);
+    }
+
     private function boolToString($value)
     {
         return $value === true ? 'true' : 'false';
@@ -57,7 +70,7 @@ class FailedMessage implements Message
 
     public function __toString()
     {
-        return $this->message;
+        return "\n" . $this->message . "\n";
     }
 
 }

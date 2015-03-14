@@ -46,8 +46,7 @@ class ToEqual implements Matcher
             ->appendValue($this->expected)
             ->appendText("\n")
             ->appendText("     got ")
-            ->appendValue($this->actual)
-            ->appendText("\n");
+            ->appendValue($this->actual);
     }
 
     /**
@@ -59,8 +58,7 @@ class ToEqual implements Matcher
             ->appendValue($this->expected)
             ->appendText("\n")
             ->appendText("         got ")
-            ->appendValue($this->actual)
-            ->appendText("\n");
+            ->appendValue($this->actual);
     }
 
 }
