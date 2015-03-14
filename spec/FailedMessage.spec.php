@@ -62,6 +62,17 @@ describe('FailedMessage', function() {
         });
     });
 
+    describe('#concat', function() {
+        beforeEach(function() {
+            $this->leadMessage = FailedMessage::fromString('Expect:');
+            $this->resultMessage = FailedMessage::fromString('concat message');
+        });
+        it('concat message', function() {
+            $message = $this->leadMessage->concat($this->resultMessage);
+            Assertion::same((string) $message, "\nExpect:\nconcat message\n");
+        });
+    });
+
     describe('#__toString', function() {
         beforeEach(function() {
             $this->message = new FailedMessage();

@@ -53,7 +53,8 @@ class FailedMessage implements Message
     public function concat(FailedMessage $message)
     {
         $prefix = (string) $this;
-        $concatenatedMessage = $prefix . (string) $message;
+        $suffix = (string) $message;
+        $concatenatedMessage = trim($prefix) . "\n" . trim($suffix);
 
         return static::fromString($concatenatedMessage);
     }
