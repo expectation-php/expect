@@ -20,8 +20,7 @@ Expect::that(true)->toEqual(true); //pass
 Expect::that(false)->toEqual(true); //failed
 ```
 
-
-Equal matcher
+All of matcher
 ------------------------
 
 ### toEqual
@@ -50,4 +49,11 @@ Expect::that(true)->toBeFalse(); //failed
 ```php
 Expect::that(null)->toBeNull(); //pass
 Expect::that(100)->toBeNull(); //failed
+```
+
+### toBeAnInstanceOf
+
+```php
+Expect::that(new ToEqual(true))->toBeAnInstanceOf('expect\Mathcer'); //pass
+Expect::that(new stdClass)->toBeAnInstanceOf('expect\Mathcer'); //failed
 ```

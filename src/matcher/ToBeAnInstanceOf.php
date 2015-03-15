@@ -21,6 +21,8 @@ class ToBeAnInstanceOf implements Matcher
 
     private $actual;
     private $expected;
+    private $className;
+
 
     public function __construct($expected)
     {
@@ -33,6 +35,7 @@ class ToBeAnInstanceOf implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
+        $this->className = get_class($this->actual);
 
         return $this->actual instanceof $this->expected;
     }
@@ -42,10 +45,8 @@ class ToBeAnInstanceOf implements Matcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        $actual = $this->actualValue();
-
         $message->appendText('expected ')
-            ->appendText($actual)
+            ->appendText($this->className)
             ->appendText(" to be an instance of ")
             ->appendText($this->expected);
     }
@@ -55,20 +56,10 @@ class ToBeAnInstanceOf implements Matcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $actual = $this->actualValue();
-
         $message->appendText('expected ')
-            ->appendText($actual)
+            ->appendText($this->className)
             ->appendText(" not to be an instance of ")
             ->appendText($this->expected);
-    }
-
-    private function actualValue()
-    {
-        $actual = get_class($this->actual);
-        $actual = ($actual === false) ? $this->actual : $actual;
-
-        return $actual;
     }
 
 }
