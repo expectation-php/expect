@@ -10,7 +10,44 @@ Basic usage
 ------------------------
 
 ```php
-$configurator = new DefaultConfigurator(__DIR__ . '/fixtures/config.toml');
+use expect\Expect;
+use expect\configurator\FileConfigurator;
+
+$configurator = new FileConfigurator(__DIR__ . '/config.toml');
 Expect::configure($configurator);
-Expect::that(true)->toBeTrue();
+
+Expect::that(true)->toEqual(true); //pass
+Expect::that(false)->toEqual(true); //failed
+```
+
+
+Equal matcher
+------------------------
+
+### toEqual
+
+```php
+Expect::that(true)->toEqual(true); //pass
+Expect::that(false)->toEqual(true); //failed
+```
+
+### toBeTrue
+
+```php
+Expect::that(true)->toBeTrue(); //pass
+Expect::that(false)->toBeTrue(); //failed
+```
+
+### toBeFalse
+
+```php
+Expect::that(false)->toBeFalse(); //pass
+Expect::that(true)->toBeFalse(); //failed
+```
+
+### toBeNull
+
+```php
+Expect::that(null)->toBeNull(); //pass
+Expect::that(100)->toBeNull(); //failed
 ```
