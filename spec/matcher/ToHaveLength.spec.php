@@ -40,4 +40,28 @@ describe('ToHaveLength', function() {
         });
     });
 
+    describe('#reportFailed', function() {
+        beforeEach(function() {
+            $this->matcher = new ToHaveLength(4);
+            $this->message = new FailedMessage();
+        });
+        it('report failed message', function() {
+            $this->matcher->match("foo");
+            $this->matcher->reportFailed($this->message);
+            Assertion::same((string) $this->message, "\nexpected string to have a length of 4\n");
+        });
+    });
+
+    describe('#reportNegativeFailed', function() {
+        beforeEach(function() {
+            $this->matcher = new ToHaveLength(3);
+            $this->message = new FailedMessage();
+        });
+        it('report failed message', function() {
+            $this->matcher->match("foo");
+            $this->matcher->reportNegativeFailed($this->message);
+            Assertion::same((string) $this->message, "\nexpected string not to have a length of 3\n");
+        });
+    });
+
 });
