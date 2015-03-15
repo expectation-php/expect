@@ -16,7 +16,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-class ToBeAnInstanceOf implements Matcher
+final class ToBeAnInstanceOf implements Matcher
 {
 
     private $actual;

@@ -16,7 +16,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-class ToBeA implements Matcher
+final class ToBeA implements Matcher
 {
 
     use CompareType;

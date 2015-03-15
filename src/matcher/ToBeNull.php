@@ -15,7 +15,7 @@ namespace expect\matcher;
 use expect\Matcher;
 
 
-class ToBeNull implements Matcher
+final class ToBeNull implements Matcher
 {
 
     use CompareEqual;

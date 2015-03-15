@@ -17,7 +17,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-class ToEqual implements Matcher
+final class ToEqual implements Matcher
 {
 
     private $actual;

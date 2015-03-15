@@ -16,7 +16,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-class ToBeAn implements Matcher
+final class ToBeAn implements Matcher
 {
 
     private $actual;
