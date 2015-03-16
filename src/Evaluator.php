@@ -15,6 +15,6 @@ namespace expect;
 interface Evaluator
 {
 
-    public static function fromContext(Context $context);
+    public static function fromMatcher(Matcher $matcher);
 
 }

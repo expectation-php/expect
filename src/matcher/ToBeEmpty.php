@@ -9,20 +9,21 @@
  * with this source code in the file LICENSE.
  */
 
+
 namespace expect\matcher;
 
 
 use expect\Matcher;
 
 
-final class ToBeNull implements Matcher
+final class ToBeEmpty implements Matcher
 {
 
-    use CompareEqual;
+    use CompareLength;
 
     public function __construct()
     {
-        $this->equalMatcher = new ToEqual(null);
+        $this->lengthMatcher = new ToHaveLength(0);
     }
 
 }

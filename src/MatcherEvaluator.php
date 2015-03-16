@@ -15,63 +15,38 @@ namespace expect;
 class MatcherEvaluator implements Evaluator
 {
 
-    private $actual;
+    private $matcher;
     private $negated;
-    private $context;
 
 
-    public function __construct(Context $context)
+    public function __construct(Matcher $matcher)
     {
-        $this->actual = null;
         $this->negated = false;
-        $this->context = $context;
+        $this->matcher = $matcher;
     }
 
-    public function actual($actual)
-    {
-        $this->actual = $actual;
-        return $this;
-    }
-
-    public function not()
+    public function negated()
     {
         $this->negated = true;
         return $this;
     }
 
-    protected function evaluate($name, array $arguments = [])
+    public function evaluate($actual)
     {
-        $factory = $this->context->getMatcherFactory();
-        $matcher = $factory->create($name, $arguments);
-
-        $matcherResult = $matcher->match($this->actual);
+        $matcherResult = $this->matcher->match($actual);
         $expected = $this->negated ? false : true;
 
         $result = $matcherResult === $expected;
 
-        $reporter = $this->context->getResultReporter();
-
-        $evaluateResult = new Result($this->actual, $this->negated, $matcher, $result);
-        $evaluateResult->reportTo($reporter);
-
-        return $evaluateResult;
-    }
-
-    public function __call($name, array $arguments = [])
-    {
-        if (method_exists($this, $name)) {
-            return call_user_func_array([$this, $name], $arguments);
-        } else {
-            return $this->evaluate($name, $arguments);
-        }
+        return new Result($actual, $this->negated, $this->matcher, $result);
     }
 
     /**
      * {@inheritdoc}
      */
-    public static function fromContext(Context $context)
+    public static function fromMatcher(Matcher $matcher)
     {
-        return new self($context);
+        return new self($matcher);
     }
 
 }

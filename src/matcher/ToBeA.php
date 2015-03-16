@@ -13,16 +13,18 @@ namespace expect\matcher;
 
 
 use expect\Matcher;
+use expect\FailedMessage;
 
 
-final class ToBeNull implements Matcher
+final class ToBeA implements Matcher
 {
 
-    use CompareEqual;
+    use CompareType;
 
-    public function __construct()
+
+    public function __construct($expected)
     {
-        $this->equalMatcher = new ToEqual(null);
+        $this->typeMatcher = new ToBeAn($expected);
     }
 
 }

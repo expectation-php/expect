@@ -1,20 +1,21 @@
 <?php
 
 use expect\Expect;
-use expect\DefaultContextLoader;
+use expect\configurator\FileConfigurator;
 use Assert\Assertion;
 
 
 describe('Expect', function() {
     beforeEach(function() {
         $toml = __DIR__ . '/fixtures/config.toml';
-        $loader = new DefaultContextLoader($toml);
-        Expect::configure($loader);
+        $configurator = new FileConfigurator($toml);
+
+        Expect::configure($configurator);
     });
     describe('#that', function() {
         it('configure expect package', function() {
-            $result = Expect::that(true)->toEql(true);
-            Assertion::true($result->isPassed());
+            $context = Expect::that(true);
+            Assertion::isInstanceOf($context, 'expect\Context');
         });
     });
 });

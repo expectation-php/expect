@@ -15,14 +15,10 @@ namespace expect;
 interface Context
 {
 
-    /**
-     * @return \expect\MatcherFactory
-     */
-    public function getMatcherFactory();
+    public function actual($actual);
 
-    /**
-     * @return \expect\ResultReporter
-     */
-    public function getResultReporter();
+    public function not();
+
+    public function evaluate($name, $arguments = []);
 
 }

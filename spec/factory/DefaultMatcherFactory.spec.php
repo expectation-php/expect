@@ -2,7 +2,7 @@
 
 use expect\package\MatcherClass;
 use expect\MatcherDictionary;
-use expect\DefaultMatcherFactory;
+use expect\factory\DefaultMatcherFactory;
 use Assert\Assertion;
 
 

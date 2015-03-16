@@ -9,10 +9,17 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect;
+namespace expect\configurator;
+
+use expect\Configurator;
+use expect\config\ConfigurationLoader;
+use expect\registry\DefaultMatcherRegistry;
+use expect\factory\DefaultMatcherFactory;
+use expect\context\DefaultContextFactory;
 
 
-class DefaultContextLoader implements ContextLoader
+
+class FileConfigurator implements Configurator
 {
 
     private $config;
@@ -20,10 +27,11 @@ class DefaultContextLoader implements ContextLoader
 
     public function __construct($configFile)
     {
-        $this->config = Configuration::loadFromFile($configFile);
+        $loader = new ConfigurationLoader();
+        $this->config = $loader->loadFromFile($configFile);
     }
 
-    public function load()
+    public function configure()
     {
         $registry = new DefaultMatcherRegistry();
         $packages = $this->config->getMatcherPackages();
@@ -37,7 +45,7 @@ class DefaultContextLoader implements ContextLoader
 
         $resultReporter = $this->config->getResultReporter();
 
-        return new EvaluateContext($matcherFactory, $resultReporter);
+        return new DefaultContextFactory($matcherFactory, $resultReporter);
     }
 
 }

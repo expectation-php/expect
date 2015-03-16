@@ -9,15 +9,16 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect;
+namespace expect\context;
 
 
-use expect\DefaultMatcherFactory;
-use expect\DefaultMatcherRegistry;
+use expect\ContextFactory;
+use expect\MatcherFactory;
+use expect\ResultReporter;
 
 
 
-class EvaluateContext implements Context
+class DefaultContextFactory implements ContextFactory
 {
 
     private $factory;
@@ -30,14 +31,12 @@ class EvaluateContext implements Context
         $this->reporter = $reporter;
     }
 
-    public function getMatcherFactory()
+    /**
+     * {@inheritdoc}
+     */
+    public function newContext()
     {
-        return $this->factory;
-    }
-
-    public function getResultReporter()
-    {
-        return $this->reporter;
+        return new EvaluateContext($this->factory, $this->reporter);
     }
 
 }

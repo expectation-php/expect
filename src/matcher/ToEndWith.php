@@ -17,15 +17,20 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class ToEqual implements Matcher
+final class ToEndWith implements Matcher
 {
 
+    use ComparePattern;
+
+
     private $actual;
-    private $expected;
+    private $pattern;
+
 
     public function __construct($expected)
     {
-        $this->expected = $expected;
+        $this->pattern = preg_quote($expected, "/");
+        $this->patternMatcher = new ToMatch("/{$this->pattern}$/");
     }
 
     /**
@@ -34,7 +39,7 @@ final class ToEqual implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
-        return $this->actual === $this->expected;
+        return $this->patternMatcher->match($actual);
     }
 
     /**
@@ -43,10 +48,9 @@ final class ToEqual implements Matcher
     public function reportFailed(FailedMessage $message)
     {
         $message->appendText('expected ')
-            ->appendValue($this->expected)
-            ->appendText("\n")
-            ->appendText("     got ")
-            ->appendValue($this->actual);
+            ->appendValue($this->actual)
+            ->appendText(" to end with ")
+            ->appendValue($this->pattern);
     }
 
     /**
@@ -54,11 +58,10 @@ final class ToEqual implements Matcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected not ')
-            ->appendValue($this->expected)
-            ->appendText("\n")
-            ->appendText("         got ")
-            ->appendValue($this->actual);
+        $message->appendText('expected ')
+            ->appendValue($this->actual)
+            ->appendText(" not to end with ")
+            ->appendValue($this->pattern);
     }
 
 }

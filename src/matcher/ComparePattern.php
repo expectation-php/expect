@@ -11,18 +11,24 @@
 
 namespace expect\matcher;
 
+use expect\FailedMessage;
 
-use expect\Matcher;
 
-
-final class ToBeNull implements Matcher
+trait ComparePattern
 {
 
-    use CompareEqual;
+    /**
+     * @var \expect\matcher\ToMatch
+     */
+    private $patternMatcher;
 
-    public function __construct()
+
+    /**
+     * {@inheritdoc}
+     */
+    public function match($actual)
     {
-        $this->equalMatcher = new ToEqual(null);
+        return $this->patternMatcher->match($actual);
     }
 
 }

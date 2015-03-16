@@ -9,8 +9,11 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect;
+namespace expect\factory;
 
+
+use expect\MatcherFactory;
+use expect\MatcherContainer;
 
 
 class DefaultMatcherFactory implements MatcherFactory

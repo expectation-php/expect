@@ -56,6 +56,14 @@ class Result
 
     public function reportTo(ResultReporter $reporter)
     {
+        if ($this->isPassed()) {
+            return;
+        }
+        $this->reportFailed($reporter);
+    }
+
+    private function reportFailed(ResultReporter $reporter)
+    {
         $message = new FailedMessage();
 
         if ($this->negated) {

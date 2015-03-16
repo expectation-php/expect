@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect;
+namespace expect\package;
 
 
 use expect\RegisterablePackage;
@@ -27,7 +27,7 @@ class DefaultMatcherPackage implements RegisterablePackage
     {
         $matcherPackage = new MatcherPackage(
             '\\expect\\matcher',
-            __DIR__ . '/matcher'
+            __DIR__ . '/../matcher'
         );
         $matcherPackage->registerTo($registry);
     }

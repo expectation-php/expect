@@ -2,8 +2,5 @@
 # Expect Configuration
 #
 
-packages = [
-    "expect\\DefaultMatcherPackage"
-]
-
+packages = []
 reporter = "\\expect\\reporter\\TextMessageReporter"

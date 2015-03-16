@@ -9,20 +9,10 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect\matcher;
+namespace expect\reporter;
 
+use \Exception;
 
-use expect\Matcher;
-
-
-final class ToBeNull implements Matcher
+class FailedException extends Exception
 {
-
-    use CompareEqual;
-
-    public function __construct()
-    {
-        $this->equalMatcher = new ToEqual(null);
-    }
-
 }

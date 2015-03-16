@@ -9,7 +9,6 @@
  * with this source code in the file LICENSE.
  */
 
-
 namespace expect\matcher;
 
 
@@ -17,11 +16,13 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class ToEqual implements Matcher
+final class ToBeAnInstanceOf implements Matcher
 {
 
     private $actual;
     private $expected;
+    private $className;
+
 
     public function __construct($expected)
     {
@@ -34,7 +35,9 @@ final class ToEqual implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
-        return $this->actual === $this->expected;
+        $this->className = get_class($this->actual);
+
+        return $this->actual instanceof $this->expected;
     }
 
     /**
@@ -43,10 +46,9 @@ final class ToEqual implements Matcher
     public function reportFailed(FailedMessage $message)
     {
         $message->appendText('expected ')
-            ->appendValue($this->expected)
-            ->appendText("\n")
-            ->appendText("     got ")
-            ->appendValue($this->actual);
+            ->appendText($this->className)
+            ->appendText(" to be an instance of ")
+            ->appendText($this->expected);
     }
 
     /**
@@ -54,11 +56,10 @@ final class ToEqual implements Matcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected not ')
-            ->appendValue($this->expected)
-            ->appendText("\n")
-            ->appendText("         got ")
-            ->appendValue($this->actual);
+        $message->appendText('expected ')
+            ->appendText($this->className)
+            ->appendText(" not to be an instance of ")
+            ->appendText($this->expected);
     }
 
 }

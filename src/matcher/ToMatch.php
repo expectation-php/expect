@@ -17,7 +17,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class ToEqual implements Matcher
+final class ToMatch implements Matcher
 {
 
     private $actual;
@@ -34,7 +34,7 @@ final class ToEqual implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
-        return $this->actual === $this->expected;
+        return (preg_match($this->expected, $this->actual) === 1);
     }
 
     /**
@@ -43,10 +43,9 @@ final class ToEqual implements Matcher
     public function reportFailed(FailedMessage $message)
     {
         $message->appendText('expected ')
-            ->appendValue($this->expected)
-            ->appendText("\n")
-            ->appendText("     got ")
-            ->appendValue($this->actual);
+            ->appendValue($this->actual)
+            ->appendText(" to match ")
+            ->appendText($this->expected);
     }
 
     /**
@@ -54,11 +53,10 @@ final class ToEqual implements Matcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected not ')
-            ->appendValue($this->expected)
-            ->appendText("\n")
-            ->appendText("         got ")
-            ->appendValue($this->actual);
+        $message->appendText('expected ')
+            ->appendValue($this->actual)
+            ->appendText(" not to match ")
+            ->appendText($this->expected);
     }
 
 }

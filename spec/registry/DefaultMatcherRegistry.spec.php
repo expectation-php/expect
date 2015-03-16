@@ -1,7 +1,7 @@
 <?php
 
-use expect\DefaultMatcherRegistry;
 use expect\package\MatcherClass;
+use expect\registry\DefaultMatcherRegistry;
 use expect\registry\MatcherAlreadyRegistered;
 use expect\registry\MatcherNotRegistered;
 use Assert\Assertion;

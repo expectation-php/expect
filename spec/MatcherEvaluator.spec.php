@@ -1,32 +1,27 @@
 <?php
 
 use expect\MatcherEvaluator;
-use expect\matcher\toEqual;
 use Prophecy\Prophet;
 use Prophecy\Argument;
 use Assert\Assertion;
 
 
 describe('MatcherEvaluator', function() {
-
-    describe('#__call', function() {
+    describe('#evaluate', function() {
         context('when positive evaluate', function() {
             context('when passed', function() {
                 beforeEach(function() {
                     $this->prophet = new Prophet();
 
-                    $factory = $this->prophet->prophesize('expect\MatcherFactory');
-                    $factory->create('toEqual', [ true ])
-                        ->willReturn( new toEqual(true) );
+                    $actual = true;
 
-                    $reporter = $this->prophet->prophesize('expect\ResultReporter');
+                    $matcher = $this->prophet->prophesize('expect\Matcher');
+                    $matcher->match($actual)->willReturn(true);
 
-                    $context = $this->prophet->prophesize('expect\Context');
-                    $context->getMatcherFactory()->willReturn( $factory->reveal() );
-                    $context->getResultReporter()->willReturn( $reporter->reveal() );
+                    $matcherStub = $matcher->reveal();
 
-                    $this->evaluator = MatcherEvaluator::fromContext( $context->reveal() );
-                    $this->result = $this->evaluator->actual(true)->toEqual(true);
+                    $evaluator = MatcherEvaluator::fromMatcher($matcherStub);
+                    $this->result = $evaluator->evaluate($actual);
                 });
                 it('return expect\Result instance', function() {
                     Assertion::isInstanceOf($this->result, 'expect\Result');
@@ -39,19 +34,15 @@ describe('MatcherEvaluator', function() {
                 beforeEach(function() {
                     $this->prophet = new Prophet();
 
-                    $factory = $this->prophet->prophesize('expect\MatcherFactory');
-                    $factory->create('toEqual', [ false ])
-                        ->willReturn( new toEqual(false) );
+                    $actual = true;
 
-                    $reporter = $this->prophet->prophesize('expect\ResultReporter');
-                    $reporter->reportFailed(Argument::type('expect\FailedMessage'));
+                    $matcher = $this->prophet->prophesize('expect\Matcher');
+                    $matcher->match($actual)->willReturn(false);
 
-                    $context = $this->prophet->prophesize('expect\Context');
-                    $context->getMatcherFactory()->willReturn( $factory->reveal() );
-                    $context->getResultReporter()->willReturn( $reporter->reveal() );
+                    $matcherStub = $matcher->reveal();
 
-                    $this->evaluator = MatcherEvaluator::fromContext( $context->reveal() );
-                    $this->result = $this->evaluator->actual(true)->toEqual(false);
+                    $evaluator = MatcherEvaluator::fromMatcher($matcherStub);
+                    $this->result = $evaluator->evaluate($actual);
                 });
                 it('return expect\Result instance', function() {
                     Assertion::isInstanceOf($this->result, 'expect\Result');
@@ -62,27 +53,48 @@ describe('MatcherEvaluator', function() {
             });
         });
         context('when negative evaluate', function() {
-            beforeEach(function() {
-                $this->prophet = new Prophet();
+            context('when passed', function() {
+                beforeEach(function() {
+                    $this->prophet = new Prophet();
 
-                $factory = $this->prophet->prophesize('expect\MatcherFactory');
-                $factory->create('toEqual', [ true ])
-                    ->willReturn( new toEqual(true) );
+                    $actual = true;
 
-                $reporter = $this->prophet->prophesize('expect\ResultReporter');
-                $reporter->reportNegativeFailed(Argument::type('expect\FailedMessage'));
+                    $matcher = $this->prophet->prophesize('expect\Matcher');
+                    $matcher->match($actual)->willReturn(false);
 
-                $context = $this->prophet->prophesize('expect\Context');
-                $context->getMatcherFactory()->willReturn( $factory->reveal() );
-                $context->getResultReporter()->willReturn( $reporter->reveal() );
+                    $matcherStub = $matcher->reveal();
 
-                $this->evaluator = MatcherEvaluator::fromContext( $context->reveal() );
+                    $evaluator = MatcherEvaluator::fromMatcher($matcherStub);
+                    $this->result = $evaluator->negated()->evaluate($actual);
+                });
+                it('return expect\Result instance', function() {
+                    Assertion::isInstanceOf($this->result, 'expect\Result');
+                });
+                it('return passed result', function() {
+                    Assertion::true($this->result->isPassed());
+                });
             });
-            it('return expect\Result instance', function() {
-                $result = $this->evaluator->actual(true)->not()->toEqual(true);
-                Assertion::isInstanceOf($result, 'expect\Result');
+            context('when failed', function() {
+                beforeEach(function() {
+                    $this->prophet = new Prophet();
+
+                    $actual = true;
+
+                    $matcher = $this->prophet->prophesize('expect\Matcher');
+                    $matcher->match($actual)->willReturn(true);
+
+                    $matcherStub = $matcher->reveal();
+
+                    $evaluator = MatcherEvaluator::fromMatcher($matcherStub);
+                    $this->result = $evaluator->negated()->evaluate($actual);
+                });
+                it('return expect\Result instance', function() {
+                    Assertion::isInstanceOf($this->result, 'expect\Result');
+                });
+                it('return passed result', function() {
+                    Assertion::false($this->result->isPassed());
+                });
             });
         });
     });
-
 });
