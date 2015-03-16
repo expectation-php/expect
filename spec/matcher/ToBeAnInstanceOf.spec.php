@@ -3,7 +3,7 @@
 use expect\matcher\ToBeAnInstanceOf;
 use expect\FailedMessage;
 use Assert\Assertion;
-use stdClass;
+use \stdClass;
 
 
 describe('ToBeAnInstanceOf', function() {

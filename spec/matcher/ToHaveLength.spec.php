@@ -3,7 +3,7 @@
 use expect\matcher\ToHaveLength;
 use expect\FailedMessage;
 use Assert\Assertion;
-use ArrayIterator;
+use \ArrayIterator;
 
 
 describe('ToHaveLength', function() {
