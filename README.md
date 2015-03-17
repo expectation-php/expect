@@ -91,3 +91,24 @@ Expect::that('foo')->toBeBoolean(); //failed
 Expect::that(1)->toBeA('integer'); //pass
 Expect::that('foo')->toBeA('integer'); //failed
 ```
+
+### toMatch
+
+```php
+Expect::that('foobar')->toMatch('/foo/'); //pass
+Expect::that('foobar')->toMatch('/cat/'); //failed
+```
+
+### toStartWith
+
+```php
+Expect::that('foobar')->toStartWith('foo'); //pass
+Expect::that('foobar')->toStartWith('cat'); //failed
+```
+
+### toEndWith
+
+```php
+Expect::that('foobar')->toEndWith('bar'); //pass
+Expect::that('foobar')->toEndWith('cat'); //failed
+```
