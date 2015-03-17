@@ -46,7 +46,7 @@ final class ToHaveLength implements Matcher
             $this->type = 'array';
             $this->length = count($this->actual);
         } else if ($this->actual instanceof Countable) {
-            $this->type = get_class($that);
+            $this->type = get_class($this->actual);
             $this->length = count($this->actual);
         }
 

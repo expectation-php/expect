@@ -112,3 +112,27 @@ Expect::that('foobar')->toStartWith('cat'); //failed
 Expect::that('foobar')->toEndWith('bar'); //pass
 Expect::that('foobar')->toEndWith('cat'); //failed
 ```
+
+### toHaveLength
+
+```php
+Expect::that('foobar')->toHaveLength(6); //pass
+Expect::that('foobar')->toHaveLength(5); //failed
+```
+
+```php
+Expect::that([ 1 ])->toHaveLength(1); //pass
+Expect::that([ 1, 2 ])->toHaveLength(3); //failed
+```
+
+```php
+Expect::that(new ArrayIterator([ 1 ]))->toHaveLength(1); //pass
+Expect::that(new ArrayIterator([ 1, 2 ]))->toHaveLength(3); //failed
+```
+
+### toBeEmpty
+
+```php
+Expect::that([])->toBeEmpty(); //pass
+Expect::that([ 1 ])->toBeEmpty(); //failed
+```
