@@ -60,3 +60,34 @@ Expect::that(100)->toBeNull(); //failed
 Expect::that(new ToEqual(true))->toBeAnInstanceOf('expect\Mathcer'); //pass
 Expect::that(new stdClass)->toBeAnInstanceOf('expect\Mathcer'); //failed
 ```
+
+### toBeAn / toBeA
+
+```php
+Expect::that(1)->toBeAn('integer'); //pass
+Expect::that('foo')->toBeAn('integer'); //failed
+Expect::that('foo')->toBeInteger(); //failed
+```
+
+```php
+Expect::that('foo')->toBeAn('string'); //pass
+Expect::that(1)->toBeAn('string'); //failed
+Expect::that('foo')->toBeString(); //failed
+```
+
+```php
+Expect::that(1.1)->toBeAn('float'); //pass
+Expect::that('foo')->toBeAn('float'); //failed
+Expect::that('foo')->toBeFloat(); //failed
+```
+
+```php
+Expect::that(true)->toBeAn('boolean'); //pass
+Expect::that('foo')->toBeAn('boolean'); //failed
+Expect::that('foo')->toBeBoolean(); //failed
+```
+
+```php
+Expect::that(1)->toBeA('integer'); //pass
+Expect::that('foo')->toBeA('integer'); //failed
+```

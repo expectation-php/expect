@@ -16,7 +16,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class toBeBoolean implements Matcher
+final class ToBeBoolean implements Matcher
 {
 
     use CompareType;
