@@ -7,7 +7,7 @@
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
-*/
+ */
 
 namespace expect\package;
 
@@ -17,14 +17,15 @@ use RecursiveIteratorIterator;
 use Iterator;
 use SplFileInfo;
 use FilesystemIterator;
+use \ReflectionClass;
 
 
-class MatcherClassIterator implements Iterator
+class ReflectionIterator implements Iterator
 {
-
 
     private $iterator;
     private $namespace;
+    private $namespaceDirectory;
 
 
     /**
@@ -34,7 +35,8 @@ class MatcherClassIterator implements Iterator
     public function __construct($namespace, $namespaceDirectory)
     {
         $this->namespace = $namespace;
-        $this->iterator = $this->createIterator($namespaceDirectory);
+        $this->namespaceDirectory = $namespaceDirectory;
+        $this->iterator = $this->createIterator($this->namespaceDirectory);
     }
 
     /**
@@ -43,12 +45,9 @@ class MatcherClassIterator implements Iterator
     public function current()
     {
         $classFile = $this->iterator->current();
+        $className = $this->getClassFullNameFromFile($classFile);
 
-        $fileName = $classFile->getFilename();
-        $fileName = str_replace('.php', '', $fileName);
-
-        $matcherClass = new MatcherClass($this->namespace, $fileName);
-        return $matcherClass;
+        return new ReflectionClass($className);
     }
 
     public function key()
@@ -69,6 +68,25 @@ class MatcherClassIterator implements Iterator
     public function valid()
     {
         return $this->iterator->valid();
+    }
+
+    /**
+     * @param SplFileInfo $file
+     * @return mixed
+     */
+    private function getClassFullNameFromFile(SplFileInfo $file)
+    {
+        $targets = [
+            realpath($this->namespaceDirectory) . "/",
+            ".php"
+        ];
+
+        $replaceValues = ["", ""];
+
+        $className = str_replace($targets, $replaceValues, realpath($file->getPathname()));
+        $className = str_replace("/", "\\", $className);
+
+        return $this->namespace . "\\" . $className;
     }
 
     /**

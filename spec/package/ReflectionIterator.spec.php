@@ -1,22 +1,21 @@
 <?php
 
-use expect\package\MatcherClassIterator;
+use expect\package\ReflectionIterator;
 use Assert\Assertion;
 
 
-describe('MatcherClassIterator', function() {
+describe('ReflectionIterator', function() {
     beforeEach(function() {
         $this->path = realpath(__DIR__ . '/../fixtures/matcher/ToEql.php');
-        $this->iterator = new MatcherClassIterator('expect\\matcher\\fixture', __DIR__ . '/../fixtures/matcher');
+        $this->iterator = new ReflectionIterator('expect\\fixture\\matcher', __DIR__ . '/../fixtures/matcher');
     });
     describe('#current', function() {
         beforeEach(function() {
-            $this->matcherClass = $this->iterator->current();
+            $this->reflection = $this->iterator->current();
         });
         it('return current matcher class', function() {
-            Assertion::isInstanceOf($this->matcherClass, 'expect\package\MatcherClass');
-            Assertion::same($this->matcherClass->getName(), 'expect\matcher\fixture\ToEql');
-            Assertion::same($this->matcherClass->getClassName(), 'ToEql');
+            Assertion::isInstanceOf($this->reflection, '\ReflectionClass');
+            Assertion::same($this->reflection->getName(), 'expect\fixture\matcher\ToEql');
         });
     });
     describe('#key', function() {
