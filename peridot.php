@@ -11,7 +11,7 @@ return function(EventEmitterInterface $emitter) {
      * I will measure the coverage only when the php.
      */
     if (defined('HHVM_VERSION') === false) {
-        CloakPlugin::create('cloak.toml')->registerTo($emitter);
+        CloakPlugin::create('.cloak.toml')->registerTo($emitter);
     }
 
     (new DotReporterPlugin($emitter));
