@@ -13,6 +13,7 @@ namespace expect;
 
 
 use expect\package\MatcherClass;
+use expect\package\ReflectionIterator;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use IteratorAggregate;
@@ -56,12 +57,12 @@ class MatcherPackage implements RegisterablePackage
     private function getProvideMatchers()
     {
         $matchers = [];
-        $classFileIterator = $this->createIterator($this->namespaceDirectory);
+        $reflectionIterator = new ReflectionIterator(
+            $this->namespace,
+            $this->namespaceDirectory
+        );
 
-        foreach ($classFileIterator as $classFile) {
-            $className = $this->getClassFullNameFromFile($classFile);
-            $reflection = new ReflectionClass($className);
-
+        foreach ($reflectionIterator as $reflection) {
             if ($reflection->implementsInterface('\expect\Matcher') === false) {
                 continue;
             }
@@ -73,43 +74,6 @@ class MatcherPackage implements RegisterablePackage
         }
 
         return new ArrayIterator($matchers);
-    }
-
-
-    /**
-     * @param SplFileInfo $file
-     * @return mixed
-     */
-    private function getClassFullNameFromFile(SplFileInfo $file)
-    {
-        $targets = [
-            realpath($this->namespaceDirectory) . "/",
-            ".php"
-        ];
-        $replaceValues = ["", ""];
-
-        $className = str_replace($targets, $replaceValues, realpath($file->getPathname()));
-        $className = str_replace("/", "\\", $className);
-
-        return $this->namespace . "\\" . $className;
-    }
-
-    /**
-     * @param string $directory
-     * @return RecursiveIteratorIterator
-     */
-    private function createIterator($directory)
-    {
-        $directoryIterator = new RecursiveDirectoryIterator($directory,
-            FilesystemIterator::CURRENT_AS_FILEINFO |
-            FilesystemIterator::KEY_AS_PATHNAME |
-            FilesystemIterator::SKIP_DOTS
-        );
-
-        $filterIterator = new RecursiveIteratorIterator($directoryIterator,
-            RecursiveIteratorIterator::LEAVES_ONLY);
-
-        return $filterIterator;
     }
 
 }
