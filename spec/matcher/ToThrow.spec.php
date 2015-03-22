@@ -1,26 +1,28 @@
 <?php
 
-use expect\matcher\ToBeAnInstanceOf;
+use expect\matcher\ToThrow;
 use expect\FailedMessage;
 use Assert\Assertion;
-use \stdClass;
+use \RuntimeException;
 
 
-describe('ToBeAnInstanceOf', function() {
-
+describe('ToThrow', function() {
     describe('#match', function() {
         beforeEach(function() {
-            $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
+            $this->matcher = new ToThrow('\RuntimeException');
         });
         context('when match', function() {
             it('return true', function() {
-                $result = $this->matcher->match($this->matcher);
+                $result = $this->matcher->match(function() {
+                    throw new RuntimeException();
+                });
                 Assertion::true($result);
             });
         });
         context('when unmatch', function() {
             it('return false', function() {
-                $result = $this->matcher->match(new stdClass());
+                $result = $this->matcher->match(function() {
+                });
                 Assertion::false($result);
             });
         });
@@ -28,25 +30,27 @@ describe('ToBeAnInstanceOf', function() {
 
     describe('#reportFailed', function() {
         beforeEach(function() {
-            $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
+            $this->matcher = new ToThrow('\RuntimeException');
             $this->message = new FailedMessage();
         });
         it('report failed message', function() {
-            $this->matcher->match(new stdClass());
+            $this->matcher->match(function() {
+            });
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "\nexpected stdClass to be an instance of expect\Matcher\n");
+            Assertion::same((string) $this->message, "\nexpected \RuntimeException to be thrown, none thrown\n");
         });
     });
 
     describe('#reportNegativeFailed', function() {
         beforeEach(function() {
-            $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
+            $this->matcher = new ToThrow('\RuntimeException');
             $this->message = new FailedMessage();
         });
         it('report failed message', function() {
-            $this->matcher->match($this->matcher);
+            $this->matcher->match(function() {
+            });
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "\nexpected expect\matcher\ToBeAnInstanceOf not to be an instance of expect\Matcher\n");
+            Assertion::same((string) $this->message, "\nexpected \RuntimeException not to be thrown\n");
         });
     });
 

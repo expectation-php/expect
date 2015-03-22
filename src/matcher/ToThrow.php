@@ -9,22 +9,20 @@
  * with this source code in the file LICENSE.
  */
 
-
 namespace expect\matcher;
 
 
 use expect\Matcher;
 use expect\FailedMessage;
-use Countable;
+use \Exception;
 
 
-final class ToHaveLength implements Matcher
+final class ToThrow implements Matcher
 {
 
     private $actual;
     private $expected;
-    private $type;
-    private $length;
+    private $thrownException;
 
 
     public function __construct($expected)
@@ -39,18 +37,13 @@ final class ToHaveLength implements Matcher
     {
         $this->actual = $actual;
 
-        if (is_string($this->actual) === true) {
-            $this->type = 'string';
-            $this->length = mb_strlen($this->actual);
-        } else if (is_array($this->actual) === true) {
-            $this->type = 'array';
-            $this->length = count($this->actual);
-        } else if ($this->actual instanceof Countable) {
-            $this->type = get_class($this->actual);
-            $this->length = count($this->actual);
+        try {
+            $actual();
+        } catch (Exception $exception) {
+            $this->thrownException = $exception;
         }
 
-        return ($this->length === $this->expected);
+        return $this->thrownException instanceof $this->expected;
     }
 
     /**
@@ -58,10 +51,17 @@ final class ToHaveLength implements Matcher
      */
     public function reportFailed(FailedMessage $message)
     {
+        $explanation = 'none thrown';
+
+        if ($this->thrownException) {
+            $class = get_class($this->thrownException);
+            $explanation = "got $class";
+        }
+
         $message->appendText('expected ')
-            ->appendText($this->type)
-            ->appendText(" to have a length of ")
-            ->appendText($this->expected);
+            ->appendText($this->expected)
+            ->appendText(' to be thrown, ')
+            ->appendText($explanation);
     }
 
     /**
@@ -70,9 +70,8 @@ final class ToHaveLength implements Matcher
     public function reportNegativeFailed(FailedMessage $message)
     {
         $message->appendText('expected ')
-            ->appendText($this->type)
-            ->appendText(" not to have a length of ")
-            ->appendText($this->expected);
+            ->appendText($this->expected)
+            ->appendText(' not to be thrown');
     }
 
 }
