@@ -46,10 +46,9 @@ final class ToBeWithin implements Matcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" to be within ")
-            ->appendValue($this->from)
-            ->appendText(" between ")
-            ->appendValue($this->to);
+            ->appendText(" to be within ");
+
+        $this->appendRange($message);
     }
 
     /**
@@ -59,8 +58,14 @@ final class ToBeWithin implements Matcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" not to be within ")
-            ->appendValue($this->from)
+            ->appendText(" not to be within ");
+
+        $this->appendRange($message);
+    }
+
+    private function appendRange(FailedMessage $message)
+    {
+        $message->appendValue($this->from)
             ->appendText(" between ")
             ->appendValue($this->to);
     }
