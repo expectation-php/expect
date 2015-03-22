@@ -83,7 +83,7 @@ final class ToBeGreaterThan implements Matcher
 
         if ($actualLength > $expectedLength) {
             $this->expectedPadding += $actualLength - $expectedLength;
-        } else if ($actualLength < $expectedLength) {
+        } else {
             $this->actualPadding += ($expectedLength - $actualLength) + $operandLength;
         }
     }
