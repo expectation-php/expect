@@ -32,7 +32,12 @@ class DefaultMatcherFactory implements MatcherFactory
         $matcherName = ucfirst($name);
 
         $matcherClass = $this->container->get($matcherName);
-        $matcher = $matcherClass->newInstance($arguments);
+
+        if (count($arguments) <= 1) {
+            $matcher = $matcherClass->newInstance($arguments);
+        } else {
+            $matcher = $matcherClass->newInstance([ $arguments ]);
+        }
 
         return $matcher;
     }
