@@ -19,12 +19,19 @@ use expect\FailedMessage;
 final class ToBeLessThan implements Matcher
 {
 
+    const OPERAND = '<';
+
     private $actual;
     private $expected;
+    private $actualPadding = 2;
+    private $expectedPadding = 1;
+
 
     public function __construct($expected)
     {
         $this->expected = $expected;
+        $this->actualPadding = 2;
+        $this->expectedPadding = 1;
     }
 
     /**
@@ -33,6 +40,7 @@ final class ToBeLessThan implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
+        $this->calculatePadding();
         return $this->actual < $this->expected;
     }
 
@@ -44,7 +52,16 @@ final class ToBeLessThan implements Matcher
         $message->appendText('expected ')
             ->appendValue($this->actual)
             ->appendText(" to be less than ")
-            ->appendValue($this->expected);
+            ->appendValue($this->expected)
+            ->appendText("\n")
+            ->appendText("expected: ")
+            ->appendText(self::OPERAND)
+            ->appendSpace($this->expectedPadding)
+            ->appendValue($this->expected)
+            ->appendText("\n")
+            ->appendText("     got:")
+            ->appendSpace($this->actualPadding)
+            ->appendValue($this->actual);
     }
 
     /**
@@ -56,6 +73,19 @@ final class ToBeLessThan implements Matcher
             ->appendValue($this->actual)
             ->appendText(" not to be less than ")
             ->appendValue($this->expected);
+    }
+
+    private function calculatePadding()
+    {
+        $operandLength = strlen(self::OPERAND);
+        $actualLength = strlen(strval($this->actual));
+        $expectedLength = strlen(strval($this->expected));
+
+        if ($actualLength > $expectedLength) {
+            $this->expectedPadding += $actualLength - $expectedLength;
+        } else if ($actualLength < $expectedLength) {
+            $this->actualPadding += ($expectedLength - $actualLength) + $operandLength;
+        }
     }
 
 }

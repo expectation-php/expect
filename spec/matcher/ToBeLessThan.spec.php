@@ -33,7 +33,7 @@ describe('ToBeLessThan', function() {
         it('report failed message', function() {
             $this->matcher->match(99);
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "\nexpected 99 to be less than 100\n");
+            Assertion::same((string) $this->message, "\nexpected 99 to be less than 100\nexpected: < 100\n     got:    99\n");
         });
     });
 
