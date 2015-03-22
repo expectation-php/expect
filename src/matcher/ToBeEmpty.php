@@ -19,7 +19,7 @@ use expect\Matcher;
 final class ToBeEmpty implements Matcher
 {
 
-    use CompareLength;
+    use LengthMatcherDelegatable;
 
     public function __construct()
     {
