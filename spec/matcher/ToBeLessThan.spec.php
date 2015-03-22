@@ -37,6 +37,7 @@ describe('ToBeLessThan', function() {
                 Assertion::same((string) $this->message, "\nexpected 100 to be less than 99\nexpected: <  99\n     got:   100\n");
             });
         });
+
         context('when actual length == expected length', function() {
             beforeEach(function() {
                 $this->matcher = new ToBeLessThan(98);
@@ -48,6 +49,7 @@ describe('ToBeLessThan', function() {
                 Assertion::same((string) $this->message, "\nexpected 99 to be less than 98\nexpected: < 98\n     got:   99\n");
             });
         });
+
     });
 
     describe('#reportNegativeFailed', function() {

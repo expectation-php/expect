@@ -23,14 +23,14 @@ final class ToBeLessThan implements Matcher
 
     private $actual;
     private $expected;
-    private $actualPadding = 2;
+    private $actualPadding = 3;
     private $expectedPadding = 1;
 
 
     public function __construct($expected)
     {
         $this->expected = $expected;
-        $this->actualPadding = 2;
+        $this->actualPadding = 3;
         $this->expectedPadding = 1;
     }
 
@@ -81,9 +81,9 @@ final class ToBeLessThan implements Matcher
         $actualLength = strlen(strval($this->actual));
         $expectedLength = strlen(strval($this->expected));
 
-        if ($actualLength > $expectedLength) {
+        if ($actualLength >= $expectedLength) {
             $this->expectedPadding += $actualLength - $expectedLength;
-        } else if ($actualLength < $expectedLength) {
+        } else {
             $this->actualPadding += ($expectedLength - $actualLength) + $operandLength;
         }
     }
