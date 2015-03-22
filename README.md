@@ -182,3 +182,23 @@ Expect::that(11)->toBeWithin(10, 20); //pass
 Expect::that(9)->toBeWithin(10, 20); //failed
 Expect::that(21)->toBeWithin(10, 20); //failed
 ```
+
+### toContain
+
+```php
+Expect::that('foo')->toContain('foo'); //pass
+Expect::that('foo')->toContain('foo', 'bar'); //failed
+```
+
+```php
+Expect::that([ 'foo', 'bar' ])->toContain('foo'); //pass
+Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar'); //pass
+Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar', 'bar1'); //failed
+```
+
+### toHaveKey
+
+```php
+Expect::that([ 'foo' => 1 ])->toHaveKey('foo'); //pass
+Expect::that([ 'foo' => 1 ])->toHaveKey('bar'); //failed
+```
