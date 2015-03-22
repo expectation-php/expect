@@ -9,12 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect\matcher\alias;
+namespace expect\matcher;
 
 use expect\FailedMessage;
 
 
-trait LessThanMatcherAlias
+trait LessThanMatcherDelegatable
 {
 
     /**

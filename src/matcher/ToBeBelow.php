@@ -20,7 +20,7 @@ use expect\matcher\alias\LessThanMatcherAlias;
 final class ToBeBelow implements Matcher
 {
 
-    use LessThanMatcherAlias;
+    use LessThanMatcherDelegatable;
 
 
     public function __construct($expected)
