@@ -32,6 +32,12 @@ class FailedMessage implements Message
         return $this;
     }
 
+    public function appendSpace($length)
+    {
+        $this->message = $this->message . str_pad("", $length, " ");
+        return $this;
+    }
+
     public function appendValue($value)
     {
         $appendValue = '';

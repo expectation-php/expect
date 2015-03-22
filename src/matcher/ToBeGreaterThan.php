@@ -21,11 +21,15 @@ final class ToBeGreaterThan implements Matcher
 
     private $actual;
     private $expected;
+    private $actualPadding = 0;
+    private $expectedPadding = 0;
 
 
     public function __construct($expected)
     {
         $this->expected = $expected;
+        $this->actualPadding = 0;
+        $this->expectedPadding = 0;
     }
 
     /**
@@ -34,6 +38,7 @@ final class ToBeGreaterThan implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
+        $this->calculatePadding();
         return $this->actual >= $this->expected;
     }
 
@@ -48,9 +53,11 @@ final class ToBeGreaterThan implements Matcher
             ->appendValue($this->expected)
             ->appendText("\n")
             ->appendText("expected: >= ")
+            ->appendSpace($this->expectedPadding)
             ->appendValue($this->expected)
             ->appendText("\n")
             ->appendText("     got: ")
+            ->appendSpace($this->actualPadding)
             ->appendValue($this->actual);
     }
 
@@ -62,13 +69,19 @@ final class ToBeGreaterThan implements Matcher
         $message->appendText('expected ')
             ->appendValue($this->actual)
             ->appendText(" not to be greater than ")
-            ->appendValue($this->expected)
-            ->appendText("\n")
-            ->appendText("expected: < ")
-            ->appendValue($this->expected)
-            ->appendText("\n")
-            ->appendText("     got: ")
-            ->appendValue($this->actual);
+            ->appendValue($this->expected);
+    }
+
+    private function calculatePadding()
+    {
+        $actualLength = strlen(strval($this->actual));
+        $expectedLength = strlen(strval($this->expected));
+
+        if ($actualLength > $expectedLength) {
+            $this->expectedPadding = $actualLength - $expectedLength;
+        } else if ($actualLength < $expectedLength) {
+            $this->actualPadding = ($expectedLength - $actualLength) + 3; // >=
+        }
     }
 
 }
