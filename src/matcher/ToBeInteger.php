@@ -19,7 +19,7 @@ use expect\FailedMessage;
 final class ToBeInteger implements Matcher
 {
 
-    use CompareType;
+    use TypeMatcherDelegatable;
 
     public function __construct()
     {
