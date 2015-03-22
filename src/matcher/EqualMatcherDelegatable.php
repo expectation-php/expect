@@ -14,7 +14,7 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 
-trait CompareEqual
+trait EqualMatcherDelegatable
 {
 
     /**
