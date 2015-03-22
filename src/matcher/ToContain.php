@@ -15,6 +15,9 @@ namespace expect\matcher;
 
 use expect\Matcher;
 use expect\FailedMessage;
+use expect\matcher\strategy\StringInclusionStrategy;
+use expect\matcher\strategy\ArrayInclusionStrategy;
+
 
 
 final class ToContain implements Matcher
