@@ -42,11 +42,16 @@ final class ToBeGreaterThan implements Matcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        //expected %s to be greater than %s
         $message->appendText('expected ')
             ->appendValue($this->actual)
             ->appendText(" to be greater than ")
-            ->appendValue($this->expected);
+            ->appendValue($this->expected)
+            ->appendText("\n")
+            ->appendText("expected: >= ")
+            ->appendValue($this->expected)
+            ->appendText("\n")
+            ->appendText("     got: ")
+            ->appendValue($this->actual);
     }
 
     /**
@@ -54,11 +59,16 @@ final class ToBeGreaterThan implements Matcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        //expected %s to be greater than %s
         $message->appendText('expected ')
             ->appendValue($this->actual)
             ->appendText(" not to be greater than ")
-            ->appendValue($this->expected);
+            ->appendValue($this->expected)
+            ->appendText("\n")
+            ->appendText("expected: < ")
+            ->appendValue($this->expected)
+            ->appendText("\n")
+            ->appendText("     got: ")
+            ->appendValue($this->actual);
     }
 
 }
