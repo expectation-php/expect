@@ -20,7 +20,7 @@ use expect\matcher\alias\GreaterThanMatcherAlias;
 final class ToBeAbove implements Matcher
 {
 
-    use GreaterThanMatcherAlias;
+    use GreaterThanMatcherDelegatable;
 
 
     public function __construct($expected)
