@@ -26,14 +26,27 @@ describe('ToBeLessThan', function() {
     });
 
     describe('#reportFailed', function() {
-        beforeEach(function() {
-            $this->matcher = new ToBeLessThan(100);
-            $this->message = new FailedMessage();
+        context('when actual length < expected length', function() {
+            beforeEach(function() {
+                $this->matcher = new ToBeLessThan(99);
+                $this->message = new FailedMessage();
+            });
+            it('report failed message', function() {
+                $this->matcher->match(100);
+                $this->matcher->reportFailed($this->message);
+                Assertion::same((string) $this->message, "\nexpected 100 to be less than 99\nexpected: <  99\n     got:   100\n");
+            });
         });
-        it('report failed message', function() {
-            $this->matcher->match(99);
-            $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "\nexpected 99 to be less than 100\nexpected: < 100\n     got:    99\n");
+        context('when actual length == expected length', function() {
+            beforeEach(function() {
+                $this->matcher = new ToBeLessThan(98);
+                $this->message = new FailedMessage();
+            });
+            it('report failed message', function() {
+                $this->matcher->match(99);
+                $this->matcher->reportFailed($this->message);
+                Assertion::same((string) $this->message, "\nexpected 99 to be less than 98\nexpected: < 98\n     got:   99\n");
+            });
         });
     });
 
