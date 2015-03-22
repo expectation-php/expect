@@ -18,8 +18,17 @@ use expect\FailedMessage;
 use expect\matcher\strategy\StringInclusionStrategy;
 use expect\matcher\strategy\ArrayInclusionStrategy;
 
-
-
+/**
+ * <code>
+ * <?php
+ *     Expect::that('foo')->toContain('foo'); //pass
+ *     Expect::that('foo')->toContain('foo', 'bar'); //failed
+ *
+ *     Expect::that([ 'foo', 'bar' ])->toContain('foo'); //pass
+ *     Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar'); //pass
+ *     Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar', 'bar1'); //failed
+ * </code>
+ */
 final class ToContain implements Matcher
 {
 
@@ -67,12 +76,12 @@ final class ToContain implements Matcher
      */
     public function reportFailed(FailedMessage $message)
     {
+        $unmatchResults = $this->matchResult->getUnmatchResults();
+
         $message->appendText('expected ')
-            ->appendValue($this->actual)
-            ->appendText(" to be within ")
-            ->appendValue($this->from)
-            ->appendText(" between ")
-            ->appendValue($this->to);
+            ->appendText($this->type)
+            ->appendText(" to contain ")
+            ->appendValues($unmatchResults);
     }
 
     /**
@@ -80,14 +89,13 @@ final class ToContain implements Matcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
-            ->appendValue($this->actual)
-            ->appendText(" not to be within ")
-            ->appendValue($this->from)
-            ->appendText(" between ")
-            ->appendValue($this->to);
-    }
+        $matchResults = $this->matchResult->getMatchResults();
 
+        $message->appendText('expected ')
+            ->appendText($this->type)
+            ->appendText(" not to contain ")
+            ->appendValues($matchResults);
+    }
 
     private function createStrategy()
     {

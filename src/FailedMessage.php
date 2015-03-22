@@ -40,19 +40,22 @@ class FailedMessage implements Message
 
     public function appendValue($value)
     {
-        $appendValue = '';
+        $appendValue = $this->stringify($value);
+        $this->message = $this->message . $appendValue;
+        return $this;
+    }
 
-        if (is_string($value)) {
-            $appendValue = "'" . $value . "'";
-        } else if (is_null($value)) {
-            $appendValue = "null";
-        } else if (is_bool($value)) {
-            $appendValue = $this->boolToString($value);
-        } else {
-            $appendValue = rtrim(print_r($value, true));
+
+    public function appendValues(array $values)
+    {
+        $appendValues = [];
+
+        foreach ($values as $value) {
+            $appendValues[] = $this->stringify($value);
         }
 
-        $this->message = $this->message . $appendValue;
+        $this->message = $this->message . implode(', ', $appendValues);
+
         return $this;
     }
 
@@ -78,6 +81,23 @@ class FailedMessage implements Message
     public function __toString()
     {
         return "\n" . $this->message . "\n";
+    }
+
+    private function stringify($value)
+    {
+        $appendValue = '';
+
+        if (is_string($value)) {
+            $appendValue = "'" . $value . "'";
+        } else if (is_null($value)) {
+            $appendValue = "null";
+        } else if (is_bool($value)) {
+            $appendValue = $this->boolToString($value);
+        } else {
+            $appendValue = rtrim(print_r($value, true));
+        }
+
+        return $appendValue;
     }
 
 }
