@@ -30,6 +30,17 @@ final class ArrayInclusionStrategy implements InclusionStrategy
     }
 
     /**
+     * <code>
+     * <?php
+     *     $strategy = new ArrayInclusionStrategy([ 1, 2 ]);
+     *     $result = $strategy->match([ 1, 2, 3 ]);
+     *
+     *     var_dump($result->isMatched()) // true
+     *     var_dump($result->getMatchResults()); // [ 1, 2 ]
+     *     var_dump($result->getUnmatchResults()); // [ 3 ]
+     * ?>
+     * </code>
+     *
      * @param array expectValues
      */
     public function match(array $expectValues)

@@ -5,7 +5,7 @@ use Assert\Assertion;
 
 describe('ArrayInclusionStrategy', function() {
     beforeEach(function() {
-        $this->strategy = new ArrayInclusionStrategy([1, 4, 5]);
+        $this->strategy = new ArrayInclusionStrategy([1, 2]);
     });
     describe('#match', function() {
         beforeEach(function() {
@@ -20,13 +20,13 @@ describe('ArrayInclusionStrategy', function() {
                 $this->unmatchResults = $this->result->getUnmatchResults();
             });
             it('has match results', function() {
-                Assertion::count($this->matchResults, 1);
+                Assertion::count($this->matchResults, 2);
                 Assertion::same($this->matchResults[0], 1);
+                Assertion::same($this->matchResults[1], 2);
             });
             it('has unmatch results', function() {
-                Assertion::count($this->unmatchResults, 2);
-                Assertion::same($this->unmatchResults[0], 2);
-                Assertion::same($this->unmatchResults[1], 3);
+                Assertion::count($this->unmatchResults, 1);
+                Assertion::same($this->unmatchResults[0], 3);
             });
         });
     });
