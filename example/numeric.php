@@ -22,9 +22,8 @@ Expect::that(11)->toBeAbove(10); //pass
 Expect::that(10)->toBeAbove(10); //pass
 Expect::that(9)->toBeAbove(10); //failed
 
-Expect::that(11)->toBeBelow(10); //pass
-Expect::that(10)->toBeBelow(10); //pass
-Expect::that(9)->toBeBelow(10); //failed
+Expect::that(9)->toBeBelow(10); //pass
+Expect::that(10)->toBeBelow(10); //failed
 
 Expect::that(11)->toBeWithin(10, 20); //pass
 Expect::that(9)->toBeWithin(10, 20); //failed

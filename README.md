@@ -136,3 +136,49 @@ Expect::that(new ArrayIterator([ 1, 2 ]))->toHaveLength(3); //failed
 Expect::that([])->toBeEmpty(); //pass
 Expect::that([ 1 ])->toBeEmpty(); //failed
 ```
+
+### toPrint
+
+```php
+Expect::that(function () {
+    echo 'foo';
+})->toPrint('foo'); //pass
+
+Expect::that(function () {
+    echo 'bar';
+})->toPrint('foo'); //failed
+```
+
+### toBeGreaterThan / toBeAbove
+
+```php
+Expect::that(11)->toBeGreaterThan(10); //pass
+Expect::that(10)->toBeGreaterThan(10); //pass
+Expect::that(9)->toBeGreaterThan(10); //failed
+```
+
+```php
+Expect::that(11)->toBeAbove(10); //pass
+Expect::that(10)->toBeAbove(10); //pass
+Expect::that(9)->toBeAbove(10); //failed
+```
+
+### toBeLessThan / toBeBelow
+
+```php
+Expect::that(9)->toBeLessThan(10); //pass
+Expect::that(10)->toBeLessThan(10); //failed
+```
+
+```php
+Expect::that(9)->toBeBelow(10); //pass
+Expect::that(10)->toBeBelow(10); //failed
+```
+
+### toBeWithin
+
+```php
+Expect::that(11)->toBeWithin(10, 20); //pass
+Expect::that(9)->toBeWithin(10, 20); //failed
+Expect::that(21)->toBeWithin(10, 20); //failed
+```
