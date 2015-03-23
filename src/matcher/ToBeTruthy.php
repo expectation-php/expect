@@ -20,8 +20,6 @@ use expect\FailedMessage;
 final class ToBeTruthy implements ReportableMatcher
 {
 
-    const NEGATED_MATCH_TYPE = 'falsey';
-
     /**
      * @var mixed
      */
@@ -34,11 +32,8 @@ final class ToBeTruthy implements ReportableMatcher
     {
         $this->actual = $actual;
 
-        if (is_bool($this->actual)) {
-            return $this->actual !== false;
-        }
-
-        return isset($this->actual);
+        $truthyMatcher = new TruthyMatcher();
+        return $truthyMatcher->match($this->actual);
     }
 
     /**
