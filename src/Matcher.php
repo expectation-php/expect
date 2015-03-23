@@ -11,18 +11,17 @@
 
 namespace expect;
 
-
+/**
+ * Interface Matcher
+ * @package expect
+ */
 interface Matcher
 {
 
     /**
      * @param mixed $actual
-     * @return bool
+     * @return bool results of evaluation
      */
     public function match($actual);
-
-    public function reportFailed(FailedMessage $message);
-
-    public function reportNegativeFailed(FailedMessage $message);
 
 }
