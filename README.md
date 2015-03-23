@@ -6,6 +6,7 @@ expect
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/expectation-php/expect/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/expectation-php/expect/?branch=master)
 [![Coverage Status](https://coveralls.io/repos/expectation-php/expect/badge.svg)](https://coveralls.io/r/expectation-php/expect)
 [![Stories in Ready](https://badge.waffle.io/expectation-php/expect.png?label=ready&title=Ready)](https://waffle.io/expectation-php/expect)
+[![Dependency Status](https://www.versioneye.com/user/projects/550f6a8da4c2d7527000010c/badge.svg?style=flat)](https://www.versioneye.com/user/projects/550f6a8da4c2d7527000010c)
 [![Latest Stable Version](https://poser.pugx.org/expect/expect/v/stable.svg)](https://packagist.org/packages/expect/expect)
 [![License](https://poser.pugx.org/expect/expect/license.svg)](https://packagist.org/packages/expect/expect)
 
