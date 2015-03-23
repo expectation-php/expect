@@ -16,21 +16,29 @@ namespace expect\matcher;
 use expect\Matcher;
 use expect\FailedMessage;
 
-
+/**
+ * Class ToStartWith
+ * @package expect\matcher
+ */
 final class ToStartWith implements ReportableMatcher
 {
 
-    use ComparePattern;
-
-
+    /**
+     * @var string
+     */
     private $actual;
+
+    /**
+     * @var string
+     */
     private $pattern;
 
-
+    /**
+     * @param string $expected pattern keyword
+     */
     public function __construct($expected)
     {
         $this->pattern = preg_quote($expected, "/");
-        $this->patternMatcher = new ToMatch("/^{$this->pattern}/");
     }
 
     /**
@@ -39,7 +47,9 @@ final class ToStartWith implements ReportableMatcher
     public function match($actual)
     {
         $this->actual = $actual;
-        return $this->patternMatcher->match($actual);
+        $patternMatcher = new PatternMatcher("/^{$this->pattern}/");
+
+        return $patternMatcher->match($actual);
     }
 
     /**
