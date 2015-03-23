@@ -30,18 +30,10 @@ final class ToBeFalsey implements ReportableMatcher
      */
     public function match($actual)
     {
-        return $this->matchFalsey($actual) === false;
-    }
-
-    public function matchFalsey($actual)
-    {
         $this->actual = $actual;
 
-        if (is_bool($this->actual)) {
-            return $this->actual !== false;
-        }
-
-        return isset($this->actual);
+        $truthyMatcher = new TruthyMatcher();
+        return $truthyMatcher->match($actual) === false;
     }
 
     /**
