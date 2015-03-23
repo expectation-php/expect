@@ -13,17 +13,17 @@ namespace expect\matcher;
 
 
 use expect\Matcher;
-use expect\FailedMessage;
+use expect\matcher\EqualMatcherDelegatable;
 
 
-final class ToBeFloat implements Matcher
+final class ToBe implements Matcher
 {
 
-    use TypeMatcherDelegatable;
+    use EqualMatcherDelegatable;
 
-    public function __construct()
+    public function __construct($expected)
     {
-        $this->typeMatcher = new ToBeAn('float');
+        $this->equalMatcher = new ToEqual($expected);
     }
 
 }

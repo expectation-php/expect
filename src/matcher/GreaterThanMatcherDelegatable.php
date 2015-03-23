@@ -14,13 +14,13 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 
-trait CompareType
+trait GreaterThanMatcherDelegatable
 {
 
     /**
-     * @var \expect\matcher\ToBeAn
+     * @var \expect\matcher\ToBeGreaterThan
      */
-    private $typeMatcher;
+    private $greaterThanMatcher;
 
 
     /**
@@ -28,7 +28,7 @@ trait CompareType
      */
     public function match($actual)
     {
-        return $this->typeMatcher->match($actual);
+        return $this->greaterThanMatcher->match($actual);
     }
 
     /**
@@ -36,7 +36,7 @@ trait CompareType
      */
     public function reportFailed(FailedMessage $message)
     {
-        return $this->typeMatcher->reportFailed($message);
+        return $this->greaterThanMatcher->reportFailed($message);
     }
 
     /**
@@ -44,7 +44,7 @@ trait CompareType
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        return $this->typeMatcher->reportNegativeFailed($message);
+        return $this->greaterThanMatcher->reportNegativeFailed($message);
     }
 
 }

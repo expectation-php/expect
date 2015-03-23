@@ -13,12 +13,13 @@ namespace expect\matcher;
 
 
 use expect\Matcher;
+use expect\matcher\EqualMatcherDelegatable;
 
 
 final class ToBeNull implements Matcher
 {
 
-    use CompareEqual;
+    use EqualMatcherDelegatable;
 
     public function __construct()
     {

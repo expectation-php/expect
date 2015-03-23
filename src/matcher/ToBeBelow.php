@@ -14,16 +14,18 @@ namespace expect\matcher;
 
 use expect\Matcher;
 use expect\FailedMessage;
+use expect\matcher\alias\LessThanMatcherAlias;
 
 
-final class ToBeFloat implements Matcher
+final class ToBeBelow implements Matcher
 {
 
-    use TypeMatcherDelegatable;
+    use LessThanMatcherDelegatable;
 
-    public function __construct()
+
+    public function __construct($expected)
     {
-        $this->typeMatcher = new ToBeAn('float');
+        $this->lessThanMatcher = new ToBeLessThan($expected);
     }
 
 }

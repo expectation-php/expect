@@ -9,21 +9,16 @@
  * with this source code in the file LICENSE.
  */
 
-
-namespace expect\matcher;
-
-
-use expect\Matcher;
+namespace expect\matcher\strategy;
 
 
-final class ToBeEmpty implements Matcher
+interface InclusionStrategy
 {
 
-    use LengthMatcherDelegatable;
-
-    public function __construct()
-    {
-        $this->lengthMatcher = new ToHaveLength(0);
-    }
+    /**
+     * @param array expectValues
+     * @return \expect\matcher\strategy\InclusionResult
+     */
+    public function match(array $expectValues);
 
 }

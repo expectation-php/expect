@@ -19,7 +19,7 @@ use expect\FailedMessage;
 final class ToBeA implements Matcher
 {
 
-    use CompareType;
+    use TypeMatcherDelegatable;
 
 
     public function __construct($expected)
