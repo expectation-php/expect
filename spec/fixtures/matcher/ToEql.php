@@ -15,9 +15,10 @@ namespace expect\fixture\matcher;
 
 use expect\Matcher;
 use expect\FailedMessage;
+use expect\matcher\ReportableMatcher;
 
 
-class ToEql implements Matcher
+class ToEql implements ReportableMatcher
 {
 
     private $actual;

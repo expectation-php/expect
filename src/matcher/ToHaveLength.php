@@ -18,7 +18,7 @@ use expect\FailedMessage;
 use Countable;
 
 
-final class ToHaveLength implements Matcher
+final class ToHaveLength implements ReportableMatcher
 {
 
     private $actual;

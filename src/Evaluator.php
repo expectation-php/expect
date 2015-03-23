@@ -11,10 +11,11 @@
 
 namespace expect;
 
+use expect\matcher\ReportableMatcher;
 
 interface Evaluator
 {
 
-    public static function fromMatcher(Matcher $matcher);
+    public static function fromMatcher(ReportableMatcher $matcher);
 
 }

@@ -16,7 +16,7 @@ namespace expect\matcher;
 use expect\Matcher;
 
 
-final class ToBeEmpty implements Matcher
+final class ToBeEmpty implements ReportableMatcher
 {
 
     use LengthMatcherDelegatable;

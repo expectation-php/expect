@@ -16,7 +16,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class ToBeGreaterThan implements Matcher
+final class ToBeGreaterThan implements ReportableMatcher
 {
 
     const OPERAND = '>=';

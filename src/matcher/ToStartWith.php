@@ -17,7 +17,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class ToStartWith implements Matcher
+final class ToStartWith implements ReportableMatcher
 {
 
     use ComparePattern;

@@ -17,7 +17,7 @@ use expect\FailedMessage;
 use expect\matcher\alias\GreaterThanMatcherAlias;
 
 
-final class ToBeAbove implements Matcher
+final class ToBeAbove implements ReportableMatcher
 {
 
     use GreaterThanMatcherDelegatable;

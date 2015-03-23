@@ -17,7 +17,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class ToBeTruthy implements Matcher
+final class ToBeTruthy implements ReportableMatcher
 {
 
     const NEGATED_MATCH_TYPE = 'falsey';

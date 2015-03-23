@@ -15,7 +15,7 @@ namespace expect\matcher;
 use expect\Matcher;
 use expect\matcher\EqualMatcherDelegatable;
 
-final class ToBeTrue implements Matcher
+final class ToBeTrue implements ReportableMatcher
 {
 
     use EqualMatcherDelegatable;
