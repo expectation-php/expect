@@ -46,6 +46,8 @@ final class ToBeTruthy implements Matcher
      */
     public function reportFailed(FailedMessage $message)
     {
+        $message->appendText('Expected truthy value, got ')
+            ->appendValue($this->actual);
     }
 
     /**
@@ -53,6 +55,8 @@ final class ToBeTruthy implements Matcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
+        $message->appendText('Expected falsey value, got ')
+            ->appendValue($this->actual);
     }
 
 }

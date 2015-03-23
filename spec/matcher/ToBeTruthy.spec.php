@@ -41,4 +41,26 @@ describe('ToBeTruthy', function() {
             });
         });
     });
+    describe('#reportFailed', function() {
+        beforeEach(function() {
+            $this->matcher = new ToBeTruthy();
+            $this->message = new FailedMessage();
+        });
+        it('report failed message', function() {
+            $this->matcher->match(false);
+            $this->matcher->reportFailed($this->message);
+            Assertion::same((string) $this->message, "\nExpected truthy value, got false\n");
+        });
+    });
+    describe('#reportNegativeFailed', function() {
+        beforeEach(function() {
+            $this->matcher = new ToBeTruthy();
+            $this->message = new FailedMessage();
+        });
+        it('report failed message', function() {
+            $this->matcher->match(true);
+            $this->matcher->reportNegativeFailed($this->message);
+            Assertion::same((string) $this->message, "\nExpected falsey value, got true\n");
+        });
+    });
 });
