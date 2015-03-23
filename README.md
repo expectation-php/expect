@@ -202,3 +202,21 @@ Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar', 'bar1'); //failed
 Expect::that([ 'foo' => 1 ])->toHaveKey('foo'); //pass
 Expect::that([ 'foo' => 1 ])->toHaveKey('bar'); //failed
 ```
+
+### ToBeTruthy
+
+```php
+Expect::that(true)->ToBeTruthy(); //pass
+Expect::that('')->ToBeTruthy(); //pass
+Expect::that(0)->ToBeTruthy(); //pass
+Expect::that(false)->ToBeTruthy(); //failed
+```
+
+### ToBeFalsey
+
+```php
+Expect::that(false)->ToBeFalsey(); //pass
+Expect::that(null)->ToBeFalsey(); //pass
+Expect::that('')->ToBeFalsey(); //failed
+Expect::that(0)->ToBeFalsey(); //failed
+```
