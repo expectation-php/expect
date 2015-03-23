@@ -15,6 +15,10 @@ namespace expect\matcher;
 use expect\Matcher;
 
 
+/**
+ * Class PatternMatcher
+ * @package expect\matcher
+ */
 final class PatternMatcher implements Matcher
 {
 
