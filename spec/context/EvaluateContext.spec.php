@@ -17,7 +17,7 @@ describe('EvaluateContext', function() {
                 $this->actual = true;
                 $this->expected = false;
 
-                $matcher = $this->prophet->prophesize('expect\Matcher');
+                $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
                 $matcher->match($this->actual)->willReturn(false);
                 $matcher->reportFailed(Argument::type('expect\FailedMessage'))
                     ->shouldBeCalled();
@@ -47,7 +47,7 @@ describe('EvaluateContext', function() {
                 $this->actual = true;
                 $this->expected = true;
 
-                $matcher = $this->prophet->prophesize('expect\Matcher');
+                $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
                 $matcher->match($this->actual)->willReturn(true);
                 $matcher->reportNegativeFailed(Argument::type('expect\FailedMessage'))
                     ->shouldBeCalled();

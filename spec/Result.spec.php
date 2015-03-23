@@ -13,7 +13,7 @@ describe('Result', function() {
         beforeEach(function() {
             $this->prophet = new Prophet();
 
-            $matcher = $this->prophet->prophesize('expect\Matcher');
+            $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
             $this->matcher = $matcher->reveal();
         });
         context('when passed', function() {
@@ -34,7 +34,7 @@ describe('Result', function() {
         beforeEach(function() {
             $this->prophet = new Prophet();
 
-            $matcher = $this->prophet->prophesize('expect\Matcher');
+            $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
             $this->matcher = $matcher->reveal();
         });
         context('when passed', function() {
@@ -56,7 +56,7 @@ describe('Result', function() {
             beforeEach(function() {
                 $this->prophet = new Prophet();
 
-                $matcher = $this->prophet->prophesize('expect\Matcher');
+                $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
                 $this->result = new Result(true, false, $matcher->reveal(), false);
 
                 $resultReporter = $this->prophet->prophesize('expect\ResultReporter');
@@ -74,7 +74,7 @@ describe('Result', function() {
             beforeEach(function() {
                 $this->prophet = new Prophet();
 
-                $matcher = $this->prophet->prophesize('expect\Matcher');
+                $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
                 $this->result = new Result(true, true, $matcher->reveal(), false);
 
                 $resultReporter = $this->prophet->prophesize('expect\ResultReporter');
