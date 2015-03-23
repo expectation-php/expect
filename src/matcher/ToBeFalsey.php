@@ -17,7 +17,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class ToBeFalsey implements Matcher
+final class ToBeFalsey implements ReportableMatcher
 {
 
     /**

@@ -12,8 +12,27 @@
 namespace expect\matcher;
 
 use expect\Matcher;
+use expect\FailedMessage;
 
-
+/**
+ * Interface ReportableMatcher
+ * @package expect\matcher
+ */
 interface ReportableMatcher extends Matcher
 {
+
+    /**
+     * Report the reason for the failure of positive evaluation
+     *
+     * @param expect\FailedMessage failed message
+     */
+    public function reportFailed(FailedMessage $message);
+
+    /**
+     * Report the reason for the failure of negative evaluation
+     *
+     * @param expect\FailedMessage failed message
+     */
+    public function reportNegativeFailed(FailedMessage $message);
+
 }

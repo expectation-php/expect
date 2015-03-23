@@ -16,13 +16,26 @@ namespace expect\matcher;
 use expect\Matcher;
 use expect\FailedMessage;
 
-
-final class ToMatch implements Matcher
+/**
+ * Class ToMatch
+ * @package expect\matcher
+ */
+final class ToMatch implements ReportableMatcher
 {
 
+    /**
+     * @var string
+     */
     private $actual;
+
+    /**
+     * @var string
+     */
     private $expected;
 
+    /**
+     * @param string $expected String of a regular expression
+     */
     public function __construct($expected)
     {
         $this->expected = $expected;
@@ -34,7 +47,9 @@ final class ToMatch implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
-        return (preg_match($this->expected, $this->actual) === 1);
+        $patternMatcher = new PatternMatcher($this->expected);
+
+        return $patternMatcher->match($this->actual);
     }
 
     /**

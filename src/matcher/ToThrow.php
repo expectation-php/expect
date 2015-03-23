@@ -17,7 +17,7 @@ use expect\FailedMessage;
 use \Exception;
 
 
-final class ToThrow implements Matcher
+final class ToThrow implements ReportableMatcher
 {
 
     private $actual;

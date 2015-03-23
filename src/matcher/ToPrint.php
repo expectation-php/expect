@@ -17,7 +17,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class ToPrint implements Matcher
+final class ToPrint implements ReportableMatcher
 {
 
     private $actual;

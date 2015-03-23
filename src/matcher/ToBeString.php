@@ -16,7 +16,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class ToBeString implements Matcher
+final class ToBeString implements ReportableMatcher
 {
 
     use TypeMatcherDelegatable;

@@ -29,7 +29,7 @@ use expect\matcher\strategy\ArrayInclusionStrategy;
  *     Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar', 'bar1'); //failed
  * </code>
  */
-final class ToContain implements Matcher
+final class ToContain implements ReportableMatcher
 {
 
     /**

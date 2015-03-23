@@ -16,7 +16,7 @@ use expect\Matcher;
 use expect\matcher\EqualMatcherDelegatable;
 
 
-final class ToBeFalse implements Matcher
+final class ToBeFalse implements ReportableMatcher
 {
 
     use EqualMatcherDelegatable;

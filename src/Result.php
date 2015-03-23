@@ -11,6 +11,8 @@
 
 namespace expect;
 
+use expect\matcher\ReportableMatcher;
+
 
 class Result
 {
@@ -26,7 +28,7 @@ class Result
     private $negated;
 
     /**
-     * @var \expect\Matcher
+     * @var \expect\matcher\ReportableMatcher
      */
     private $matcher;
 
@@ -36,7 +38,7 @@ class Result
     private $result;
 
 
-    public function __construct($actual, $negated, Matcher $matcher, $result)
+    public function __construct($actual, $negated, ReportableMatcher $matcher, $result)
     {
         $this->actual = $actual;
         $this->negated = $negated;

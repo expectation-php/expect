@@ -17,7 +17,7 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 
-final class ToBeWithin implements Matcher
+final class ToBeWithin implements ReportableMatcher
 {
 
     private $actual;

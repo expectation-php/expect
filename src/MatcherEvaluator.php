@@ -11,6 +11,8 @@
 
 namespace expect;
 
+use expect\matcher\ReportableMatcher;
+
 
 class MatcherEvaluator implements Evaluator
 {
@@ -44,7 +46,7 @@ class MatcherEvaluator implements Evaluator
     /**
      * {@inheritdoc}
      */
-    public static function fromMatcher(Matcher $matcher)
+    public static function fromMatcher(ReportableMatcher $matcher)
     {
         return new self($matcher);
     }

@@ -63,7 +63,7 @@ class MatcherPackage implements RegisterablePackage
         );
 
         foreach ($reflectionIterator as $reflection) {
-            if ($reflection->implementsInterface('\expect\Matcher') === false) {
+            if ($reflection->implementsInterface('\expect\matcher\ReportableMatcher') === false) {
                 continue;
             }
 
