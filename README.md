@@ -24,6 +24,11 @@ Expect::that(true)->toEqual(true); //pass
 Expect::that(false)->toEqual(true); //failed
 ```
 
+### Learn detailed document
+
+* API Document - [http://expectation-php.github.io/expect/](http://expectation-php.github.io/expect/)
+
+
 
 Other recommended library
 ------------------------
@@ -32,7 +37,6 @@ If you did not like this library, please try the following library.
 
 * [Leo](http://peridot-php.github.io/leo/) - Assertions and matcher library, in peridot and affinity is good.
 * [Assert](https://github.com/beberlei/assert) - Simple assertion library, Assertion api is easy to use with simple.
-
 
 
 All of matcher
