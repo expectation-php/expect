@@ -8,22 +8,15 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
-
 
 final class ToBeWithin implements ReportableMatcher
 {
-
     private $actual;
     private $from;
     private $to;
-
 
     public function __construct($expected)
     {
@@ -36,6 +29,7 @@ final class ToBeWithin implements ReportableMatcher
     public function match($actual)
     {
         $this->actual = $actual;
+
         return ($this->actual >= $this->from && $this->actual <= $this->to);
     }
 
@@ -69,5 +63,4 @@ final class ToBeWithin implements ReportableMatcher
             ->appendText(" between ")
             ->appendValue($this->to);
     }
-
 }

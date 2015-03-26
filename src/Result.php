@@ -8,15 +8,12 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect;
 
 use expect\matcher\ReportableMatcher;
 
-
 class Result
 {
-
     /**
      * @var mixed
      */
@@ -36,7 +33,6 @@ class Result
      * @var bool
      */
     private $result;
-
 
     public function __construct($actual, $negated, ReportableMatcher $matcher, $result)
     {
@@ -76,5 +72,4 @@ class Result
             $reporter->reportFailed($message);
         }
     }
-
 }

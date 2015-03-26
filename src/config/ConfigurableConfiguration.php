@@ -8,19 +8,14 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\config;
-
 
 use expect\Configuration;
 
-
 trait ConfigurableConfiguration
 {
-
     private $resultReporter = null;
     private $matcherPackages = [];
-
 
     public function getMatcherPackages()
     {
@@ -47,5 +42,4 @@ trait ConfigurableConfiguration
 
         return new RuntimeConfiguration($matcherPackages, $reporter);
     }
-
 }

@@ -8,20 +8,16 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\matcher;
 
 use expect\FailedMessage;
 
-
 trait LengthMatcherDelegatable
 {
-
     /**
      * @var \expect\matcher\ToHaveLength
      */
     private $lengthMatcher;
-
 
     /**
      * {@inheritdoc}
@@ -46,5 +42,4 @@ trait LengthMatcherDelegatable
     {
         return $this->lengthMatcher->reportNegativeFailed($message);
     }
-
 }

@@ -8,21 +8,15 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
-
 
 final class ToBeAn implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
     private $actualType;
-
 
     public function __construct($expected)
     {
@@ -69,5 +63,4 @@ final class ToBeAn implements ReportableMatcher
 
         return $detectType;
     }
-
 }

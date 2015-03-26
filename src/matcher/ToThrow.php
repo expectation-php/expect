@@ -8,22 +8,16 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
-use \Exception;
-
+use Exception;
 
 final class ToThrow implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
     private $thrownException;
-
 
     public function __construct($expected)
     {
@@ -73,5 +67,4 @@ final class ToThrow implements ReportableMatcher
             ->appendText($this->expected)
             ->appendText(' not to be thrown');
     }
-
 }

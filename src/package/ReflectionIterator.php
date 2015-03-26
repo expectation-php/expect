@@ -8,25 +8,20 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\package;
-
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use Iterator;
 use SplFileInfo;
 use FilesystemIterator;
-use \ReflectionClass;
-
+use ReflectionClass;
 
 class ReflectionIterator implements Iterator
 {
-
     private $iterator;
     private $namespace;
     private $namespaceDirectory;
-
 
     /**
      * @param string $namespace
@@ -72,13 +67,14 @@ class ReflectionIterator implements Iterator
 
     /**
      * @param SplFileInfo $file
+     *
      * @return mixed
      */
     private function getClassFullNameFromFile(SplFileInfo $file)
     {
         $targets = [
-            realpath($this->namespaceDirectory) . "/",
-            ".php"
+            realpath($this->namespaceDirectory)."/",
+            ".php",
         ];
 
         $replaceValues = ["", ""];
@@ -86,11 +82,12 @@ class ReflectionIterator implements Iterator
         $className = str_replace($targets, $replaceValues, realpath($file->getPathname()));
         $className = str_replace("/", "\\", $className);
 
-        return $this->namespace . "\\" . $className;
+        return $this->namespace."\\".$className;
     }
 
     /**
      * @param string $directory
+     *
      * @return RecursiveIteratorIterator
      */
     private function createIterator($directory)
@@ -106,5 +103,4 @@ class ReflectionIterator implements Iterator
 
         return $filterIterator;
     }
-
 }

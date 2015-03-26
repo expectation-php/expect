@@ -8,18 +8,14 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect;
 
 use expect\matcher\ReportableMatcher;
 
-
 class MatcherEvaluator implements Evaluator
 {
-
     private $matcher;
     private $negated;
-
 
     public function __construct(Matcher $matcher)
     {
@@ -30,6 +26,7 @@ class MatcherEvaluator implements Evaluator
     public function negated()
     {
         $this->negated = true;
+
         return $this;
     }
 
@@ -50,5 +47,4 @@ class MatcherEvaluator implements Evaluator
     {
         return new self($matcher);
     }
-
 }

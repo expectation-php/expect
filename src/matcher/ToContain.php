@@ -8,10 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
-
 namespace expect\matcher;
-
 
 use expect\Matcher;
 use expect\FailedMessage;
@@ -22,7 +19,7 @@ use expect\matcher\strategy\ArrayInclusionStrategy;
  * <code>
  * <?php
  *     Expect::that('foo')->toContain('foo'); //pass
- *     Expect::that('foo')->toContain('foo', 'bar'); //failed
+ *     Expect::that('foo')->toContain('foo', 'bar'); //failed.
  *
  *     Expect::that([ 'foo', 'bar' ])->toContain('foo'); //pass
  *     Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar'); //pass
@@ -31,7 +28,6 @@ use expect\matcher\strategy\ArrayInclusionStrategy;
  */
 final class ToContain implements ReportableMatcher
 {
-
     /**
      * @var string
      */
@@ -51,7 +47,6 @@ final class ToContain implements ReportableMatcher
      * @var array
      */
     private $expectValues;
-
 
     public function __construct($expected)
     {
@@ -104,12 +99,11 @@ final class ToContain implements ReportableMatcher
         if (is_string($this->actual)) {
             $this->type = 'string';
             $strategy = new StringInclusionStrategy($this->actual);
-        } else if (is_array($this->actual)) {
+        } elseif (is_array($this->actual)) {
             $this->type = 'array';
             $strategy = new ArrayInclusionStrategy($this->actual);
         }
 
         return $strategy;
     }
-
 }

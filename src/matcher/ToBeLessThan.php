@@ -8,24 +8,18 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
-
 
 final class ToBeLessThan implements ReportableMatcher
 {
-
     const OPERAND = '<';
 
     private $actual;
     private $expected;
     private $actualPadding = 3;
     private $expectedPadding = 1;
-
 
     public function __construct($expected)
     {
@@ -41,6 +35,7 @@ final class ToBeLessThan implements ReportableMatcher
     {
         $this->actual = $actual;
         $this->calculatePadding();
+
         return $this->actual < $this->expected;
     }
 
@@ -87,5 +82,4 @@ final class ToBeLessThan implements ReportableMatcher
             $this->actualPadding += ($expectedLength - $actualLength) + $operandLength;
         }
     }
-
 }
