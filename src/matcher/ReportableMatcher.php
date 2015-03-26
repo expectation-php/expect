@@ -14,7 +14,11 @@ use expect\Matcher;
 use expect\FailedMessage;
 
 /**
- * Interface ReportableMatcher.
+ * Verify whether the value is consistent with what is expected, and also reports the results.
+ *
+ * @package expect
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 interface ReportableMatcher extends Matcher
 {
