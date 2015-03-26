@@ -1,4 +1,4 @@
 title: Expect
 source:
   - src
-destination: docs
+destination: ../gh-pages
