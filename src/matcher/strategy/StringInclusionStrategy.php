@@ -8,18 +8,14 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\matcher\strategy;
-
 
 final class StringInclusionStrategy implements InclusionStrategy
 {
-
     /**
      * @var string
      */
     private $actualValue;
-
 
     /**
      * @param string actualValues
@@ -33,7 +29,7 @@ final class StringInclusionStrategy implements InclusionStrategy
      * <code>
      * <?php
      *     $strategy = new StringInclusionStrategy('foo');
-     *     $result = $strategy->match([ 'foo', 'bar' ]);
+     *     $result = $strategy->match([ 'foo', 'bar' ]);.
      *
      *     var_dump($result->isMatched()) // true
      *     var_dump($result->getMatchResults()); // ['foo']
@@ -59,5 +55,4 @@ final class StringInclusionStrategy implements InclusionStrategy
 
         return new InclusionResult($expectValues, $matchResults, $unmatchResults);
     }
-
 }

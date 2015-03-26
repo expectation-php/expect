@@ -8,18 +8,12 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
-
 
 final class ToPrint implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
 
@@ -56,5 +50,4 @@ final class ToPrint implements ReportableMatcher
         $message->appendText('expected output other than ')
             ->appendValue($this->expected);
     }
-
 }

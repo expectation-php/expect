@@ -8,7 +8,6 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\configurator;
 
 use expect\Configurator;
@@ -17,13 +16,9 @@ use expect\registry\DefaultMatcherRegistry;
 use expect\factory\DefaultMatcherFactory;
 use expect\context\DefaultContextFactory;
 
-
-
 class FileConfigurator implements Configurator
 {
-
     private $config;
-
 
     public function __construct($configFile)
     {
@@ -47,5 +42,4 @@ class FileConfigurator implements Configurator
 
         return new DefaultContextFactory($matcherFactory, $resultReporter);
     }
-
 }

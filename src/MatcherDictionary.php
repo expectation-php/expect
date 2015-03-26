@@ -8,16 +8,12 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect;
-
 
 use Easy\Collections\Dictionary;
 
-
 final class MatcherDictionary implements MatcherContainer
 {
-
     use MatcherLookupTable;
 
     public function __construct(array $matchers)
@@ -29,5 +25,4 @@ final class MatcherDictionary implements MatcherContainer
     {
         return count($this->matchers);
     }
-
 }

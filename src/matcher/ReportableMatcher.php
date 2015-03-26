@@ -8,31 +8,27 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\matcher;
 
 use expect\Matcher;
 use expect\FailedMessage;
 
 /**
- * Interface ReportableMatcher
- * @package expect\matcher
+ * Interface ReportableMatcher.
  */
 interface ReportableMatcher extends Matcher
 {
-
     /**
-     * Report the reason for the failure of positive evaluation
+     * Report the reason for the failure of positive evaluation.
      *
      * @param expect\FailedMessage failed message
      */
     public function reportFailed(FailedMessage $message);
 
     /**
-     * Report the reason for the failure of negative evaluation
+     * Report the reason for the failure of negative evaluation.
      *
      * @param expect\FailedMessage failed message
      */
     public function reportNegativeFailed(FailedMessage $message);
-
 }

@@ -8,16 +8,12 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\package;
-
 
 use ReflectionClass;
 
-
 class MatcherClass
 {
-
     private $namespace;
     private $className;
 
@@ -29,7 +25,7 @@ class MatcherClass
 
     public function getName()
     {
-        return $this->namespace . '\\' . $this->className;
+        return $this->namespace.'\\'.$this->className;
     }
 
     public function getClassName()
@@ -49,5 +45,4 @@ class MatcherClass
     {
         return $this->getName();
     }
-
 }

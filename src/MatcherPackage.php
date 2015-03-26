@@ -8,28 +8,16 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect;
-
 
 use expect\package\MatcherClass;
 use expect\package\ReflectionIterator;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
-use IteratorAggregate;
-use SplFileInfo;
-use FilesystemIterator;
-use ReflectionClass;
 use ArrayIterator;
-
 
 class MatcherPackage implements RegisterablePackage
 {
-
-
     private $namespace;
     private $namespaceDirectory;
-
 
     /**
      * @param string $namespaceDirectory
@@ -39,7 +27,6 @@ class MatcherPackage implements RegisterablePackage
         $this->namespace = $namespace;
         $this->namespaceDirectory = $namespaceDirectory;
     }
-
 
     /**
      * {@inheritdoc}
@@ -52,7 +39,6 @@ class MatcherPackage implements RegisterablePackage
             $registry->register($provideMatcher);
         }
     }
-
 
     private function getProvideMatchers()
     {
@@ -75,5 +61,4 @@ class MatcherPackage implements RegisterablePackage
 
         return new ArrayIterator($matchers);
     }
-
 }

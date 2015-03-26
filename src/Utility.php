@@ -8,11 +8,10 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect;
 
 /**
- * Utility function for php5.6 or higher
+ * Utility function for php5.6 or higher.
  *
  * <code>
  * <?php
@@ -24,6 +23,7 @@ namespace expect;
  * </code>
  *
  * @param mixed $actual
+ *
  * @return \expect\Context
  */
 function expect($actual)

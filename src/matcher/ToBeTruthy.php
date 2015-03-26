@@ -1,25 +1,19 @@
 <?php
 
 /**
-  * This file is part of expect package.
-  *
-  * (c) Noritaka Horio <holy.shared.design@gmail.com>
-  *
-  * This source file is subject to the MIT license that is bundled
-  * with this source code in the file LICENSE.
-  */
-
-
+ * This file is part of expect package.
+ *
+ * (c) Noritaka Horio <holy.shared.design@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
-
 
 final class ToBeTruthy implements ReportableMatcher
 {
-
     /**
      * @var mixed
      */
@@ -33,6 +27,7 @@ final class ToBeTruthy implements ReportableMatcher
         $this->actual = $actual;
 
         $truthyMatcher = new TruthyMatcher();
+
         return $truthyMatcher->match($this->actual);
     }
 
@@ -53,5 +48,4 @@ final class ToBeTruthy implements ReportableMatcher
         $message->appendText('Expected falsey value, got ')
             ->appendValue($this->actual);
     }
-
 }

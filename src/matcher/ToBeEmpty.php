@@ -8,22 +8,15 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
-
 namespace expect\matcher;
-
-
-use expect\Matcher;
 
 
 final class ToBeEmpty implements ReportableMatcher
 {
-
     use LengthMatcherDelegatable;
 
     public function __construct()
     {
         $this->lengthMatcher = new ToHaveLength(0);
     }
-
 }
