@@ -9,8 +9,8 @@ php apigen.phar generate
 cd ../gh-pages
 
 # Set identity
-git config --global user.email "travis@travis-ci.org"
-git config --global user.name "Travis"
+git config --global user.email "holy.shared.design@gmail.com"
+git config --global user.name "Noritaka Horio"
 
 # Add branch
 git init
