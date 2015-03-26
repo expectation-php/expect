@@ -1,4 +1,4 @@
-expect
+Expect
 ========================
 
 [![Build Status](https://travis-ci.org/expectation-php/expect.svg?branch=master)](https://travis-ci.org/expectation-php/expect)
@@ -23,6 +23,17 @@ Expect::configure($configurator);
 Expect::that(true)->toEqual(true); //pass
 Expect::that(false)->toEqual(true); //failed
 ```
+
+
+Other recommended library
+------------------------
+
+If you did not like this library, please try the following library.
+
+* [Leo](http://peridot-php.github.io/leo/) - Assertions and matcher library, in peridot and affinity is good.
+* [Assert](https://github.com/beberlei/assert) - Simple assertion library, Assertion api is easy to use with simple.
+
+
 
 All of matcher
 ------------------------
