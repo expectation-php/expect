@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Get ApiGen.phar
 wget http://www.apigen.org/apigen.phar
 chmod +x apigen.phar
