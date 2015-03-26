@@ -1,5 +1,6 @@
 # Get ApiGen.phar
 wget http://www.apigen.org/apigen.phar
+chmod +x apigen.phar
 
 # Generate Api
 php apigen.phar generate
