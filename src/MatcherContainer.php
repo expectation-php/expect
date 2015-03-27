@@ -13,8 +13,30 @@ namespace expect;
 
 use Countable;
 
+/**
+ * Container of matcher.
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 interface MatcherContainer extends Countable
 {
+    /**
+     * Find the matcher class by name.
+     * Returns true if it is found.
+     *
+     * @param string matcher name
+     *
+     * @return bool
+     */
     public function has($name);
+
+    /**
+     * Get the matcher class.
+     *
+     * @param string matcher name
+     *
+     * @return \expect\package\MatcherClass
+     */
     public function get($name);
 }
