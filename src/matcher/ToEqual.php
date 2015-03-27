@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect\matcher;
 
 use expect\FailedMessage;
@@ -40,7 +41,7 @@ final class ToEqual implements ReportableMatcher
         $message->appendText('expected ')
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText("     got ")
+            ->appendText('     got ')
             ->appendValue($this->actual);
     }
 
@@ -52,7 +53,7 @@ final class ToEqual implements ReportableMatcher
         $message->appendText('expected not ')
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText("         got ")
+            ->appendText('         got ')
             ->appendValue($this->actual);
     }
 }

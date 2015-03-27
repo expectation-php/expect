@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect\matcher;
 
 use expect\FailedMessage;
@@ -32,7 +33,7 @@ final class ToEndWith implements ReportableMatcher
      */
     public function __construct($expected)
     {
-        $this->pattern = preg_quote($expected, "/");
+        $this->pattern = preg_quote($expected, '/');
     }
 
     /**
@@ -53,7 +54,7 @@ final class ToEndWith implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" to end with ")
+            ->appendText(' to end with ')
             ->appendValue($this->pattern);
     }
 
@@ -64,7 +65,7 @@ final class ToEndWith implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" not to end with ")
+            ->appendText(' not to end with ')
             ->appendValue($this->pattern);
     }
 }

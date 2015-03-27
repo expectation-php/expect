@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect\matcher;
 
 use expect\FailedMessage;
@@ -46,15 +47,15 @@ final class ToBeGreaterThan implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" to be greater than ")
+            ->appendText(' to be greater than ')
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText("expected: ")
+            ->appendText('expected: ')
             ->appendText(self::OPERAND)
             ->appendSpace($this->expectedPadding)
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText("     got:")
+            ->appendText('     got:')
             ->appendSpace($this->actualPadding)
             ->appendValue($this->actual);
     }
@@ -66,7 +67,7 @@ final class ToBeGreaterThan implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" not to be greater than ")
+            ->appendText(' not to be greater than ')
             ->appendValue($this->expected);
     }
 

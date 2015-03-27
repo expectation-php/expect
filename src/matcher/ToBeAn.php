@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect\matcher;
 
 use expect\FailedMessage;
@@ -41,7 +42,7 @@ final class ToBeAn implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" to be an ")
+            ->appendText(' to be an ')
             ->appendText($this->expected);
     }
 
@@ -52,7 +53,7 @@ final class ToBeAn implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" not to be an ")
+            ->appendText(' not to be an ')
             ->appendText($this->expected);
     }
 

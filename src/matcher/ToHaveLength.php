@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect\matcher;
 
 use Countable;
@@ -53,7 +54,7 @@ final class ToHaveLength implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendText($this->type)
-            ->appendText(" to have a length of ")
+            ->appendText(' to have a length of ')
             ->appendText($this->expected);
     }
 
@@ -64,7 +65,7 @@ final class ToHaveLength implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendText($this->type)
-            ->appendText(" not to have a length of ")
+            ->appendText(' not to have a length of ')
             ->appendText($this->expected);
     }
 }

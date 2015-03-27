@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect\matcher;
 
 use expect\FailedMessage;
@@ -41,7 +42,7 @@ final class ToBeAnInstanceOf implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendText($this->className)
-            ->appendText(" to be an instance of ")
+            ->appendText(' to be an instance of ')
             ->appendText($this->expected);
     }
 
@@ -52,7 +53,7 @@ final class ToBeAnInstanceOf implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendText($this->className)
-            ->appendText(" not to be an instance of ")
+            ->appendText(' not to be an instance of ')
             ->appendText($this->expected);
     }
 }

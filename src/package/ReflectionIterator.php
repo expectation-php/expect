@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect\package;
 
 use FilesystemIterator;
@@ -73,14 +74,14 @@ class ReflectionIterator implements Iterator
     private function getClassFullNameFromFile(SplFileInfo $file)
     {
         $targets = [
-            realpath($this->namespaceDirectory)."/",
-            ".php",
+            realpath($this->namespaceDirectory).'/',
+            '.php',
         ];
 
-        $replaceValues = ["", ""];
+        $replaceValues = ['', ''];
 
         $className = str_replace($targets, $replaceValues, realpath($file->getPathname()));
-        $className = str_replace("/", "\\", $className);
+        $className = str_replace('/', "\\", $className);
 
         return $this->namespace."\\".$className;
     }

@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect;
 
 class FailedMessage implements Message
@@ -31,7 +32,7 @@ class FailedMessage implements Message
 
     public function appendSpace($length)
     {
-        $this->message = $this->message.str_pad("", $length, " ");
+        $this->message = $this->message.str_pad('', $length, ' ');
 
         return $this;
     }
@@ -88,7 +89,7 @@ class FailedMessage implements Message
         if (is_string($value)) {
             $appendValue = "'".$value."'";
         } elseif (is_null($value)) {
-            $appendValue = "null";
+            $appendValue = 'null';
         } elseif (is_bool($value)) {
             $appendValue = $this->boolToString($value);
         } else {

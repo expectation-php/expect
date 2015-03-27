@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect\matcher;
 
 use expect\FailedMessage;
@@ -38,7 +39,7 @@ final class ToPrint implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendValue($this->expected)
-            ->appendText(", got ")
+            ->appendText(', got ')
             ->appendValue($this->actual);
     }
 

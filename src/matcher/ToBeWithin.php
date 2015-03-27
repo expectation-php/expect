@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect\matcher;
 
 use expect\FailedMessage;
@@ -40,7 +41,7 @@ final class ToBeWithin implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" to be within ");
+            ->appendText(' to be within ');
 
         $this->appendRange($message);
     }
@@ -52,7 +53,7 @@ final class ToBeWithin implements ReportableMatcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" not to be within ");
+            ->appendText(' not to be within ');
 
         $this->appendRange($message);
     }
@@ -60,7 +61,7 @@ final class ToBeWithin implements ReportableMatcher
     private function appendRange(FailedMessage $message)
     {
         $message->appendValue($this->from)
-            ->appendText(" between ")
+            ->appendText(' between ')
             ->appendValue($this->to);
     }
 }

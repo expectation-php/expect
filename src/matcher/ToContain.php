@@ -8,6 +8,7 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
+
 namespace expect\matcher;
 
 use expect\FailedMessage;
@@ -50,7 +51,7 @@ final class ToContain implements ReportableMatcher
 
     public function __construct($expected)
     {
-        $this->expectValues = is_array($expected) ? $expected : [ $expected ];
+        $this->expectValues = is_array($expected) ? $expected : [$expected];
     }
 
     /**
@@ -75,7 +76,7 @@ final class ToContain implements ReportableMatcher
 
         $message->appendText('expected ')
             ->appendText($this->type)
-            ->appendText(" to contain ")
+            ->appendText(' to contain ')
             ->appendValues($unmatchResults);
     }
 
@@ -88,7 +89,7 @@ final class ToContain implements ReportableMatcher
 
         $message->appendText('expected ')
             ->appendText($this->type)
-            ->appendText(" not to contain ")
+            ->appendText(' not to contain ')
             ->appendValues($matchResults);
     }
 
