@@ -62,10 +62,15 @@ final class ToEqual implements ReportableMatcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText("Expected ")
+            ->appendValue($this->actual)
+            ->appendText(' to be ')
+            ->appendValue($this->expected)
+            ->appendText("\n\n")
+            ->appendText('    expected: ')
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText('     got ')
+            ->appendText('         got: ')
             ->appendValue($this->actual);
     }
 
@@ -74,10 +79,15 @@ final class ToEqual implements ReportableMatcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected not ')
+        $message->appendText("Expected ")
+            ->appendValue($this->actual)
+            ->appendText(' not to be ')
+            ->appendValue($this->expected)
+            ->appendText("\n\n")
+            ->appendText('    expected not: ')
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText('         got ')
+            ->appendText('             got: ')
             ->appendValue($this->actual);
     }
 }
