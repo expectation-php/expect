@@ -14,7 +14,7 @@ namespace expect;
 use expect\matcher\ReportableMatcher;
 
 /**
- * The value using the matcher, and evaluation.
+ * Evaluate the matcher.
  *
  * @method boolean toEqual() toEqual(mixed $expected)
  * @method boolean toBe() toBe(mixed $expected)
@@ -61,6 +61,8 @@ class MatcherEvaluator implements Evaluator
     private $negated;
 
     /**
+     * Create a matcher evaluator.
+     *
      * @param \expect\matcher\ReportableMatcher $matcher The use matcher
      */
     public function __construct(ReportableMatcher $matcher)
