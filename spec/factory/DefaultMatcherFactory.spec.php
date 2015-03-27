@@ -1,34 +1,33 @@
 <?php
 
-use expect\package\MatcherClass;
-use expect\MatcherDictionary;
-use expect\factory\DefaultMatcherFactory;
 use Assert\Assertion;
+use expect\factory\DefaultMatcherFactory;
+use expect\MatcherDictionary;
+use expect\package\MatcherClass;
 
+describe('DefaultMatcherFactory', function () {
 
-describe('DefaultMatcherFactory', function() {
-
-    describe('#create', function() {
-        beforeEach(function() {
+    describe('#create', function () {
+        beforeEach(function () {
             $dictionary = new MatcherDictionary([
                 'ToBeTrue' => new MatcherClass('expect\matcher', 'ToBeTrue'),
                 'ToEqual'  => new MatcherClass('expect\matcher', 'ToEqual')
             ]);
             $this->factory = new DefaultMatcherFactory($dictionary);
         });
-        context('when no arguments', function() {
-            beforeEach(function() {
+        context('when no arguments', function () {
+            beforeEach(function () {
                 $this->matcher = $this->factory->create('ToBeTrue', []);
             });
-            it('return matcher instance', function() {
+            it('return matcher instance', function () {
                 Assertion::isInstanceOf($this->matcher, 'expect\matcher\ToBeTrue');
             });
         });
-        context('when there are arguments', function() {
-            beforeEach(function() {
+        context('when there are arguments', function () {
+            beforeEach(function () {
                 $this->matcher = $this->factory->create('ToEqual', [ 'foo' ]);
             });
-            it('return matcher instance', function() {
+            it('return matcher instance', function () {
                 Assertion::isInstanceOf($this->matcher, 'expect\matcher\ToEqual');
             });
         });

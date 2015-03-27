@@ -10,7 +10,6 @@
  */
 namespace expect\matcher;
 
-
 final class ToBeBoolean implements ReportableMatcher
 {
     use TypeMatcherDelegatable;

@@ -1,23 +1,22 @@
 <?php
 
-use expect\matcher\ToBe;
 use Assert\Assertion;
+use expect\matcher\ToBe;
 
+describe('ToBe', function () {
 
-describe('ToBe', function() {
-
-    describe('#match', function() {
-        beforeEach(function() {
+    describe('#match', function () {
+        beforeEach(function () {
             $this->matcher = new ToBe(100);
         });
-        context('when match', function() {
-            it('return true', function() {
+        context('when match', function () {
+            it('return true', function () {
                 $result = $this->matcher->match(100);
                 Assertion::true($result);
             });
         });
-        context('when unmatch', function() {
-            it('return false', function() {
+        context('when unmatch', function () {
+            it('return false', function () {
                 $result = $this->matcher->match(1);
                 Assertion::false($result);
             });

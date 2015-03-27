@@ -1,59 +1,58 @@
 <?php
 
+use Assert\Assertion;
 use expect\Matcher;
 use expect\Result;
-use Prophecy\Prophet;
 use Prophecy\Argument;
-use Assert\Assertion;
+use Prophecy\Prophet;
 
+describe('Result', function () {
 
-describe('Result', function() {
-
-    describe('#isPassed', function() {
-        beforeEach(function() {
+    describe('#isPassed', function () {
+        beforeEach(function () {
             $this->prophet = new Prophet();
 
             $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
             $this->matcher = $matcher->reveal();
         });
-        context('when passed', function() {
-            it('return true', function() {
+        context('when passed', function () {
+            it('return true', function () {
                 $result = new Result(true, false, $this->matcher, true);
                 Assertion::true($result->isPassed());
             });
         });
-        context('when failed', function() {
-            it('return false', function() {
+        context('when failed', function () {
+            it('return false', function () {
                 $result = new Result(true, false, $this->matcher, false);
                 Assertion::false($result->isPassed());
             });
         });
     });
 
-    describe('#isFailed', function() {
-        beforeEach(function() {
+    describe('#isFailed', function () {
+        beforeEach(function () {
             $this->prophet = new Prophet();
 
             $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
             $this->matcher = $matcher->reveal();
         });
-        context('when passed', function() {
-            it('return false', function() {
+        context('when passed', function () {
+            it('return false', function () {
                 $result = new Result(true, false, $this->matcher, true);
                 Assertion::false($result->isFailed());
             });
         });
-        context('when failed', function() {
-            it('return true', function() {
+        context('when failed', function () {
+            it('return true', function () {
                 $result = new Result(true, false, $this->matcher, false);
                 Assertion::true($result->isFailed());
             });
         });
     });
 
-    describe('#reportTo', function() {
-        context('when positive failed', function() {
-            beforeEach(function() {
+    describe('#reportTo', function () {
+        context('when positive failed', function () {
+            beforeEach(function () {
                 $this->prophet = new Prophet();
 
                 $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
@@ -65,13 +64,13 @@ describe('Result', function() {
 
                 $this->resultReporter = $resultReporter->reveal();
             });
-            it('report by result reporter', function() {
+            it('report by result reporter', function () {
                 $this->result->reportTo($this->resultReporter);
                 $this->prophet->checkPredictions();
             });
         });
-        context('when nagative failed', function() {
-            beforeEach(function() {
+        context('when nagative failed', function () {
+            beforeEach(function () {
                 $this->prophet = new Prophet();
 
                 $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
@@ -83,7 +82,7 @@ describe('Result', function() {
 
                 $this->resultReporter = $resultReporter->reveal();
             });
-            it('report by result reporter', function() {
+            it('report by result reporter', function () {
                 $this->result->reportTo($this->resultReporter);
                 $this->prophet->checkPredictions();
             });

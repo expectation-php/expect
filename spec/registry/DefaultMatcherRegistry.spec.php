@@ -1,24 +1,23 @@
 <?php
 
+use Assert\Assertion;
 use expect\package\MatcherClass;
 use expect\registry\DefaultMatcherRegistry;
 use expect\registry\MatcherAlreadyRegistered;
 use expect\registry\MatcherNotRegistered;
-use Assert\Assertion;
 
+describe('DefaultMatcherRegistry', function () {
 
-describe('DefaultMatcherRegistry', function() {
-
-    describe('#register', function() {
-        beforeEach(function() {
+    describe('#register', function () {
+        beforeEach(function () {
             $a = new MatcherClass('\\expect\\matcher', 'ToEqual');
 
             $this->registry = new DefaultMatcherRegistry();
             $this->registry->register($a);
         });
 
-        context('when matcher already registered', function() {
-            it('throw MatcherAlreadyRegistered', function() {
+        context('when matcher already registered', function () {
+            it('throw MatcherAlreadyRegistered', function () {
                 $thrownException = false;
                 $b = new MatcherClass('\\expect\\matcher', 'ToEqual');
 
@@ -33,22 +32,21 @@ describe('DefaultMatcherRegistry', function() {
 
     });
 
-
-    describe('#get', function() {
-        beforeEach(function() {
+    describe('#get', function () {
+        beforeEach(function () {
             $a = new MatcherClass('\\expect\\matcher', 'ToEqual');
 
             $this->registry = new DefaultMatcherRegistry();
             $this->registry->register($a);
         });
-        context('when matcher registered', function() {
-            it('return matcher class', function() {
+        context('when matcher registered', function () {
+            it('return matcher class', function () {
                 $result = $this->registry->get('ToEqual');
                 Assertion::isInstanceOf($result, 'expect\package\MatcherClass');
             });
         });
-        context('when matcher not registered', function() {
-            it('throw MatcherNotRegistered', function() {
+        context('when matcher not registered', function () {
+            it('throw MatcherNotRegistered', function () {
                 $thrownException = false;
 
                 try {
@@ -61,38 +59,38 @@ describe('DefaultMatcherRegistry', function() {
         });
     });
 
-    describe('#has', function() {
-        beforeEach(function() {
+    describe('#has', function () {
+        beforeEach(function () {
             $this->registry = new DefaultMatcherRegistry();
         });
-        context('when have matcher', function() {
-            it('return true', function() {
-                $this->registry->register( new MatcherClass('\\expect\\matcher', 'ToEqual') );
+        context('when have matcher', function () {
+            it('return true', function () {
+                $this->registry->register(new MatcherClass('\\expect\\matcher', 'ToEqual'));
                 $result = $this->registry->has('ToEqual');
 
                 Assertion::true($result);
             });
         });
-        context('when have not matcher', function() {
-            it('return false', function() {
+        context('when have not matcher', function () {
+            it('return false', function () {
                 $result = $this->registry->has('foo');
 
                 Assertion::false($result);
             });
         });
     });
-    describe('#toDictionary', function() {
-        beforeEach(function() {
+    describe('#toDictionary', function () {
+        beforeEach(function () {
             $registry = new DefaultMatcherRegistry();
-            $registry->register( new MatcherClass('\\expect\\matcher', 'ToEqual') );
+            $registry->register(new MatcherClass('\\expect\\matcher', 'ToEqual'));
 
             $this->dictionary = $registry->toDictionary();
         });
-        it('return expect\MatcherContainer instance', function() {
+        it('return expect\MatcherContainer instance', function () {
             Assertion::isInstanceOf($this->dictionary, 'expect\MatcherContainer');
         });
-        context('when have one matcher', function() {
-            it('return dictionay have one matcher', function() {
+        context('when have one matcher', function () {
+            it('return dictionay have one matcher', function () {
                 Assertion::count($this->dictionary, 1);
             });
         });

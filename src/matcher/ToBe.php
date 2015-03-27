@@ -10,7 +10,6 @@
  */
 namespace expect\matcher;
 
-
 final class ToBe implements ReportableMatcher
 {
     use EqualMatcherDelegatable;

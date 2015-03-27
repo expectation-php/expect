@@ -1,24 +1,23 @@
 <?php
 
-use expect\matcher\ToBeString;
-use expect\FailedMessage;
 use Assert\Assertion;
+use expect\FailedMessage;
+use expect\matcher\ToBeString;
 
+describe('ToBeString', function () {
 
-describe('ToBeString', function() {
-
-    describe('#match', function() {
-        beforeEach(function() {
+    describe('#match', function () {
+        beforeEach(function () {
             $this->matcher = new ToBeString();
         });
-        context('when match', function() {
-            it('return true', function() {
+        context('when match', function () {
+            it('return true', function () {
                 $result = $this->matcher->match("foo");
                 Assertion::true($result);
             });
         });
-        context('when unmatch', function() {
-            it('return false', function() {
+        context('when unmatch', function () {
+            it('return false', function () {
                 $result = $this->matcher->match(1);
                 Assertion::false($result);
             });

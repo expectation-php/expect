@@ -10,7 +10,6 @@
  */
 namespace expect\matcher;
 
-
 final class ToBeBelow implements ReportableMatcher
 {
     use LessThanMatcherDelegatable;

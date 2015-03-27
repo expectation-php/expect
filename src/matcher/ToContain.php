@@ -10,10 +10,10 @@
  */
 namespace expect\matcher;
 
-use expect\Matcher;
 use expect\FailedMessage;
-use expect\matcher\strategy\StringInclusionStrategy;
+use expect\Matcher;
 use expect\matcher\strategy\ArrayInclusionStrategy;
+use expect\matcher\strategy\StringInclusionStrategy;
 
 /**
  * <code>

@@ -13,7 +13,6 @@ namespace expect;
 /**
  * To verify whether consistent with the results value is expected.
  *
- * @package expect
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */

@@ -10,12 +10,12 @@
  */
 namespace expect\package;
 
+use FilesystemIterator;
+use Iterator;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
-use Iterator;
-use SplFileInfo;
-use FilesystemIterator;
 use ReflectionClass;
+use SplFileInfo;
 
 class ReflectionIterator implements Iterator
 {

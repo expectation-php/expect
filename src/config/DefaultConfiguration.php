@@ -11,8 +11,8 @@
 namespace expect\config;
 
 use expect\Configuration;
-use expect\reporter\ExceptionReporter;
 use expect\package\DefaultMatcherPackage;
+use expect\reporter\ExceptionReporter;
 
 class DefaultConfiguration implements Configuration
 {

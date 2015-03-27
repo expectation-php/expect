@@ -10,7 +10,6 @@
  */
 namespace expect\matcher;
 
-
 final class ToBeFloat implements ReportableMatcher
 {
     use TypeMatcherDelegatable;

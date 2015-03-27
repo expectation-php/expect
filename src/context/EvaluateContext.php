@@ -11,9 +11,9 @@
 namespace expect\context;
 
 use expect\Context;
+use expect\MatcherEvaluator;
 use expect\MatcherFactory;
 use expect\ResultReporter;
-use expect\MatcherEvaluator;
 
 class EvaluateContext implements Context
 {

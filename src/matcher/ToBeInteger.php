@@ -10,7 +10,6 @@
  */
 namespace expect\matcher;
 
-
 final class ToBeInteger implements ReportableMatcher
 {
     use TypeMatcherDelegatable;

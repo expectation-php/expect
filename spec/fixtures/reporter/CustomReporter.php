@@ -8,18 +8,14 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\fixture\reporter;
 
-
+use expect\FailedMessage;
 use expect\Result;
 use expect\ResultReporter;
-use expect\FailedMessage;
-
 
 class CustomReporter implements ResultReporter
 {
-
     public function reportFailed(FailedMessage $message)
     {
     }
@@ -27,5 +23,4 @@ class CustomReporter implements ResultReporter
     public function reportNegativeFailed(FailedMessage $message)
     {
     }
-
 }

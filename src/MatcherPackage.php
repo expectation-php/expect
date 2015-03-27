@@ -10,9 +10,9 @@
  */
 namespace expect;
 
+use ArrayIterator;
 use expect\package\MatcherClass;
 use expect\package\ReflectionIterator;
-use ArrayIterator;
 
 class MatcherPackage implements RegisterablePackage
 {

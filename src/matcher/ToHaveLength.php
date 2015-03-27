@@ -10,8 +10,8 @@
  */
 namespace expect\matcher;
 
-use expect\FailedMessage;
 use Countable;
+use expect\FailedMessage;
 
 final class ToHaveLength implements ReportableMatcher
 {

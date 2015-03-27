@@ -10,7 +10,6 @@
  */
 namespace expect\matcher;
 
-
 final class ToBeAbove implements ReportableMatcher
 {
     use GreaterThanMatcherDelegatable;

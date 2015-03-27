@@ -10,9 +10,9 @@
  */
 namespace expect\package;
 
-use expect\RegisterablePackage;
-use expect\MatcherRegistry;
 use expect\MatcherPackage;
+use expect\MatcherRegistry;
+use expect\RegisterablePackage;
 
 class DefaultMatcherPackage implements RegisterablePackage
 {

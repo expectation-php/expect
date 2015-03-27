@@ -10,8 +10,8 @@
  */
 namespace expect\factory;
 
-use expect\MatcherFactory;
 use expect\MatcherContainer;
+use expect\MatcherFactory;
 
 class DefaultMatcherFactory implements MatcherFactory
 {

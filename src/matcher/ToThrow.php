@@ -10,8 +10,8 @@
  */
 namespace expect\matcher;
 
-use expect\FailedMessage;
 use Exception;
+use expect\FailedMessage;
 
 final class ToThrow implements ReportableMatcher
 {

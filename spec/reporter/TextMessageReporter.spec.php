@@ -1,16 +1,15 @@
 <?php
 
+use Assert\Assertion;
 use expect\FailedMessage;
 use expect\reporter\TextMessageReporter;
-use Assert\Assertion;
 
-
-describe('TextMessageReporter', function() {
-    beforeEach(function() {
+describe('TextMessageReporter', function () {
+    beforeEach(function () {
         $this->reporter = new TextMessageReporter();
     });
-    describe('#reportFailed', function() {
-        it('report failed', function() {
+    describe('#reportFailed', function () {
+        it('report failed', function () {
             $message = new FailedMessage();
             $message->appendText('failed');
 
@@ -21,8 +20,8 @@ describe('TextMessageReporter', function() {
             Assertion::same($output, "\nfailed\n");
         });
     });
-    describe('#reportNegativeFailed', function() {
-        it('report negative failed', function() {
+    describe('#reportNegativeFailed', function () {
+        it('report negative failed', function () {
             $message = new FailedMessage();
             $message->appendText('negative failed');
 

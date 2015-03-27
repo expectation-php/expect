@@ -10,8 +10,8 @@
  */
 namespace expect\config;
 
-use Yosymfony\Toml\Toml;
 use Easy\Collections\Dictionary;
+use Yosymfony\Toml\Toml;
 
 class ConfigurationLoader
 {

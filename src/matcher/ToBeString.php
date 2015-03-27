@@ -10,7 +10,6 @@
  */
 namespace expect\matcher;
 
-
 final class ToBeString implements ReportableMatcher
 {
     use TypeMatcherDelegatable;
