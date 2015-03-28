@@ -14,7 +14,7 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 /**
- * Verify match the regular expression
+ * Verify match the regular expression.
  *
  * <code>
  * $matcher = new ToMatch('/foo/');
@@ -22,6 +22,7 @@ use expect\FailedMessage;
  *
  * $matcher->match('bar'); //return false
  * <code>
+ *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */

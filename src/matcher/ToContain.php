@@ -29,6 +29,7 @@ use expect\matcher\strategy\StringInclusionStrategy;
  * $matcher = new ToContain([ 1, 2 ]);
  * $matcher->match([ 1, 2 ]); //return true
  * <code>
+ *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */

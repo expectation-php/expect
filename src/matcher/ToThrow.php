@@ -15,7 +15,7 @@ use Exception;
 use expect\FailedMessage;
 
 /**
- * Verify whether an exception is thrown
+ * Verify whether an exception is thrown.
  *
  * <code>
  * $matcher = new ToThrow('RuntimeException');
@@ -23,6 +23,7 @@ use expect\FailedMessage;
  *
  * $matcher->match(function() { throw new Exception() }); //return false
  * <code>
+ *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
@@ -44,7 +45,8 @@ final class ToThrow implements ReportableMatcher
     private $thrownException;
 
     /**
-     * Create a new matcher
+     * Create a new matcher.
+     *
      * @param string $expected
      */
     public function __construct($expected)

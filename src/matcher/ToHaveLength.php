@@ -25,6 +25,7 @@ use expect\FailedMessage;
  * $matcher->match([ 1, 2 ]); //return false
  * $matcher->match(new ArrayIterator([ 1, 2 ])); //return false
  * <code>
+ *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
@@ -51,7 +52,7 @@ final class ToHaveLength implements ReportableMatcher
     private $length;
 
     /**
-     * Create a new matcher
+     * Create a new matcher.
      *
      * @param int $expected
      */

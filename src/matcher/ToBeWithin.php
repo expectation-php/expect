@@ -14,7 +14,7 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 /**
- * Verify whether the value is no range
+ * Verify whether the value is no range.
  *
  * <code>
  * $matcher = new ToBeWithin([0, 10]);
@@ -22,6 +22,7 @@ use expect\FailedMessage;
  *
  * $matcher->match(11); //return false
  * <code>
+ *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
@@ -43,7 +44,7 @@ final class ToBeWithin implements ReportableMatcher
     private $to;
 
     /**
-     * Create a new matcher
+     * Create a new matcher.
      *
      * @param array $expected
      */

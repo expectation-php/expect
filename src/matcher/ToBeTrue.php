@@ -12,7 +12,7 @@
 namespace expect\matcher;
 
 /**
- * Verify value is true
+ * Verify value is true.
  *
  * <code>
  * $matcher = new ToBeTrue();
@@ -22,7 +22,6 @@ namespace expect\matcher;
  * $matcher->match("foo"); //return false
  * </code>
  *
- * @package expect\matcher
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
@@ -31,7 +30,7 @@ final class ToBeTrue implements ReportableMatcher
     use EqualMatcherDelegatable;
 
     /**
-     * Create a new matcher
+     * Create a new matcher.
      */
     public function __construct()
     {

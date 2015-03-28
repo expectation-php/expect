@@ -23,13 +23,11 @@ use expect\FailedMessage;
  * $matcher->match(new Exception()); //return false
  * </code>
  *
- * @package expect\matcher
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 final class ToBeAnInstanceOf implements ReportableMatcher
 {
-
     /**
      * @var mixed
      */
@@ -46,7 +44,7 @@ final class ToBeAnInstanceOf implements ReportableMatcher
     private $className;
 
     /**
-     * Create a new matcher
+     * Create a new matcher.
      *
      * @param string $expected
      */

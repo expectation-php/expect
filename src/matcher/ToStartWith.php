@@ -14,7 +14,7 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 /**
- * Verify the string value is start with the expected string
+ * Verify the string value is start with the expected string.
  *
  * <code>
  * $matcher = new ToStartWith('foo');
@@ -22,6 +22,7 @@ use expect\FailedMessage;
  *
  * $matcher->match('barfoo'); //return false
  * <code>
+ *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */

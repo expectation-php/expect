@@ -12,7 +12,7 @@
 namespace expect\matcher;
 
 /**
- * Alias of ToBeGreaterThan
+ * Alias of ToBeGreaterThan.
  *
  * <code>
  * $matcher = new ToBeAbove(100);
@@ -21,7 +21,6 @@ namespace expect\matcher;
  * $matcher->match(99); //return false
  * </code>
  *
- * @package expect\matcher
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */

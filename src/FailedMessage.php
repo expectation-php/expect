@@ -12,7 +12,7 @@
 namespace expect;
 
 /**
- * Message when validation fails
+ * Message when validation fails.
  *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
@@ -33,9 +33,10 @@ class FailedMessage implements Message
     }
 
     /**
-     * Append the text to the last
+     * Append the text to the last.
      *
      * @param string $text
+     *
      * @return $this
      */
     public function appendText($text)
@@ -46,9 +47,10 @@ class FailedMessage implements Message
     }
 
     /**
-     * Append the length space
+     * Append the length space.
      *
      * @param int $length
+     *
      * @return $this
      */
     public function appendSpace($length)
@@ -60,9 +62,10 @@ class FailedMessage implements Message
     }
 
     /**
-     * Append the value to the last
+     * Append the value to the last.
      *
      * @param mixed $value
+     *
      * @return $this
      */
     public function appendValue($value)
@@ -74,9 +77,10 @@ class FailedMessage implements Message
     }
 
     /**
-     * Append the values to the last
+     * Append the values to the last.
      *
      * @param array $values
+     *
      * @return $this
      */
     public function appendValues(array $values)

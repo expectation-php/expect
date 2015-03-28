@@ -12,7 +12,7 @@
 namespace expect\matcher;
 
 /**
- * Alias of ToEuqal
+ * Alias of ToEuqal.
  *
  * <code>
  * $matcher = new ToBe(100);
@@ -22,9 +22,9 @@ namespace expect\matcher;
  * $matcher->match(99); //return false
  * <code>
  *
- * @package expect\matcher
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ *
  * @see expect\matcher\ToEqual
  */
 final class ToBe implements ReportableMatcher
@@ -32,7 +32,7 @@ final class ToBe implements ReportableMatcher
     use EqualMatcherDelegatable;
 
     /**
-     * Create a new matcher
+     * Create a new matcher.
      *
      * @param mixed $expected expected value
      */

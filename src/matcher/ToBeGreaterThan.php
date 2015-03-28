@@ -23,13 +23,11 @@ use expect\FailedMessage;
  * $matcher->match(1); //return false
  * </code>
  *
- * @package expect\matcher
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 final class ToBeGreaterThan implements ReportableMatcher
 {
-
     /**
      * @var int|float
      */
@@ -41,7 +39,7 @@ final class ToBeGreaterThan implements ReportableMatcher
     private $expected;
 
     /**
-     * Create a new matcher
+     * Create a new matcher.
      *
      * @param int|float $expected expected value
      */
@@ -56,6 +54,7 @@ final class ToBeGreaterThan implements ReportableMatcher
     public function match($actual)
     {
         $this->actual = $actual;
+
         return $this->actual >= $this->expected;
     }
 

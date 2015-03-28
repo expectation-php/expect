@@ -14,7 +14,7 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 /**
- * Verify key exists
+ * Verify key exists.
  *
  * <code>
  * $matcher = new ToHaveKey('foo');
@@ -22,6 +22,7 @@ use expect\FailedMessage;
  *
  * $matcher->match([ 'bar' => 1 ]); //return false
  * <code>
+ *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */

@@ -23,13 +23,11 @@ use expect\FailedMessage;
  * $matcher->match(1); //return false
  * </code>
  *
- * @package expect\matcher
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 final class ToBeAn implements ReportableMatcher
 {
-
     /**
      * @var mixed
      */
@@ -41,14 +39,14 @@ final class ToBeAn implements ReportableMatcher
     private $expected;
 
     /**
-     * type of value
+     * type of value.
      *
      * @var string
      */
     private $actualType;
 
     /**
-     * Create a new matcher
+     * Create a new matcher.
      *
      * @param $expected expected value
      */
@@ -104,6 +102,7 @@ final class ToBeAn implements ReportableMatcher
 
     /**
      * @param mixed $value
+     *
      * @return string type name
      */
     private function detectType($value)

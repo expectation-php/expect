@@ -14,7 +14,7 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 /**
- * Verify the output in the expected value
+ * Verify the output in the expected value.
  *
  * <code>
  * $matcher = new ToPrint('foo');
@@ -22,12 +22,12 @@ use expect\FailedMessage;
  *
  * $matcher->match(function() { echo 'bar' }); //return false
  * <code>
+ *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 final class ToPrint implements ReportableMatcher
 {
-
     /**
      * @var callable
      */
@@ -39,7 +39,8 @@ final class ToPrint implements ReportableMatcher
     private $expected;
 
     /**
-     * Create a new matcher
+     * Create a new matcher.
+     *
      * @param string $expected
      */
     public function __construct($expected)

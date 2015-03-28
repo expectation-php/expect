@@ -14,7 +14,7 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 /**
- * Verify the string value is end with the expected string
+ * Verify the string value is end with the expected string.
  *
  * <code>
  * $matcher = new ToEndWith('foo');
@@ -22,6 +22,7 @@ use expect\FailedMessage;
  *
  * $matcher->match('foobar'); //return false
  * <code>
+ *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */

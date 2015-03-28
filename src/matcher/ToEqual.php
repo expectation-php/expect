@@ -23,12 +23,12 @@ use expect\FailedMessage;
  * $matcher = new ToEqual(100);
  * $matcher->match(99); //return false
  * <code>
+ *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 final class ToEqual implements ReportableMatcher
 {
-
     /**
      * @var mixed
      */
