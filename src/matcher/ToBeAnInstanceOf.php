@@ -13,12 +13,43 @@ namespace expect\matcher;
 
 use expect\FailedMessage;
 
+/**
+ * Verify whether a particular instance.
+ *
+ * <code>
+ * $matcher = new ToBeAnInstanceOf('stdClass');
+ * $matcher->match(new stdClass()); //return true
+ *
+ * $matcher->match(new Exception()); //return false
+ * </code>
+ *
+ * @package expect\matcher
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 final class ToBeAnInstanceOf implements ReportableMatcher
 {
+
+    /**
+     * @var mixed
+     */
     private $actual;
+
+    /**
+     * @var string
+     */
     private $expected;
+
+    /**
+     * @var string
+     */
     private $className;
 
+    /**
+     * Create a new matcher
+     *
+     * @param string $expected
+     */
     public function __construct($expected)
     {
         $this->expected = $expected;
@@ -40,10 +71,16 @@ final class ToBeAnInstanceOf implements ReportableMatcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendText($this->className)
             ->appendText(' to be an instance of ')
-            ->appendText($this->expected);
+            ->appendText($this->expected)
+            ->appendText("\n\n")
+            ->appendText('    expected: ')
+            ->appendText($this->expected)
+            ->appendText("\n")
+            ->appendText('         got: ')
+            ->appendText($this->className);
     }
 
     /**
@@ -51,9 +88,15 @@ final class ToBeAnInstanceOf implements ReportableMatcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendText($this->className)
             ->appendText(' not to be an instance of ')
-            ->appendText($this->expected);
+            ->appendText($this->expected)
+            ->appendText("\n\n")
+            ->appendText('    expected not: ')
+            ->appendText($this->expected)
+            ->appendText("\n")
+            ->appendText('             got: ')
+            ->appendText($this->className);
     }
 }
