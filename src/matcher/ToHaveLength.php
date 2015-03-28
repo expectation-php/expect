@@ -15,8 +15,18 @@ use Countable;
 use expect\FailedMessage;
 
 /**
- * Class ToHaveLength
- * @package expect\matcher
+ * Verify whether the value has a length that was expected.
+ *
+ * <code>
+ * $matcher = new ToHaveLength(3);
+ * $matcher->match("foo"); //return true
+ *
+ * $matcher->match("fo"); //return false
+ * $matcher->match([ 1, 2 ]); //return false
+ * $matcher->match(new ArrayIterator([ 1, 2 ])); //return false
+ * <code>
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 final class ToHaveLength implements ReportableMatcher
 {
