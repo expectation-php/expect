@@ -11,7 +11,7 @@
 
 namespace expect;
 
-use Easy\Collections\Dictionary;
+use Collections\Dictionary;
 
 /**
  * Immutable container of matcher.
