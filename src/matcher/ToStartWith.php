@@ -14,7 +14,16 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 /**
- * Class ToStartWith.
+ * Verify the string value is start with the expected string
+ *
+ * <code>
+ * $matcher = new ToStartWith('foo');
+ * $matcher->match('foobar'); //return true
+ *
+ * $matcher->match('barfoo'); //return false
+ * <code>
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 final class ToStartWith implements ReportableMatcher
 {
@@ -52,7 +61,7 @@ final class ToStartWith implements ReportableMatcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' to start with ')
             ->appendValue($this->pattern);
@@ -63,7 +72,7 @@ final class ToStartWith implements ReportableMatcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' not to start with ')
             ->appendValue($this->pattern);
