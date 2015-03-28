@@ -13,20 +13,39 @@ namespace expect\matcher;
 
 use expect\FailedMessage;
 
+/**
+ * Verify whether the value is greater than the value of the expected value.
+ *
+ * <code>
+ * $matcher = new ToBeGreaterThan(100);
+ * $matcher->match(100); //return true
+ *
+ * $matcher->match(1); //return false
+ * </code>
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 final class ToBeGreaterThan implements ReportableMatcher
 {
-    const OPERAND = '>=';
-
+    /**
+     * @var int|float
+     */
     private $actual;
-    private $expected;
-    private $actualPadding = 2;
-    private $expectedPadding = 1;
 
+    /**
+     * @var int|float
+     */
+    private $expected;
+
+    /**
+     * Create a new matcher.
+     *
+     * @param int|float $expected expected value
+     */
     public function __construct($expected)
     {
         $this->expected = $expected;
-        $this->actualPadding = 2;
-        $this->expectedPadding = 1;
     }
 
     /**
@@ -35,7 +54,6 @@ final class ToBeGreaterThan implements ReportableMatcher
     public function match($actual)
     {
         $this->actual = $actual;
-        $this->calculatePadding();
 
         return $this->actual >= $this->expected;
     }
@@ -45,18 +63,15 @@ final class ToBeGreaterThan implements ReportableMatcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' to be greater than ')
             ->appendValue($this->expected)
-            ->appendText("\n")
-            ->appendText('expected: ')
-            ->appendText(self::OPERAND)
-            ->appendSpace($this->expectedPadding)
+            ->appendText("\n\n")
+            ->appendText('    expected: >= ')
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText('     got:')
-            ->appendSpace($this->actualPadding)
+            ->appendText('         got:    ')
             ->appendValue($this->actual);
     }
 
@@ -65,22 +80,15 @@ final class ToBeGreaterThan implements ReportableMatcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' not to be greater than ')
-            ->appendValue($this->expected);
-    }
-
-    private function calculatePadding()
-    {
-        $operandLength = strlen(self::OPERAND);
-        $actualLength = strlen(strval($this->actual));
-        $expectedLength = strlen(strval($this->expected));
-
-        if ($actualLength > $expectedLength) {
-            $this->expectedPadding += $actualLength - $expectedLength;
-        } else {
-            $this->actualPadding += ($expectedLength - $actualLength) + $operandLength;
-        }
+            ->appendValue($this->expected)
+            ->appendText("\n\n")
+            ->appendText('    expected not: >= ')
+            ->appendValue($this->expected)
+            ->appendText("\n")
+            ->appendText('             got:    ')
+            ->appendValue($this->actual);
     }
 }

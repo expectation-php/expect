@@ -14,7 +14,17 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 /**
- * Class ToMatch.
+ * Verify match the regular expression.
+ *
+ * <code>
+ * $matcher = new ToMatch('/foo/');
+ * $matcher->match('foobar'); //return true
+ *
+ * $matcher->match('bar'); //return false
+ * <code>
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 final class ToMatch implements ReportableMatcher
 {
@@ -52,7 +62,7 @@ final class ToMatch implements ReportableMatcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' to match ')
             ->appendText($this->expected);
@@ -63,7 +73,7 @@ final class ToMatch implements ReportableMatcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' not to match ')
             ->appendText($this->expected);

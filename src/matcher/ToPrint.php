@@ -13,16 +13,44 @@ namespace expect\matcher;
 
 use expect\FailedMessage;
 
+/**
+ * Verify the output in the expected value.
+ *
+ * <code>
+ * $matcher = new ToPrint('foo');
+ * $matcher->match(function() { echo 'foo' }); //return true
+ *
+ * $matcher->match(function() { echo 'bar' }); //return false
+ * <code>
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 final class ToPrint implements ReportableMatcher
 {
+    /**
+     * @var callable
+     */
     private $actual;
+
+    /**
+     * @var string
+     */
     private $expected;
 
+    /**
+     * Create a new matcher.
+     *
+     * @param string $expected
+     */
     public function __construct($expected)
     {
         $this->expected = $expected;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function match($actual)
     {
         ob_start();
@@ -37,7 +65,7 @@ final class ToPrint implements ReportableMatcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendValue($this->expected)
             ->appendText(', got ')
             ->appendValue($this->actual);
@@ -48,7 +76,7 @@ final class ToPrint implements ReportableMatcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected output other than ')
+        $message->appendText('Expected output other than ')
             ->appendValue($this->expected);
     }
 }

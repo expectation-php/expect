@@ -11,10 +11,26 @@
 
 namespace expect\matcher;
 
+/**
+ * Verify whether the value is null.
+ *
+ * <code>
+ * $matcher = new ToBeNull();
+ * $matcher->match(null); //return true
+ *
+ * $matcher->match(0); //return false
+ * </code>
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 final class ToBeNull implements ReportableMatcher
 {
     use EqualMatcherDelegatable;
 
+    /**
+     * Create a new matcher.
+     */
     public function __construct()
     {
         $this->equalMatcher = new ToEqual(null);

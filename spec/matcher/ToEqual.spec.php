@@ -28,11 +28,14 @@ describe('ToEqual', function () {
         beforeEach(function () {
             $this->matcher = new ToEqual(true);
             $this->message = new FailedMessage();
+            $this->expectedMessage  = "Expected false to be true\n\n";
+            $this->expectedMessage .= "    expected: true\n";
+            $this->expectedMessage .= "         got: false";
         });
         it('report failed message', function () {
             $this->matcher->match(false);
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "\nexpected true\n     got false\n");
+            Assertion::same((string) $this->message, $this->expectedMessage);
         });
     });
 
@@ -40,11 +43,14 @@ describe('ToEqual', function () {
         beforeEach(function () {
             $this->matcher = new ToEqual(true);
             $this->message = new FailedMessage();
+            $this->expectedMessage  = "Expected true not to be true\n\n";
+            $this->expectedMessage .= "    expected not: true\n";
+            $this->expectedMessage .= "             got: true";
         });
         it('report failed message', function () {
             $this->matcher->match(true);
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "\nexpected not true\n         got true\n");
+            Assertion::same((string) $this->message, $this->expectedMessage);
         });
     });
 });

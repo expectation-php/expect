@@ -17,7 +17,7 @@ describe('TextMessageReporter', function () {
             $this->reporter->reportFailed($message);
             $output = ob_get_clean();
 
-            Assertion::same($output, "\nfailed\n");
+            Assertion::same($output, "failed\n");
         });
     });
     describe('#reportNegativeFailed', function () {
@@ -29,7 +29,7 @@ describe('TextMessageReporter', function () {
             $this->reporter->reportNegativeFailed($message);
             $output = ob_get_clean();
 
-            Assertion::same($output, "\nnegative failed\n");
+            Assertion::same($output, "negative failed\n");
         });
     });
 });

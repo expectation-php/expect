@@ -36,7 +36,7 @@ describe('ToThrow', function () {
             $this->matcher->match(function () {
             });
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "\nexpected \RuntimeException to be thrown, none thrown\n");
+            Assertion::same((string) $this->message, "Expected \RuntimeException to be thrown, none thrown");
         });
     });
 
@@ -49,7 +49,7 @@ describe('ToThrow', function () {
             $this->matcher->match(function () {
             });
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "\nexpected \RuntimeException not to be thrown\n");
+            Assertion::same((string) $this->message, "Expected \RuntimeException not to be thrown");
         });
     });
 

@@ -13,11 +13,34 @@ namespace expect\matcher;
 
 use expect\FailedMessage;
 
+/**
+ * Verify key exists.
+ *
+ * <code>
+ * $matcher = new ToHaveKey('foo');
+ * $matcher->match([ 'foo' => 1 ]); //return true
+ *
+ * $matcher->match([ 'bar' => 1 ]); //return false
+ * <code>
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 final class ToHaveKey implements ReportableMatcher
 {
+    /**
+     * @var array
+     */
     private $actual;
+
+    /**
+     * @var string|int
+     */
     private $expected;
 
+    /**
+     * @param string|int $expected
+     */
     public function __construct($expected)
     {
         $this->expected = $expected;
@@ -38,7 +61,7 @@ final class ToHaveKey implements ReportableMatcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        $message->appendText('expected array to have the key ')
+        $message->appendText('Expected array to have the key ')
             ->appendValue($this->expected);
     }
 
@@ -47,7 +70,7 @@ final class ToHaveKey implements ReportableMatcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected array not to have the key ')
+        $message->appendText('Expected array not to have the key ')
             ->appendValue($this->expected);
     }
 }

@@ -11,10 +11,26 @@
 
 namespace expect\matcher;
 
+/**
+ * Verify whether the value is integer type.
+ *
+ * <code>
+ * $matcher = new ToBeInteger();
+ * $matcher->match(1); //return true
+ *
+ * $matcher->match(1.1); //return false
+ * </code>
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 final class ToBeInteger implements ReportableMatcher
 {
     use TypeMatcherDelegatable;
 
+    /**
+     * Create a new matcher.
+     */
     public function __construct()
     {
         $this->typeMatcher = new ToBeAn('integer');

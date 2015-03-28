@@ -11,10 +11,28 @@
 
 namespace expect\matcher;
 
+/**
+ * Alias of ToBeAn.
+ *
+ * <code>
+ * $matcher = new ToBeA('string');
+ * $matcher->match('foo'); //return true
+ *
+ * $matcher->match(1); //return false
+ * </code>
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 final class ToBeA implements ReportableMatcher
 {
     use TypeMatcherDelegatable;
 
+    /**
+     * Create a new matcher.
+     *
+     * @param string $expected
+     */
     public function __construct($expected)
     {
         $this->typeMatcher = new ToBeAn($expected);
