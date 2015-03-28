@@ -14,13 +14,37 @@ namespace expect\matcher;
 use Countable;
 use expect\FailedMessage;
 
+/**
+ * Class ToHaveLength
+ * @package expect\matcher
+ */
 final class ToHaveLength implements ReportableMatcher
 {
+    /**
+     * @var string|array|Countable
+     */
     private $actual;
+
+    /**
+     * @var int
+     */
     private $expected;
+
+    /**
+     * @var string
+     */
     private $type;
+
+    /**
+     * @var string
+     */
     private $length;
 
+    /**
+     * Create a new matcher
+     *
+     * @param int $expected
+     */
     public function __construct($expected)
     {
         $this->expected = $expected;
@@ -52,10 +76,16 @@ final class ToHaveLength implements ReportableMatcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendText($this->type)
             ->appendText(' to have a length of ')
-            ->appendText($this->expected);
+            ->appendText($this->expected)
+            ->appendText("\n\n")
+            ->appendText('    expected: ')
+            ->appendValue($this->expected)
+            ->appendText("\n")
+            ->appendText('      length: ')
+            ->appendValue($this->length);
     }
 
     /**
@@ -63,9 +93,15 @@ final class ToHaveLength implements ReportableMatcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendText($this->type)
             ->appendText(' not to have a length of ')
-            ->appendText($this->expected);
+            ->appendValue($this->expected)
+            ->appendText("\n\n")
+            ->appendText('    expected not: ')
+            ->appendValue($this->expected)
+            ->appendText("\n")
+            ->appendText('          length: ')
+            ->appendValue($this->length);
     }
 }
