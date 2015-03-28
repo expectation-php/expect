@@ -14,7 +14,7 @@ namespace expect\matcher;
 use expect\FailedMessage;
 
 /**
- * Euqal matcher.
+ * Verify whether equivalent.
  *
  * <code>
  * $matcher = new ToEqual(100);

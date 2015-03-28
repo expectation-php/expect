@@ -17,15 +17,20 @@ use expect\matcher\strategy\ArrayInclusionStrategy;
 use expect\matcher\strategy\StringInclusionStrategy;
 
 /**
- * <code>
- * <?php
- *     Expect::that('foo')->toContain('foo'); //pass
- *     Expect::that('foo')->toContain('foo', 'bar'); //failed.
+ * Verify whether the value is all included.
  *
- *     Expect::that([ 'foo', 'bar' ])->toContain('foo'); //pass
- *     Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar'); //pass
- *     Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar', 'bar1'); //failed
- * </code>
+ * <code>
+ * $matcher = new ToContain([ 'foo' ]);
+ * $matcher->match('foo'); //return true
+ *
+ * $matcher = new ToContain([ 'foo', 'bar' ]);
+ * $matcher->match('foo'); //return false
+ *
+ * $matcher = new ToContain([ 1, 2 ]);
+ * $matcher->match([ 1, 2 ]); //return true
+ * <code>
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 final class ToContain implements ReportableMatcher
 {
@@ -49,6 +54,9 @@ final class ToContain implements ReportableMatcher
      */
     private $expectValues;
 
+    /**
+     * @param strng|array $expected
+     */
     public function __construct($expected)
     {
         $this->expectValues = is_array($expected) ? $expected : [$expected];
@@ -74,7 +82,7 @@ final class ToContain implements ReportableMatcher
     {
         $unmatchResults = $this->matchResult->getUnmatchResults();
 
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendText($this->type)
             ->appendText(' to contain ')
             ->appendValues($unmatchResults);
@@ -87,7 +95,7 @@ final class ToContain implements ReportableMatcher
     {
         $matchResults = $this->matchResult->getMatchResults();
 
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendText($this->type)
             ->appendText(' not to contain ')
             ->appendValues($matchResults);
