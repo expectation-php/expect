@@ -12,7 +12,7 @@
 namespace expect\matcher;
 
 /**
- * Alias of ToBeAn class
+ * Alias of ToBeAn
  *
  * <code>
  * $matcher = new ToBeA('string');

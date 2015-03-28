@@ -12,7 +12,7 @@
 namespace expect\matcher;
 
 /**
- * Alias of ToEuqal class
+ * Alias of ToEuqal
  *
  * <code>
  * $matcher = new ToBe(100);
