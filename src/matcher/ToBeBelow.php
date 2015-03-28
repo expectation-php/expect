@@ -11,21 +11,12 @@
 
 namespace expect\matcher;
 
-
-use expect\Matcher;
-use expect\FailedMessage;
-use expect\matcher\alias\LessThanMatcherAlias;
-
-
-final class ToBeBelow implements Matcher
+final class ToBeBelow implements ReportableMatcher
 {
-
     use LessThanMatcherDelegatable;
-
 
     public function __construct($expected)
     {
         $this->lessThanMatcher = new ToBeLessThan($expected);
     }
-
 }

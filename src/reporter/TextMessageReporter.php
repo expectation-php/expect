@@ -14,10 +14,8 @@ namespace expect\reporter;
 use expect\FailedMessage;
 use expect\ResultReporter;
 
-
 class TextMessageReporter implements ResultReporter
 {
-
     public function reportFailed(FailedMessage $message)
     {
         echo (string) $message;
@@ -27,5 +25,4 @@ class TextMessageReporter implements ResultReporter
     {
         echo (string) $message;
     }
-
 }

@@ -11,19 +11,14 @@
 
 namespace expect\registry;
 
-
-use expect\MatcherDictionary;
-use expect\registry\MatcherNotRegistered;
-use expect\registry\MatcherAlreadyRegistered;
-use expect\package\MatcherClass;
-use expect\MatcherRegistry;
-use expect\MatcherLookupTable;
 use Easy\Collections\Dictionary;
-
+use expect\MatcherDictionary;
+use expect\MatcherLookupTable;
+use expect\MatcherRegistry;
+use expect\package\MatcherClass;
 
 final class DefaultMatcherRegistry implements MatcherRegistry
 {
-
     use MatcherLookupTable;
 
     public function __construct(array $matchers = [])
@@ -50,7 +45,7 @@ final class DefaultMatcherRegistry implements MatcherRegistry
     public function toDictionary()
     {
         $matchers = $this->matchers->toArray();
+
         return new MatcherDictionary($matchers);
     }
-
 }

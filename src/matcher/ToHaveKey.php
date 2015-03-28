@@ -9,17 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
 
-
-final class ToHaveKey implements Matcher
+final class ToHaveKey implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
 
@@ -34,6 +29,7 @@ final class ToHaveKey implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
+
         return array_key_exists($this->expected, $this->actual);
     }
 
@@ -54,5 +50,4 @@ final class ToHaveKey implements Matcher
         $message->appendText('expected array not to have the key ')
             ->appendValue($this->expected);
     }
-
 }

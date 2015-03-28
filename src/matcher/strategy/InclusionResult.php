@@ -11,10 +11,8 @@
 
 namespace expect\matcher\strategy;
 
-
 final class InclusionResult
 {
-
     /**
      * @var array
      */
@@ -29,7 +27,6 @@ final class InclusionResult
      * @var array
      */
     private $unmatchResults;
-
 
     /**
      * @param array expectValues
@@ -60,11 +57,10 @@ final class InclusionResult
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isMatched()
     {
         return count($this->matchResults) >= count($this->expectValues);
     }
-
 }

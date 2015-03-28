@@ -11,15 +11,12 @@
 
 namespace expect\package;
 
-
-use expect\RegisterablePackage;
-use expect\MatcherRegistry;
 use expect\MatcherPackage;
-
+use expect\MatcherRegistry;
+use expect\RegisterablePackage;
 
 class DefaultMatcherPackage implements RegisterablePackage
 {
-
     /**
      * {@inheritdoc}
      */
@@ -27,9 +24,8 @@ class DefaultMatcherPackage implements RegisterablePackage
     {
         $matcherPackage = new MatcherPackage(
             '\\expect\\matcher',
-            __DIR__ . '/../matcher'
+            __DIR__.'/../matcher'
         );
         $matcherPackage->registerTo($registry);
     }
-
 }

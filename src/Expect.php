@@ -11,12 +11,9 @@
 
 namespace expect;
 
-
 final class Expect implements Configurable
 {
-
     private static $contextFactory;
-
 
     public static function configure(Configurator $configurator)
     {
@@ -25,12 +22,13 @@ final class Expect implements Configurable
 
     /**
      * @param mixed $actual
+     *
      * @return Context
      */
     public static function that($actual)
     {
         $context = static::$contextFactory->newContext();
+
         return $context->actual($actual);
     }
-
 }

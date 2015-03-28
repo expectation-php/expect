@@ -11,7 +11,7 @@
 
 namespace expect\reporter;
 
-use \Exception;
+use Exception;
 
 class FailedException extends Exception
 {

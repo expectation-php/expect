@@ -8,18 +8,14 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
-
 namespace expect\fixture\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
+use expect\Matcher;
+use expect\matcher\ReportableMatcher;
 
-
-class ToEql implements Matcher
+class ToEql implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
 
@@ -34,6 +30,7 @@ class ToEql implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
+
         return $this->actual === $this->expected;
     }
 
@@ -62,5 +59,4 @@ class ToEql implements Matcher
             ->appendValue($this->actual)
             ->appendText("\n");
     }
-
 }

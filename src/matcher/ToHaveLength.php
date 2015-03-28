@@ -9,23 +9,17 @@
  * with this source code in the file LICENSE.
  */
 
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
-use expect\FailedMessage;
 use Countable;
+use expect\FailedMessage;
 
-
-final class ToHaveLength implements Matcher
+final class ToHaveLength implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
     private $type;
     private $length;
-
 
     public function __construct($expected)
     {
@@ -42,10 +36,10 @@ final class ToHaveLength implements Matcher
         if (is_string($this->actual) === true) {
             $this->type = 'string';
             $this->length = mb_strlen($this->actual);
-        } else if (is_array($this->actual) === true) {
+        } elseif (is_array($this->actual) === true) {
             $this->type = 'array';
             $this->length = count($this->actual);
-        } else if ($this->actual instanceof Countable) {
+        } elseif ($this->actual instanceof Countable) {
             $this->type = get_class($this->actual);
             $this->length = count($this->actual);
         }
@@ -60,7 +54,7 @@ final class ToHaveLength implements Matcher
     {
         $message->appendText('expected ')
             ->appendText($this->type)
-            ->appendText(" to have a length of ")
+            ->appendText(' to have a length of ')
             ->appendText($this->expected);
     }
 
@@ -71,8 +65,7 @@ final class ToHaveLength implements Matcher
     {
         $message->appendText('expected ')
             ->appendText($this->type)
-            ->appendText(" not to have a length of ")
+            ->appendText(' not to have a length of ')
             ->appendText($this->expected);
     }
-
 }

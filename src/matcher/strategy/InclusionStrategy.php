@@ -11,14 +11,12 @@
 
 namespace expect\matcher\strategy;
 
-
 interface InclusionStrategy
 {
-
     /**
      * @param array expectValues
+     *
      * @return \expect\matcher\strategy\InclusionResult
      */
     public function match(array $expectValues);
-
 }

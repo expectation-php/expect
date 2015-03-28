@@ -11,18 +11,21 @@
 
 namespace expect;
 
-
+/**
+ * To verify whether consistent with the results value is expected.
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 interface Matcher
 {
-
     /**
-     * @param mixed $actual
-     * @return bool
+     * Verify whether the value is consistent with what is expected.
+     * Returns true if the value matches the contents to be expected.
+     *
+     * @param mixed $actual value of actual
+     *
+     * @return bool results of evaluation
      */
     public function match($actual);
-
-    public function reportFailed(FailedMessage $message);
-
-    public function reportNegativeFailed(FailedMessage $message);
-
 }

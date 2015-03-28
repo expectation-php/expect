@@ -12,7 +12,7 @@
 namespace expect;
 
 /**
- * Utility function for php5.6 or higher
+ * Utility function for php5.6 or higher.
  *
  * <code>
  * <?php
@@ -24,6 +24,7 @@ namespace expect;
  * </code>
  *
  * @param mixed $actual
+ *
  * @return \expect\Context
  */
 function expect($actual)

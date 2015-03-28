@@ -11,19 +11,12 @@
 
 namespace expect\matcher;
 
-
-use expect\Matcher;
-use expect\FailedMessage;
-
-
-final class ToBeInteger implements Matcher
+final class ToBeInteger implements ReportableMatcher
 {
-
     use TypeMatcherDelegatable;
 
     public function __construct()
     {
         $this->typeMatcher = new ToBeAn('integer');
     }
-
 }

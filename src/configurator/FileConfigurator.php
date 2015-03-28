@@ -11,19 +11,15 @@
 
 namespace expect\configurator;
 
-use expect\Configurator;
 use expect\config\ConfigurationLoader;
-use expect\registry\DefaultMatcherRegistry;
-use expect\factory\DefaultMatcherFactory;
+use expect\Configurator;
 use expect\context\DefaultContextFactory;
-
-
+use expect\factory\DefaultMatcherFactory;
+use expect\registry\DefaultMatcherRegistry;
 
 class FileConfigurator implements Configurator
 {
-
     private $config;
-
 
     public function __construct($configFile)
     {
@@ -47,5 +43,4 @@ class FileConfigurator implements Configurator
 
         return new DefaultContextFactory($matcherFactory, $resultReporter);
     }
-
 }

@@ -13,7 +13,6 @@ namespace expect\registry;
 
 use Exception;
 
-
 final class MatcherAlreadyRegistered extends Exception
 {
 }

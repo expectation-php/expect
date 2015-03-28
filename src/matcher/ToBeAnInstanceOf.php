@@ -11,18 +11,13 @@
 
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
 
-
-final class ToBeAnInstanceOf implements Matcher
+final class ToBeAnInstanceOf implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
     private $className;
-
 
     public function __construct($expected)
     {
@@ -47,7 +42,7 @@ final class ToBeAnInstanceOf implements Matcher
     {
         $message->appendText('expected ')
             ->appendText($this->className)
-            ->appendText(" to be an instance of ")
+            ->appendText(' to be an instance of ')
             ->appendText($this->expected);
     }
 
@@ -58,8 +53,7 @@ final class ToBeAnInstanceOf implements Matcher
     {
         $message->appendText('expected ')
             ->appendText($this->className)
-            ->appendText(" not to be an instance of ")
+            ->appendText(' not to be an instance of ')
             ->appendText($this->expected);
     }
-
 }

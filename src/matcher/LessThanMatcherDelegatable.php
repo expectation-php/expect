@@ -13,15 +13,12 @@ namespace expect\matcher;
 
 use expect\FailedMessage;
 
-
 trait LessThanMatcherDelegatable
 {
-
     /**
      * @var \expect\matcher\ToBeLessThan
      */
     private $lessThanMatcher;
-
 
     /**
      * {@inheritdoc}
@@ -46,5 +43,4 @@ trait LessThanMatcherDelegatable
     {
         return $this->lessThanMatcher->reportNegativeFailed($message);
     }
-
 }

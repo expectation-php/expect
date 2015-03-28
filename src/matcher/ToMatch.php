@@ -9,20 +9,28 @@
  * with this source code in the file LICENSE.
  */
 
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
 
-
-final class ToMatch implements Matcher
+/**
+ * Class ToMatch.
+ */
+final class ToMatch implements ReportableMatcher
 {
-
+    /**
+     * @var string
+     */
     private $actual;
+
+    /**
+     * @var string
+     */
     private $expected;
 
+    /**
+     * @param string $expected String of a regular expression
+     */
     public function __construct($expected)
     {
         $this->expected = $expected;
@@ -34,7 +42,9 @@ final class ToMatch implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
-        return (preg_match($this->expected, $this->actual) === 1);
+        $patternMatcher = new PatternMatcher($this->expected);
+
+        return $patternMatcher->match($this->actual);
     }
 
     /**
@@ -44,7 +54,7 @@ final class ToMatch implements Matcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" to match ")
+            ->appendText(' to match ')
             ->appendText($this->expected);
     }
 
@@ -55,8 +65,7 @@ final class ToMatch implements Matcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" not to match ")
+            ->appendText(' not to match ')
             ->appendText($this->expected);
     }
-
 }

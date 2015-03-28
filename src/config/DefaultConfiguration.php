@@ -11,23 +11,17 @@
 
 namespace expect\config;
 
-
 use expect\Configuration;
-use expect\reporter\ExceptionReporter;
 use expect\package\DefaultMatcherPackage;
-
-
+use expect\reporter\ExceptionReporter;
 
 class DefaultConfiguration implements Configuration
 {
-
     use ConfigurableConfiguration;
-
 
     public function __construct()
     {
-        $this->resultReporter = new ExceptionReporter;
-        $this->matcherPackages[] = new DefaultMatcherPackage;
+        $this->resultReporter = new ExceptionReporter();
+        $this->matcherPackages[] = new DefaultMatcherPackage();
     }
-
 }

@@ -13,15 +13,12 @@ namespace expect\matcher;
 
 use expect\FailedMessage;
 
-
 trait EqualMatcherDelegatable
 {
-
     /**
      * @var \expect\matcher\ToEqual
      */
     private $equalMatcher;
-
 
     /**
      * {@inheritdoc}
@@ -46,5 +43,4 @@ trait EqualMatcherDelegatable
     {
         return $this->equalMatcher->reportNegativeFailed($message);
     }
-
 }

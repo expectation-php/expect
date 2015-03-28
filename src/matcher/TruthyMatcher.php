@@ -11,24 +11,29 @@
 
 namespace expect\matcher;
 
-use expect\FailedMessage;
+use expect\Matcher;
 
-
-trait ComparePattern
+/**
+ * Class TruthyMatcher.
+ */
+final class TruthyMatcher implements Matcher
 {
-
     /**
-     * @var \expect\matcher\ToMatch
+     * @var mixed
      */
-    private $patternMatcher;
-
+    private $actual;
 
     /**
      * {@inheritdoc}
      */
     public function match($actual)
     {
-        return $this->patternMatcher->match($actual);
-    }
+        $this->actual = $actual;
 
+        if (is_bool($this->actual)) {
+            return $this->actual !== false;
+        }
+
+        return isset($this->actual);
+    }
 }

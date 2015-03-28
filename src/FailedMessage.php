@@ -11,15 +11,12 @@
 
 namespace expect;
 
-
 class FailedMessage implements Message
 {
-
     /**
      * @var string
      */
     private $message;
-
 
     public function __construct($message = '')
     {
@@ -28,23 +25,25 @@ class FailedMessage implements Message
 
     public function appendText($text)
     {
-        $this->message = $this->message . $text;
+        $this->message = $this->message.$text;
+
         return $this;
     }
 
     public function appendSpace($length)
     {
-        $this->message = $this->message . str_pad("", $length, " ");
+        $this->message = $this->message.str_pad('', $length, ' ');
+
         return $this;
     }
 
     public function appendValue($value)
     {
         $appendValue = $this->stringify($value);
-        $this->message = $this->message . $appendValue;
+        $this->message = $this->message.$appendValue;
+
         return $this;
     }
-
 
     public function appendValues(array $values)
     {
@@ -54,7 +53,7 @@ class FailedMessage implements Message
             $appendValues[] = $this->stringify($value);
         }
 
-        $this->message = $this->message . implode(', ', $appendValues);
+        $this->message = $this->message.implode(', ', $appendValues);
 
         return $this;
     }
@@ -63,7 +62,7 @@ class FailedMessage implements Message
     {
         $prefix = (string) $this;
         $suffix = (string) $message;
-        $concatenatedMessage = trim($prefix) . "\n" . trim($suffix);
+        $concatenatedMessage = trim($prefix)."\n".trim($suffix);
 
         return static::fromString($concatenatedMessage);
     }
@@ -80,7 +79,7 @@ class FailedMessage implements Message
 
     public function __toString()
     {
-        return "\n" . $this->message . "\n";
+        return "\n".$this->message."\n";
     }
 
     private function stringify($value)
@@ -88,10 +87,10 @@ class FailedMessage implements Message
         $appendValue = '';
 
         if (is_string($value)) {
-            $appendValue = "'" . $value . "'";
-        } else if (is_null($value)) {
-            $appendValue = "null";
-        } else if (is_bool($value)) {
+            $appendValue = "'".$value."'";
+        } elseif (is_null($value)) {
+            $appendValue = 'null';
+        } elseif (is_bool($value)) {
             $appendValue = $this->boolToString($value);
         } else {
             $appendValue = rtrim(print_r($value, true));
@@ -99,5 +98,4 @@ class FailedMessage implements Message
 
         return $appendValue;
     }
-
 }

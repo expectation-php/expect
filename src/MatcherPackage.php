@@ -11,25 +11,14 @@
 
 namespace expect;
 
-
+use ArrayIterator;
 use expect\package\MatcherClass;
 use expect\package\ReflectionIterator;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
-use IteratorAggregate;
-use SplFileInfo;
-use FilesystemIterator;
-use ReflectionClass;
-use ArrayIterator;
-
 
 class MatcherPackage implements RegisterablePackage
 {
-
-
     private $namespace;
     private $namespaceDirectory;
-
 
     /**
      * @param string $namespaceDirectory
@@ -39,7 +28,6 @@ class MatcherPackage implements RegisterablePackage
         $this->namespace = $namespace;
         $this->namespaceDirectory = $namespaceDirectory;
     }
-
 
     /**
      * {@inheritdoc}
@@ -53,7 +41,6 @@ class MatcherPackage implements RegisterablePackage
         }
     }
 
-
     private function getProvideMatchers()
     {
         $matchers = [];
@@ -63,7 +50,7 @@ class MatcherPackage implements RegisterablePackage
         );
 
         foreach ($reflectionIterator as $reflection) {
-            if ($reflection->implementsInterface('\expect\Matcher') === false) {
+            if ($reflection->implementsInterface('\expect\matcher\ReportableMatcher') === false) {
                 continue;
             }
 
@@ -75,5 +62,4 @@ class MatcherPackage implements RegisterablePackage
 
         return new ArrayIterator($matchers);
     }
-
 }

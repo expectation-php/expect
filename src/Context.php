@@ -11,14 +11,11 @@
 
 namespace expect;
 
-
 interface Context
 {
-
     public function actual($actual);
 
     public function not();
 
     public function evaluate($name, $arguments = []);
-
 }

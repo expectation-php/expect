@@ -1,13 +1,12 @@
 <?php
 
-use expect\package\DefaultMatcherPackage;
-use Prophecy\Prophet;
-use Prophecy\Argument;
 use Assert\Assertion;
+use expect\package\DefaultMatcherPackage;
+use Prophecy\Argument;
+use Prophecy\Prophet;
 
-
-describe('DefaultMatcherPackage', function() {
-    beforeEach(function() {
+describe('DefaultMatcherPackage', function () {
+    beforeEach(function () {
         $this->prophet = new Prophet();
 
         $registry = $this->prophet->prophesize('expect\MatcherRegistry');
@@ -17,7 +16,7 @@ describe('DefaultMatcherPackage', function() {
         $this->registry = $registry->reveal();
         $this->package = new DefaultMatcherPackage();
     });
-    it('register package', function() {
+    it('register package', function () {
         $this->package->registerTo($this->registry);
         $this->prophet->checkPredictions();
     });

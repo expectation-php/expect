@@ -9,17 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
 
-
-final class ToEqual implements Matcher
+final class ToEqual implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
 
@@ -34,6 +29,7 @@ final class ToEqual implements Matcher
     public function match($actual)
     {
         $this->actual = $actual;
+
         return $this->actual === $this->expected;
     }
 
@@ -45,7 +41,7 @@ final class ToEqual implements Matcher
         $message->appendText('expected ')
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText("     got ")
+            ->appendText('     got ')
             ->appendValue($this->actual);
     }
 
@@ -57,8 +53,7 @@ final class ToEqual implements Matcher
         $message->appendText('expected not ')
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText("         got ")
+            ->appendText('         got ')
             ->appendValue($this->actual);
     }
-
 }

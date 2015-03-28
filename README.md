@@ -1,10 +1,11 @@
-expect
+Expect
 ========================
 
 [![Build Status](https://travis-ci.org/expectation-php/expect.svg?branch=master)](https://travis-ci.org/expectation-php/expect)
 [![HHVM Status](http://hhvm.h4cc.de/badge/expect/expect.svg)](http://hhvm.h4cc.de/package/expect/expect)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/expectation-php/expect/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/expectation-php/expect/?branch=master)
 [![Coverage Status](https://coveralls.io/repos/expectation-php/expect/badge.svg)](https://coveralls.io/r/expectation-php/expect)
+[![Dependency Status](https://www.versioneye.com/user/projects/550f6a8da4c2d7527000010c/badge.svg?style=flat)](https://www.versioneye.com/user/projects/550f6a8da4c2d7527000010c)  
 [![Stories in Ready](https://badge.waffle.io/expectation-php/expect.png?label=ready&title=Ready)](https://waffle.io/expectation-php/expect)
 [![Latest Stable Version](https://poser.pugx.org/expect/expect/v/stable.svg)](https://packagist.org/packages/expect/expect)
 [![License](https://poser.pugx.org/expect/expect/license.svg)](https://packagist.org/packages/expect/expect)
@@ -22,6 +23,21 @@ Expect::configure($configurator);
 Expect::that(true)->toEqual(true); //pass
 Expect::that(false)->toEqual(true); //failed
 ```
+
+### Learn detailed document
+
+* API Document - [http://expectation-php.github.io/expect/](http://expectation-php.github.io/expect/)
+
+
+
+Other recommended library
+------------------------
+
+If you did not like this library, please try the following library.
+
+* [Leo](http://peridot-php.github.io/leo/) - Assertions and matcher library, in peridot and affinity is good.
+* [Assert](https://github.com/beberlei/assert) - Simple assertion library, Assertion api is easy to use with simple.
+
 
 All of matcher
 ------------------------
@@ -201,4 +217,22 @@ Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar', 'bar1'); //failed
 ```php
 Expect::that([ 'foo' => 1 ])->toHaveKey('foo'); //pass
 Expect::that([ 'foo' => 1 ])->toHaveKey('bar'); //failed
+```
+
+### ToBeTruthy
+
+```php
+Expect::that(true)->ToBeTruthy(); //pass
+Expect::that('')->ToBeTruthy(); //pass
+Expect::that(0)->ToBeTruthy(); //pass
+Expect::that(false)->ToBeTruthy(); //failed
+```
+
+### ToBeFalsey
+
+```php
+Expect::that(false)->ToBeFalsey(); //pass
+Expect::that(null)->ToBeFalsey(); //pass
+Expect::that('')->ToBeFalsey(); //failed
+Expect::that(0)->ToBeFalsey(); //failed
 ```

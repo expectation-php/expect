@@ -11,14 +11,11 @@
 
 namespace expect;
 
-
 interface Configuration
 {
-
     public function getResultReporter();
 
     public function getMatcherPackages();
 
     public function merge(Configuration $config);
-
 }

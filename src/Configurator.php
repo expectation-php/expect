@@ -11,10 +11,7 @@
 
 namespace expect;
 
-
 interface Configurator
 {
-
     public function configure();
-
 }

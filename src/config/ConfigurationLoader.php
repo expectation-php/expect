@@ -11,18 +11,11 @@
 
 namespace expect\config;
 
-
-use expect\config\RuntimeConfiguration;
-use expect\reporter\TextMessageReporter;
-use expect\package\DefaultMatcherPackage;
-use Yosymfony\Toml\Toml;
 use Easy\Collections\Dictionary;
-
-
+use Yosymfony\Toml\Toml;
 
 class ConfigurationLoader
 {
-
     public function loadFromFile($file)
     {
         if (file_exists($file) === false) {
@@ -42,10 +35,9 @@ class ConfigurationLoader
         $loadedPackages = [];
         $loadedReporter = null;
 
-
         if ($config->containsKey('packages')) {
             $packages = $config->get('packages');
-            $loadedpPackages = $this->loadPackages( $packages->toArray() );
+            $loadedpPackages = $this->loadPackages($packages->toArray());
         }
 
         if ($config->containsKey('reporter')) {
@@ -73,5 +65,4 @@ class ConfigurationLoader
     {
         return new $reporter();
     }
-
 }

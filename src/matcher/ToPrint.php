@@ -9,17 +9,12 @@
  * with this source code in the file LICENSE.
  */
 
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
 
-
-final class ToPrint implements Matcher
+final class ToPrint implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
 
@@ -44,7 +39,7 @@ final class ToPrint implements Matcher
     {
         $message->appendText('expected ')
             ->appendValue($this->expected)
-            ->appendText(", got ")
+            ->appendText(', got ')
             ->appendValue($this->actual);
     }
 
@@ -56,5 +51,4 @@ final class ToPrint implements Matcher
         $message->appendText('expected output other than ')
             ->appendValue($this->expected);
     }
-
 }

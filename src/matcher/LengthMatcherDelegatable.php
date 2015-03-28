@@ -13,15 +13,12 @@ namespace expect\matcher;
 
 use expect\FailedMessage;
 
-
 trait LengthMatcherDelegatable
 {
-
     /**
      * @var \expect\matcher\ToHaveLength
      */
     private $lengthMatcher;
-
 
     /**
      * {@inheritdoc}
@@ -46,5 +43,4 @@ trait LengthMatcherDelegatable
     {
         return $this->lengthMatcher->reportNegativeFailed($message);
     }
-
 }

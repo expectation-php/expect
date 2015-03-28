@@ -11,18 +11,13 @@
 
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
 
-
-final class ToBeAn implements Matcher
+final class ToBeAn implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
     private $actualType;
-
 
     public function __construct($expected)
     {
@@ -47,7 +42,7 @@ final class ToBeAn implements Matcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" to be an ")
+            ->appendText(' to be an ')
             ->appendText($this->expected);
     }
 
@@ -58,7 +53,7 @@ final class ToBeAn implements Matcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" not to be an ")
+            ->appendText(' not to be an ')
             ->appendText($this->expected);
     }
 
@@ -69,5 +64,4 @@ final class ToBeAn implements Matcher
 
         return $detectType;
     }
-
 }

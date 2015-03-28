@@ -11,12 +11,9 @@
 
 namespace expect;
 
-
 interface ResultReporter
 {
-
     public function reportFailed(FailedMessage $message);
 
     public function reportNegativeFailed(FailedMessage $message);
-
 }

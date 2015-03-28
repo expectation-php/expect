@@ -9,29 +9,26 @@
  * with this source code in the file LICENSE.
  */
 
-
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
-use expect\matcher\strategy\StringInclusionStrategy;
+use expect\Matcher;
 use expect\matcher\strategy\ArrayInclusionStrategy;
+use expect\matcher\strategy\StringInclusionStrategy;
 
 /**
  * <code>
  * <?php
  *     Expect::that('foo')->toContain('foo'); //pass
- *     Expect::that('foo')->toContain('foo', 'bar'); //failed
+ *     Expect::that('foo')->toContain('foo', 'bar'); //failed.
  *
  *     Expect::that([ 'foo', 'bar' ])->toContain('foo'); //pass
  *     Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar'); //pass
  *     Expect::that([ 'foo', 'bar' ])->toContain('foo', 'bar', 'bar1'); //failed
  * </code>
  */
-final class ToContain implements Matcher
+final class ToContain implements ReportableMatcher
 {
-
     /**
      * @var string
      */
@@ -52,10 +49,9 @@ final class ToContain implements Matcher
      */
     private $expectValues;
 
-
     public function __construct($expected)
     {
-        $this->expectValues = is_array($expected) ? $expected : [ $expected ];
+        $this->expectValues = is_array($expected) ? $expected : [$expected];
     }
 
     /**
@@ -80,7 +76,7 @@ final class ToContain implements Matcher
 
         $message->appendText('expected ')
             ->appendText($this->type)
-            ->appendText(" to contain ")
+            ->appendText(' to contain ')
             ->appendValues($unmatchResults);
     }
 
@@ -93,7 +89,7 @@ final class ToContain implements Matcher
 
         $message->appendText('expected ')
             ->appendText($this->type)
-            ->appendText(" not to contain ")
+            ->appendText(' not to contain ')
             ->appendValues($matchResults);
     }
 
@@ -104,12 +100,11 @@ final class ToContain implements Matcher
         if (is_string($this->actual)) {
             $this->type = 'string';
             $strategy = new StringInclusionStrategy($this->actual);
-        } else if (is_array($this->actual)) {
+        } elseif (is_array($this->actual)) {
             $this->type = 'array';
             $strategy = new ArrayInclusionStrategy($this->actual);
         }
 
         return $strategy;
     }
-
 }

@@ -11,22 +11,16 @@
 
 namespace expect\config;
 
-
 use expect\Configuration;
 use expect\ResultReporter;
-use expect\reporter\TextMessageReporter;
-
 
 class RuntimeConfiguration implements Configuration
 {
-
     use ConfigurableConfiguration;
-
 
     public function __construct(array $matcherPackages, ResultReporter $resultReporter)
     {
         $this->resultReporter = $resultReporter;
         $this->matcherPackages = $matcherPackages;
     }
-
 }

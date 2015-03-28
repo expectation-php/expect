@@ -1,15 +1,14 @@
 <?php
 
-use expect\MatcherPackage;
 use Assert\Assertion;
-use Prophecy\Prophet;
+use expect\MatcherPackage;
 use Prophecy\Argument;
+use Prophecy\Prophet;
 
+describe('MatcherPackage', function () {
 
-describe('MatcherPackage', function() {
-
-    describe('#registerTo', function() {
-        beforeEach(function() {
+    describe('#registerTo', function () {
+        beforeEach(function () {
             $this->prophet = new Prophet();
 
             $registry = $this->prophet->prophesize('expect\MatcherRegistry');
@@ -19,7 +18,7 @@ describe('MatcherPackage', function() {
             $this->registry = $registry->reveal();
             $this->package = new MatcherPackage('expect\fixture\matcher', __DIR__ . '/fixtures/matcher');
         });
-        it('package register', function() {
+        it('package register', function () {
             $this->package->registerTo($this->registry);
             $this->prophet->checkPredictions();
         });

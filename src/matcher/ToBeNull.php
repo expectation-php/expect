@@ -11,19 +11,12 @@
 
 namespace expect\matcher;
 
-
-use expect\Matcher;
-use expect\matcher\EqualMatcherDelegatable;
-
-
-final class ToBeNull implements Matcher
+final class ToBeNull implements ReportableMatcher
 {
-
     use EqualMatcherDelegatable;
 
     public function __construct()
     {
         $this->equalMatcher = new ToEqual(null);
     }
-
 }

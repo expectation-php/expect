@@ -11,19 +11,14 @@
 
 namespace expect\matcher;
 
-
-use expect\Matcher;
+use Exception;
 use expect\FailedMessage;
-use \Exception;
 
-
-final class ToThrow implements Matcher
+final class ToThrow implements ReportableMatcher
 {
-
     private $actual;
     private $expected;
     private $thrownException;
-
 
     public function __construct($expected)
     {
@@ -73,5 +68,4 @@ final class ToThrow implements Matcher
             ->appendText($this->expected)
             ->appendText(' not to be thrown');
     }
-
 }

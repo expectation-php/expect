@@ -11,7 +11,6 @@
 
 namespace expect;
 
-
 interface Message
 {
 }

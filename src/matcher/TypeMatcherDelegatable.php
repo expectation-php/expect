@@ -13,15 +13,12 @@ namespace expect\matcher;
 
 use expect\FailedMessage;
 
-
 trait TypeMatcherDelegatable
 {
-
     /**
      * @var \expect\matcher\ToBeAn
      */
     private $typeMatcher;
-
 
     /**
      * {@inheritdoc}
@@ -46,5 +43,4 @@ trait TypeMatcherDelegatable
     {
         return $this->typeMatcher->reportNegativeFailed($message);
     }
-
 }

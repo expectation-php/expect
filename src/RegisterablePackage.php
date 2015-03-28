@@ -11,10 +11,7 @@
 
 namespace expect;
 
-
 interface RegisterablePackage
 {
-
     public function registerTo(MatcherRegistry $registry);
-
 }

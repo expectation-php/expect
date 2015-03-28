@@ -11,15 +11,12 @@
 
 namespace expect\matcher\strategy;
 
-
 final class ArrayInclusionStrategy implements InclusionStrategy
 {
-
     /**
      * @var array
      */
     private $actualValues;
-
 
     /**
      * @param array actualValues
@@ -33,7 +30,7 @@ final class ArrayInclusionStrategy implements InclusionStrategy
      * <code>
      * <?php
      *     $strategy = new ArrayInclusionStrategy([ 1, 2 ]);
-     *     $result = $strategy->match([ 1, 2, 3 ]);
+     *     $result = $strategy->match([ 1, 2, 3 ]);.
      *
      *     var_dump($result->isMatched()) // true
      *     var_dump($result->getMatchResults()); // [ 1, 2 ]
@@ -58,5 +55,4 @@ final class ArrayInclusionStrategy implements InclusionStrategy
 
         return new InclusionResult($expectValues, $matchResults, $unmatchResults);
     }
-
 }

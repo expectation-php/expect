@@ -14,10 +14,8 @@ namespace expect\reporter;
 use expect\FailedMessage;
 use expect\ResultReporter;
 
-
 class ExceptionReporter implements ResultReporter
 {
-
     public function reportFailed(FailedMessage $message)
     {
         throw new FailedException($message);
@@ -27,5 +25,4 @@ class ExceptionReporter implements ResultReporter
     {
         throw new FailedException($message);
     }
-
 }

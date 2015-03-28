@@ -11,13 +11,10 @@
 
 namespace expect;
 
-
 interface ContextFactory
 {
-
     /**
      * @return \expect\Context
      */
     public function newContext();
-
 }

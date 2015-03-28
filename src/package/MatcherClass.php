@@ -11,13 +11,10 @@
 
 namespace expect\package;
 
-
 use ReflectionClass;
-
 
 class MatcherClass
 {
-
     private $namespace;
     private $className;
 
@@ -29,7 +26,7 @@ class MatcherClass
 
     public function getName()
     {
-        return $this->namespace . '\\' . $this->className;
+        return $this->namespace.'\\'.$this->className;
     }
 
     public function getClassName()
@@ -49,5 +46,4 @@ class MatcherClass
     {
         return $this->getName();
     }
-
 }

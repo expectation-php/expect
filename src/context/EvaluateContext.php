@@ -11,22 +11,17 @@
 
 namespace expect\context;
 
-
 use expect\Context;
+use expect\MatcherEvaluator;
 use expect\MatcherFactory;
 use expect\ResultReporter;
-use expect\MatcherEvaluator;
-
-
 
 class EvaluateContext implements Context
 {
-
     private $actual;
     private $negated;
     private $factory;
     private $reporter;
-
 
     public function __construct(MatcherFactory $factory, ResultReporter $reporter)
     {
@@ -39,12 +34,14 @@ class EvaluateContext implements Context
     public function actual($actual)
     {
         $this->actual = $actual;
+
         return $this;
     }
 
     public function not()
     {
         $this->negated = true;
+
         return $this;
     }
 
@@ -70,5 +67,4 @@ class EvaluateContext implements Context
             $this->evaluate($name, $arguments);
         }
     }
-
 }

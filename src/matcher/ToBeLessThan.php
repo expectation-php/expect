@@ -11,21 +11,16 @@
 
 namespace expect\matcher;
 
-
-use expect\Matcher;
 use expect\FailedMessage;
 
-
-final class ToBeLessThan implements Matcher
+final class ToBeLessThan implements ReportableMatcher
 {
-
     const OPERAND = '<';
 
     private $actual;
     private $expected;
     private $actualPadding = 3;
     private $expectedPadding = 1;
-
 
     public function __construct($expected)
     {
@@ -41,6 +36,7 @@ final class ToBeLessThan implements Matcher
     {
         $this->actual = $actual;
         $this->calculatePadding();
+
         return $this->actual < $this->expected;
     }
 
@@ -51,15 +47,15 @@ final class ToBeLessThan implements Matcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" to be less than ")
+            ->appendText(' to be less than ')
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText("expected: ")
+            ->appendText('expected: ')
             ->appendText(self::OPERAND)
             ->appendSpace($this->expectedPadding)
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText("     got:")
+            ->appendText('     got:')
             ->appendSpace($this->actualPadding)
             ->appendValue($this->actual);
     }
@@ -71,7 +67,7 @@ final class ToBeLessThan implements Matcher
     {
         $message->appendText('expected ')
             ->appendValue($this->actual)
-            ->appendText(" not to be less than ")
+            ->appendText(' not to be less than ')
             ->appendValue($this->expected);
     }
 
@@ -87,5 +83,4 @@ final class ToBeLessThan implements Matcher
             $this->actualPadding += ($expectedLength - $actualLength) + $operandLength;
         }
     }
-
 }

@@ -12,28 +12,48 @@
 namespace expect;
 
 use expect\registry\MatcherNotRegistered;
-use expect\registry\MatcherAlreadyRegistered;
 
-
+/**
+ * Implementation of container.
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ *
+ * @see \expect\MatcherContainer
+ */
 trait MatcherLookupTable
 {
-
     /**
+     * Dictionary of matcher class.
+     *
      * @var \Easy\Collections\Dictionary
      */
     private $matchers;
 
-
+    /**
+     * {@inheritdoc}
+     */
     public function has($name)
     {
         return $this->matchers->containsKey($name);
     }
 
+    /**
+     * Find the matcher class by name.
+     * Returns true if it is not found.
+     *
+     * @param string $name macther name
+     *
+     * @return bool
+     */
     public function hasNot($name)
     {
         return $this->has($name) === false;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function get($name)
     {
         if ($this->hasNot($name)) {
@@ -44,5 +64,4 @@ trait MatcherLookupTable
 
         return $matcherClass;
     }
-
 }

@@ -11,19 +11,14 @@
 
 namespace expect\context;
 
-
 use expect\ContextFactory;
 use expect\MatcherFactory;
 use expect\ResultReporter;
 
-
-
 class DefaultContextFactory implements ContextFactory
 {
-
     private $factory;
     private $reporter;
-
 
     public function __construct(MatcherFactory $factory, ResultReporter $reporter)
     {
@@ -38,5 +33,4 @@ class DefaultContextFactory implements ContextFactory
     {
         return new EvaluateContext($this->factory, $this->reporter);
     }
-
 }
