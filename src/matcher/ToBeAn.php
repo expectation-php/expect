@@ -13,12 +13,45 @@ namespace expect\matcher;
 
 use expect\FailedMessage;
 
+/**
+ * Verify whether the value is of a type that expect.
+ *
+ * <code>
+ * $matcher = new ToBeAn('string');
+ * $matcher->match('foo'); //return true
+ *
+ * $matcher->match(1); //return false
+ * </code>
+ *
+ * @package expect\matcher
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 final class ToBeAn implements ReportableMatcher
 {
+
+    /**
+     * @var mixed
+     */
     private $actual;
+
+    /**
+     * @var string
+     */
     private $expected;
+
+    /**
+     * type of value
+     *
+     * @var string
+     */
     private $actualType;
 
+    /**
+     * Create a new matcher
+     *
+     * @param $expected expected value
+     */
     public function __construct($expected)
     {
         $this->expected = $expected;
@@ -40,7 +73,7 @@ final class ToBeAn implements ReportableMatcher
      */
     public function reportFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' to be an ')
             ->appendText($this->expected);
@@ -51,12 +84,16 @@ final class ToBeAn implements ReportableMatcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
-        $message->appendText('expected ')
+        $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' not to be an ')
             ->appendText($this->expected);
     }
 
+    /**
+     * @param mixed $value
+     * @return string type name
+     */
     private function detectType($value)
     {
         $detectType = gettype($value);

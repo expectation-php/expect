@@ -32,7 +32,7 @@ describe('ToBeAn', function () {
         it('report failed message', function () {
             $this->matcher->match(1);
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "\nexpected 1 to be an string\n");
+            Assertion::same((string) $this->message, "\nExpected 1 to be an string\n");
         });
     });
 
@@ -44,7 +44,7 @@ describe('ToBeAn', function () {
         it('report failed message', function () {
             $this->matcher->match("foo");
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "\nexpected 'foo' not to be an string\n");
+            Assertion::same((string) $this->message, "\nExpected 'foo' not to be an string\n");
         });
     });
 
