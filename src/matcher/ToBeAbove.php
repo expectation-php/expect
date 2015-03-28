@@ -11,10 +11,27 @@
 
 namespace expect\matcher;
 
+/**
+ * Alias of ToBeGreaterThan
+ *
+ * <code>
+ * $matcher = new ToBeAbove(100);
+ * $matcher->match(101); //return true
+ *
+ * $matcher->match(99); //return false
+ * </code>
+ *
+ * @package expect\matcher
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 final class ToBeAbove implements ReportableMatcher
 {
     use GreaterThanMatcherDelegatable;
 
+    /**
+     * @param int|float $expected
+     */
     public function __construct($expected)
     {
         $this->greaterThanMatcher = new ToBeGreaterThan($expected);
