@@ -21,7 +21,7 @@ use expect\FailedMessage;
  * $matcher->match(1); //return true
  *
  * $matcher->match(11); //return false
- * <code>
+ * </code>
  *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
