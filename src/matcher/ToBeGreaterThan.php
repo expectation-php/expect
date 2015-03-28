@@ -41,6 +41,8 @@ final class ToBeGreaterThan implements ReportableMatcher
     private $expected;
 
     /**
+     * Create a new matcher
+     *
      * @param int|float $expected expected value
      */
     public function __construct($expected)
