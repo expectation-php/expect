@@ -76,7 +76,13 @@ final class ToBeAn implements ReportableMatcher
         $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' to be an ')
-            ->appendText($this->expected);
+            ->appendText($this->expected)
+            ->appendText("\n\n")
+            ->appendText('    expected: ')
+            ->appendText($this->expected)
+            ->appendText("\n")
+            ->appendText('         got: ')
+            ->appendText($this->actualType);
     }
 
     /**
@@ -87,7 +93,13 @@ final class ToBeAn implements ReportableMatcher
         $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' not to be an ')
-            ->appendText($this->expected);
+            ->appendText($this->expected)
+            ->appendText("\n\n")
+            ->appendText('    expected not: ')
+            ->appendText($this->expected)
+            ->appendText("\n")
+            ->appendText('             got: ')
+            ->appendText($this->actualType);
     }
 
     /**
