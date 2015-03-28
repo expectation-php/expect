@@ -30,9 +30,9 @@ describe('ToBeAnInstanceOf', function () {
             $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
             $this->message = new FailedMessage();
 
-            $this->expectedMessage  = "\nExpected stdClass to be an instance of expect\Matcher\n\n";
+            $this->expectedMessage  = "Expected stdClass to be an instance of expect\Matcher\n\n";
             $this->expectedMessage .= "    expected: expect\Matcher\n";
-            $this->expectedMessage .= "         got: stdClass\n";
+            $this->expectedMessage .= "         got: stdClass";
         });
         it('report failed message', function () {
             $this->matcher->match(new stdClass());
@@ -46,9 +46,9 @@ describe('ToBeAnInstanceOf', function () {
             $this->matcher = new ToBeAnInstanceOf("expect\matcher\ToBeAnInstanceOf");
             $this->message = new FailedMessage();
 
-            $this->expectedMessage  = "\nExpected expect\matcher\ToBeAnInstanceOf not to be an instance of expect\matcher\ToBeAnInstanceOf\n\n";
+            $this->expectedMessage  = "Expected expect\matcher\ToBeAnInstanceOf not to be an instance of expect\matcher\ToBeAnInstanceOf\n\n";
             $this->expectedMessage .= "    expected not: expect\matcher\ToBeAnInstanceOf\n";
-            $this->expectedMessage .= "             got: expect\matcher\ToBeAnInstanceOf\n";
+            $this->expectedMessage .= "             got: expect\matcher\ToBeAnInstanceOf";
         });
         it('report failed message', function () {
             $this->matcher->match($this->matcher);

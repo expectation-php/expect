@@ -28,9 +28,9 @@ describe('ToEqual', function () {
         beforeEach(function () {
             $this->matcher = new ToEqual(true);
             $this->message = new FailedMessage();
-            $this->expectedMessage  = "\nExpected false to be true\n\n";
+            $this->expectedMessage  = "Expected false to be true\n\n";
             $this->expectedMessage .= "    expected: true\n";
-            $this->expectedMessage .= "         got: false\n";
+            $this->expectedMessage .= "         got: false";
         });
         it('report failed message', function () {
             $this->matcher->match(false);
@@ -43,9 +43,9 @@ describe('ToEqual', function () {
         beforeEach(function () {
             $this->matcher = new ToEqual(true);
             $this->message = new FailedMessage();
-            $this->expectedMessage  = "\nExpected true not to be true\n\n";
+            $this->expectedMessage  = "Expected true not to be true\n\n";
             $this->expectedMessage .= "    expected not: true\n";
-            $this->expectedMessage .= "             got: true\n";
+            $this->expectedMessage .= "             got: true";
         });
         it('report failed message', function () {
             $this->matcher->match(true);

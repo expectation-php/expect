@@ -18,11 +18,11 @@ class TextMessageReporter implements ResultReporter
 {
     public function reportFailed(FailedMessage $message)
     {
-        echo (string) $message;
+        echo (string) $message, "\n";
     }
 
     public function reportNegativeFailed(FailedMessage $message)
     {
-        echo (string) $message;
+        echo (string) $message, "\n";
     }
 }

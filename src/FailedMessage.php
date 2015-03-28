@@ -11,6 +11,12 @@
 
 namespace expect;
 
+/**
+ * Message when validation fails
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 class FailedMessage implements Message
 {
     /**
@@ -18,11 +24,20 @@ class FailedMessage implements Message
      */
     private $message;
 
+    /**
+     * @param string $message
+     */
     public function __construct($message = '')
     {
         $this->message = $message;
     }
 
+    /**
+     * Append the text to the last
+     *
+     * @param string $text
+     * @return $this
+     */
     public function appendText($text)
     {
         $this->message = $this->message.$text;
@@ -30,13 +45,26 @@ class FailedMessage implements Message
         return $this;
     }
 
+    /**
+     * Append the length space
+     *
+     * @param int $length
+     * @return $this
+     */
     public function appendSpace($length)
     {
-        $this->message = $this->message.str_pad('', $length, ' ');
+        $paddingLength = (int) $length;
+        $this->message = $this->message.str_pad('', $paddingLength, ' ');
 
         return $this;
     }
 
+    /**
+     * Append the value to the last
+     *
+     * @param mixed $value
+     * @return $this
+     */
     public function appendValue($value)
     {
         $appendValue = $this->stringify($value);
@@ -45,6 +73,12 @@ class FailedMessage implements Message
         return $this;
     }
 
+    /**
+     * Append the values to the last
+     *
+     * @param array $values
+     * @return $this
+     */
     public function appendValues(array $values)
     {
         $appendValues = [];
@@ -79,13 +113,11 @@ class FailedMessage implements Message
 
     public function __toString()
     {
-        return "\n".$this->message."\n";
+        return $this->message;
     }
 
     private function stringify($value)
     {
-        $appendValue = '';
-
         if (is_string($value)) {
             $appendValue = "'".$value."'";
         } elseif (is_null($value)) {

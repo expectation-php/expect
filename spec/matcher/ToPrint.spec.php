@@ -38,7 +38,7 @@ describe('ToPrint', function () {
                 echo 'bar';
             });
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "\nExpected 'foo', got 'bar'\n");
+            Assertion::same((string) $this->message, "Expected 'foo', got 'bar'");
         });
     });
 
@@ -52,7 +52,7 @@ describe('ToPrint', function () {
                 echo 'foo';
             });
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "\nExpected output other than 'foo'\n");
+            Assertion::same((string) $this->message, "Expected output other than 'foo'");
         });
     });
 

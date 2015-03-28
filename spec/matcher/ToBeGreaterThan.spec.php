@@ -29,9 +29,9 @@ describe('ToBeGreaterThan', function () {
             $this->matcher = new ToBeGreaterThan(100);
             $this->message = new FailedMessage();
 
-            $this->expectedMessage  = "\nExpected 99 to be greater than 100\n\n";
+            $this->expectedMessage  = "Expected 99 to be greater than 100\n\n";
             $this->expectedMessage .= "    expected: >= 100\n";
-            $this->expectedMessage .= "         got:    99\n";
+            $this->expectedMessage .= "         got:    99";
         });
         it('report failed message', function () {
             $this->matcher->match(99);
@@ -45,9 +45,9 @@ describe('ToBeGreaterThan', function () {
             $this->matcher = new ToBeGreaterThan(100);
             $this->message = new FailedMessage();
 
-            $this->expectedMessage  = "\nExpected 100 not to be greater than 100\n\n";
+            $this->expectedMessage  = "Expected 100 not to be greater than 100\n\n";
             $this->expectedMessage .= "    expected not: >= 100\n";
-            $this->expectedMessage .= "             got:    100\n";
+            $this->expectedMessage .= "             got:    100";
         });
         it('report failed message', function () {
             $this->matcher->match(100);

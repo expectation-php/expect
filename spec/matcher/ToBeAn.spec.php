@@ -29,9 +29,9 @@ describe('ToBeAn', function () {
             $this->matcher = new ToBeAn("string");
             $this->message = new FailedMessage();
 
-            $this->expectedMessage  = "\nExpected 1 to be an string\n\n";
+            $this->expectedMessage  = "Expected 1 to be an string\n\n";
             $this->expectedMessage .= "    expected: string\n";
-            $this->expectedMessage .= "         got: integer\n";
+            $this->expectedMessage .= "         got: integer";
         });
         it('report failed message', function () {
             $this->matcher->match(1);
@@ -45,9 +45,9 @@ describe('ToBeAn', function () {
             $this->matcher = new ToBeAn("string");
             $this->message = new FailedMessage();
 
-            $this->expectedMessage  = "\nExpected 'foo' not to be an string\n\n";
+            $this->expectedMessage  = "Expected 'foo' not to be an string\n\n";
             $this->expectedMessage .= "    expected not: string\n";
-            $this->expectedMessage .= "             got: string\n";
+            $this->expectedMessage .= "             got: string";
         });
         it('report failed message', function () {
             $this->matcher->match("foo");

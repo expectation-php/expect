@@ -48,9 +48,9 @@ describe('ToHaveLength', function () {
             $this->matcher->match("foo");
             $this->matcher->reportFailed($this->message);
 
-            $this->expectedMessage  = "\nExpected string to have a length of 4\n\n";
+            $this->expectedMessage  = "Expected string to have a length of 4\n\n";
             $this->expectedMessage .= "    expected: 4\n";
-            $this->expectedMessage .= "      length: 3\n";
+            $this->expectedMessage .= "      length: 3";
 
             Assertion::same((string) $this->message, $this->expectedMessage);
         });
@@ -61,9 +61,9 @@ describe('ToHaveLength', function () {
             $this->matcher = new ToHaveLength(3);
             $this->message = new FailedMessage();
 
-            $this->expectedMessage  = "\nExpected string not to have a length of 3\n\n";
+            $this->expectedMessage  = "Expected string not to have a length of 3\n\n";
             $this->expectedMessage .= "    expected not: 3\n";
-            $this->expectedMessage .= "          length: 3\n";
+            $this->expectedMessage .= "          length: 3";
         });
         it('report failed message', function () {
             $this->matcher->match("foo");

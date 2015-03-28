@@ -32,7 +32,7 @@ describe('ToMatch', function () {
         it('report failed message', function () {
             $this->matcher->match('bar');
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "\nExpected 'bar' to match /foo/\n");
+            Assertion::same((string) $this->message, "Expected 'bar' to match /foo/");
         });
     });
 
@@ -44,7 +44,7 @@ describe('ToMatch', function () {
         it('report failed message', function () {
             $this->matcher->match('foo');
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "\nExpected 'foo' not to match /foo/\n");
+            Assertion::same((string) $this->message, "Expected 'foo' not to match /foo/");
         });
     });
 

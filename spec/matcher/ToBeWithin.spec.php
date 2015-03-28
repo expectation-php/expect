@@ -32,7 +32,7 @@ describe('ToBeWithin', function () {
         it('report failed message', function () {
             $this->matcher->match(9);
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "\nExpected 9 to be within 10 between 20\n");
+            Assertion::same((string) $this->message, "Expected 9 to be within 10 between 20");
         });
     });
 
@@ -44,7 +44,7 @@ describe('ToBeWithin', function () {
         it('report failed message', function () {
             $this->matcher->match(10);
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "\nExpected 10 not to be within 10 between 20\n");
+            Assertion::same((string) $this->message, "Expected 10 not to be within 10 between 20");
         });
     });
 

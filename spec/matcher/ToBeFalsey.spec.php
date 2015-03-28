@@ -48,7 +48,7 @@ describe('ToBeFalsey', function () {
         it('report failed message', function () {
             $this->matcher->match(true);
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "\nExpected falsey value, got true\n");
+            Assertion::same((string) $this->message, "Expected falsey value, got true");
         });
     });
     describe('#reportNegativeFailed', function () {
@@ -59,7 +59,7 @@ describe('ToBeFalsey', function () {
         it('report failed message', function () {
             $this->matcher->match(false);
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "\nExpected truthy value, got false\n");
+            Assertion::same((string) $this->message, "Expected truthy value, got false");
         });
     });
 });
