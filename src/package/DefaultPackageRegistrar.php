@@ -20,7 +20,7 @@ use expect\PackageRegistrar;
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
-class DefaultPackageRegistrar implements PackageRegistrar
+final class DefaultPackageRegistrar implements PackageRegistrar
 {
 
     /**

@@ -15,16 +15,43 @@ use expect\MatcherPackage;
 use expect\MatcherRegistry;
 use expect\RegisterablePackage;
 
-class DefaultMatcherPackage implements RegisterablePackage
+
+/**
+ * Default matcher package
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
+final class DefaultMatcherPackage implements RegisterablePackage
 {
+
+    /**
+     * @var string
+     */
+    private $matcherNamespace;
+
+    /**
+     * @var string
+     */
+    private $matcherDirectory;
+
+    /**
+     * Create a new matcher package
+     */
+    public function __construct()
+    {
+        $this->matcherNamespace = '\\expect\\matcher';
+        $this->matcherDirectory = realpath(__DIR__ . '/../matcher');
+    }
+
     /**
      * {@inheritdoc}
      */
     public function registerTo(MatcherRegistry $registry)
     {
         $matcherPackage = new MatcherPackage(
-            '\\expect\\matcher',
-            __DIR__.'/../matcher'
+            $this->matcherNamespace,
+            $this->matcherDirectory
         );
         $matcherPackage->registerTo($registry);
     }
