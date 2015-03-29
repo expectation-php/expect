@@ -46,7 +46,7 @@ class MatcherPackage implements RegisterablePackage
      */
     public function __construct($namespace, $namespaceDirectory)
     {
-        $this->namespace = $namespace;
+        $this->namespace = $this->normalizeNamespace($namespace);
         $this->namespaceDirectory = $namespaceDirectory;
     }
 
@@ -87,6 +87,18 @@ class MatcherPackage implements RegisterablePackage
         return new ArrayIterator($matchers);
     }
 
+    private function normalizeNamespace($namespace)
+    {
+        $normalizeNamespace = $namespace;
+        $lastCharAt = strlen($namespace) - 1;
+
+        if (substr($namespace, $lastCharAt) === '\\') {
+            $normalizeNamespace = substr($namespace, 0, $lastCharAt);
+        }
+
+        return $normalizeNamespace;
+    }
+
     /**
      * Create a new matcher package from composer.json
      *
@@ -107,10 +119,6 @@ class MatcherPackage implements RegisterablePackage
 
         $namespace = $psr4Pair->first;
         $namespaceDirectory = realpath($composerJsonDirectory . '/' . $psr4Pair->second);
-
-        if (substr($namespace, strlen($namespace) - 1) === '\\') {
-            $namespace = substr($namespace, 0, strlen($namespace) - 1);
-        }
 
         return new self($namespace, $namespaceDirectory);
     }
