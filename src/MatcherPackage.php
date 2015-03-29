@@ -11,10 +11,10 @@
 
 namespace expect;
 
-use ArrayIterator;
 use expect\package\MatcherClass;
 use expect\package\ReflectionIterator;
-use Collections\Dictionary;
+use Noodlehaus\Config;
+use ArrayIterator;
 
 
 /**
@@ -106,19 +106,14 @@ class MatcherPackage implements RegisterablePackage
      */
     public static function fromPackageFile($composerJson)
     {
+        $config = Config::load($composerJson);
+        $autoload = $config->get('autoload.psr-4');
+
         $composerJsonDirectory = dirname($composerJson);
 
-        $content = file_get_contents($composerJson);
-        $jsonValue = json_decode($content, true);
-
-        $json = Dictionary::fromArray($jsonValue);
-        $autoload = $json->get('autoload');
-
-        $psr4 = $autoload->get('psr-4');
-        $psr4Pair = array_shift( $psr4->values() );
-
-        $namespace = $psr4Pair->first;
-        $namespaceDirectory = realpath($composerJsonDirectory . '/' . $psr4Pair->second);
+        $namespace = array_shift(array_keys($autoload));
+        $namespaceDirectory = array_shift(array_values($autoload));
+        $namespaceDirectory = realpath($composerJsonDirectory . '/' . $namespaceDirectory);
 
         return new self($namespace, $namespaceDirectory);
     }
