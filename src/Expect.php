@@ -11,13 +11,34 @@
 
 namespace expect;
 
+use expect\configurator\DefaultConfigurator;
+
+/**
+ * Expect
+ *
+ * @package expect
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 final class Expect implements Configurable
 {
+
+    /**
+     * @var \expect\ContextFactory
+     */
     private static $contextFactory;
 
-    public static function configure(Configurator $configurator)
+    /**
+     * {@inheritdoc}
+     */
+    public static function configure(Configurator $configurator = null)
     {
-        static::$contextFactory = $configurator->configure();
+        $useConfigurator = $configurator;
+
+        if ($useConfigurator === null) {
+            $useConfigurator = new DefaultConfigurator();
+        }
+        static::$contextFactory = $useConfigurator->configure();
     }
 
     /**
