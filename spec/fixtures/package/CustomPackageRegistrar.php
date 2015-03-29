@@ -12,9 +12,10 @@ namespace expect\fixture\package;
 
 use expect\MatcherPackage;
 use expect\MatcherRegistry;
-use expect\RegisterablePackage;
+use expect\PackageRegistrar;
 
-class CustomPackage implements RegisterablePackage
+
+class CustomPackageRegistrar implements PackageRegistrar
 {
     /**
      * {@inheritdoc}

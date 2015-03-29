@@ -37,7 +37,7 @@ class ConfigurationLoader
 
         if ($config->containsKey('packages')) {
             $packages = $config->get('packages');
-            $loadedpPackages = $this->loadPackages($packages->toArray());
+            $loadedPackages = $this->loadPackages($packages->toArray());
         }
 
         if ($config->containsKey('reporter')) {

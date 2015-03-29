@@ -11,21 +11,43 @@
 
 namespace expect;
 
-use ArrayIterator;
 use expect\package\MatcherClass;
 use expect\package\ReflectionIterator;
+use expect\package\ComposerJsonNotFoundException;
+use Noodlehaus\Config;
+use ArrayIterator;
 
-class MatcherPackage implements RegisterablePackage
+
+/**
+ * Matcher package
+ *
+ * @package expect
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
+final class MatcherPackage implements RegisterablePackage
 {
+    const MATCHER = '\expect\matcher\ReportableMatcher';
+
+    /**
+     * @var string
+     */
     private $namespace;
+
+    /**
+     * @var string
+     */
     private $namespaceDirectory;
 
     /**
-     * @param string $namespaceDirectory
+     * Create a new macther package
+     *
+     * @param string $namespace namespace of package
+     * @param string $namespaceDirectory directory of package
      */
     public function __construct($namespace, $namespaceDirectory)
     {
-        $this->namespace = $namespace;
+        $this->namespace = $this->normalizeNamespace($namespace);
         $this->namespaceDirectory = $namespaceDirectory;
     }
 
@@ -41,6 +63,9 @@ class MatcherPackage implements RegisterablePackage
         }
     }
 
+    /**
+     * @return ArrayIterator
+     */
     private function getProvideMatchers()
     {
         $matchers = [];
@@ -50,7 +75,7 @@ class MatcherPackage implements RegisterablePackage
         );
 
         foreach ($reflectionIterator as $reflection) {
-            if ($reflection->implementsInterface('\expect\matcher\ReportableMatcher') === false) {
+            if ($reflection->implementsInterface(static::MATCHER) === false) {
                 continue;
             }
 
@@ -62,4 +87,41 @@ class MatcherPackage implements RegisterablePackage
 
         return new ArrayIterator($matchers);
     }
+
+    private function normalizeNamespace($namespace)
+    {
+        $normalizeNamespace = $namespace;
+        $lastCharAt = strlen($namespace) - 1;
+
+        if (substr($namespace, $lastCharAt) === '\\') {
+            $normalizeNamespace = substr($namespace, 0, $lastCharAt);
+        }
+
+        return $normalizeNamespace;
+    }
+
+    /**
+     * Create a new matcher package from composer.json
+     *
+     * @param string $composerJson composer.json path
+     * @throws \expect\package\ComposerJsonNotFoundException
+     */
+    public static function fromPackageFile($composerJson)
+    {
+        if (file_exists($composerJson) === false) {
+            throw new ComposerJsonNotFoundException("File {$composerJson} not found.");
+        }
+
+        $config = Config::load($composerJson);
+        $autoload = $config->get('autoload.psr-4');
+
+        $composerJsonDirectory = dirname($composerJson);
+
+        $namespace = array_shift(array_keys($autoload));
+        $namespaceDirectory = array_shift(array_values($autoload));
+        $namespaceDirectory = realpath($composerJsonDirectory . '/' . $namespaceDirectory);
+
+        return new self($namespace, $namespaceDirectory);
+    }
+
 }

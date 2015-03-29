@@ -11,10 +11,21 @@
 
 namespace expect;
 
+/**
+ * Configurable
+ *
+ * @package expect
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 interface Configurable
 {
     /**
+     * Configure by configurator
+     *
+     * If the configurator is null, initialized with minimum configuration.
+     *
      * @param Configurator $configurator
      */
-    public static function configure(Configurator $configurator);
+    public static function configure(Configurator $configurator = null);
 }

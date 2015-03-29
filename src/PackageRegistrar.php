@@ -11,18 +11,23 @@
 
 namespace expect;
 
+use expect\MatcherRegistry;
+
 /**
- * Registerable package
+ * Package registrar
  *
+ * @package expect
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
-interface RegisterablePackage
+interface PackageRegistrar
 {
+
     /**
-     * Register package to registry
+     * Register the matcher package.
      *
-     * @param MatcherRegistry $registry
+     * @param \expect\MatcherRegistry $registry matcher registry
      */
     public function registerTo(MatcherRegistry $registry);
+
 }

@@ -9,20 +9,27 @@
  * with this source code in the file LICENSE.
  */
 
-namespace expect;
+namespace expect\package;
+
+use expect\MatcherRegistry;
+use expect\PackageRegistrar;
 
 /**
- * Registerable package
+ * Default package registrar
  *
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
-interface RegisterablePackage
+final class DefaultPackageRegistrar implements PackageRegistrar
 {
+
     /**
-     * Register package to registry
-     *
-     * @param MatcherRegistry $registry
+     * {@inheritdoc}
      */
-    public function registerTo(MatcherRegistry $registry);
+    public function registerTo(MatcherRegistry $registry)
+    {
+        $package = new DefaultMatcherPackage();
+        $package->registerTo($registry);
+    }
+
 }
