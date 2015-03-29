@@ -14,14 +14,35 @@ namespace expect;
 use ArrayIterator;
 use expect\package\MatcherClass;
 use expect\package\ReflectionIterator;
+use Collections\Dictionary;
 
+
+/**
+ * Matcher package
+ *
+ * @package expect
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 class MatcherPackage implements RegisterablePackage
 {
+    const MATCHER = '\expect\matcher\ReportableMatcher';
+
+    /**
+     * @var string
+     */
     private $namespace;
+
+    /**
+     * @var string
+     */
     private $namespaceDirectory;
 
     /**
-     * @param string $namespaceDirectory
+     * Create a new macther package
+     *
+     * @param string $namespace namespace of package
+     * @param string $namespaceDirectory directory of package
      */
     public function __construct($namespace, $namespaceDirectory)
     {
@@ -41,6 +62,9 @@ class MatcherPackage implements RegisterablePackage
         }
     }
 
+    /**
+     * @return ArrayIterator
+     */
     private function getProvideMatchers()
     {
         $matchers = [];
@@ -50,7 +74,7 @@ class MatcherPackage implements RegisterablePackage
         );
 
         foreach ($reflectionIterator as $reflection) {
-            if ($reflection->implementsInterface('\expect\matcher\ReportableMatcher') === false) {
+            if ($reflection->implementsInterface(static::MATCHER) === false) {
                 continue;
             }
 
@@ -62,4 +86,33 @@ class MatcherPackage implements RegisterablePackage
 
         return new ArrayIterator($matchers);
     }
+
+    /**
+     * Create a new matcher package from composer.json
+     *
+     * @param string $composerJson composer.json path
+     */
+    public static function fromPackageFile($composerJson)
+    {
+        $composerJsonDirectory = dirname($composerJson);
+
+        $content = file_get_contents($composerJson);
+        $jsonValue = json_decode($content, true);
+
+        $json = Dictionary::fromArray($jsonValue);
+        $autoload = $json->get('autoload');
+
+        $psr4 = $autoload->get('psr-4');
+        $psr4Pair = array_shift( $psr4->values() );
+
+        $namespace = $psr4Pair->first;
+        $namespaceDirectory = realpath($composerJsonDirectory . '/' . $psr4Pair->second);
+
+        if (substr($namespace, strlen($namespace) - 1) === '\\') {
+            $namespace = substr($namespace, 0, strlen($namespace) - 1);
+        }
+
+        return new self($namespace, $namespaceDirectory);
+    }
+
 }

@@ -11,7 +11,18 @@
 
 namespace expect;
 
+/**
+ * Registerable package
+ *
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 interface RegisterablePackage
 {
+    /**
+     * Register package to registry
+     *
+     * @param MatcherRegistry $registry
+     */
     public function registerTo(MatcherRegistry $registry);
 }

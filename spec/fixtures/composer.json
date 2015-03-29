@@ -1,0 +1,12 @@
+{
+  "name": "expect/expect-fixture",
+  "license": "MIT",
+  "require": {},
+  "require-dev": {},
+  "autoload": {
+    "psr-4": {
+      "expect\\fixture\\matcher\\": "matcher"
+    }
+  },
+  "minimum-stability": "stable"
+}
