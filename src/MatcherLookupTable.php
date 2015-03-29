@@ -26,7 +26,7 @@ trait MatcherLookupTable
     /**
      * Dictionary of matcher class.
      *
-     * @var \Easy\Collections\Dictionary
+     * @var \Collections\Dictionary
      */
     private $matchers;
 
