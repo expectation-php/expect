@@ -11,56 +11,37 @@
 
 namespace expect\configurator;
 
-use expect\config\ConfigurationLoader;
 use expect\Configurator;
 use expect\context\DefaultContextFactory;
 use expect\factory\DefaultMatcherFactory;
 use expect\registry\DefaultMatcherRegistry;
+use expect\reporter\ExceptionReporter;
+use expect\package\DefaultPackageRegistrar;
 
 /**
- * File configurator
+ * Default configurator
  *
- * Configure by the toml file
+ * Configure by the default
  *
  * @package expect\configurator
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
-class FileConfigurator implements Configurator
+final class DefaultConfigurator implements Configurator
 {
-
-    /**
-     * @var \expect\Configuration
-     */
-    private $config;
-
-    /**
-     * @param string $configFile
-     * @throws \expect\config\ConfigurationFileNotFoundException
-     */
-    public function __construct($configFile)
-    {
-        $loader = new ConfigurationLoader();
-        $this->config = $loader->loadFromFile($configFile);
-    }
-
     /**
      * {@inheritdoc}
      */
     public function configure()
     {
         $registry = new DefaultMatcherRegistry();
-        $packages = $this->config->getMatcherRegistrars();
 
-        foreach ($packages as $package) {
-            $package->registerTo($registry);
-        }
+        $packageRegistrar = new DefaultPackageRegistrar();
+        $packageRegistrar->registerTo($registry);
 
         $dictionary = $registry->toDictionary();
         $matcherFactory = new DefaultMatcherFactory($dictionary);
 
-        $resultReporter = $this->config->getResultReporter();
-
-        return new DefaultContextFactory($matcherFactory, $resultReporter);
+        return new DefaultContextFactory($matcherFactory, new ExceptionReporter());
     }
 }
