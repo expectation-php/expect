@@ -6,45 +6,30 @@ use expect\config\ConfigurationLoader;
 
 describe('ConfigurationLoader', function () {
     describe('#loadFromFile', function () {
-        beforeEach(function () {
-            $this->loader = new ConfigurationLoader();
-            $this->config = $this->loader->loadFromFile(__DIR__ . '/../fixtures/config.toml');
-        });
-        it('return Configuration instance', function () {
-            Assertion::isInstanceOf($this->config, 'expect\Configuration');
+        context('when config file found', function () {
+            beforeEach(function () {
+                $this->loader = new ConfigurationLoader();
+                $this->config = $this->loader->loadFromFile(__DIR__ . '/../fixtures/config.toml');
+            });
+            it('return Configuration instance', function () {
+                Assertion::isInstanceOf($this->config, 'expect\Configuration');
+            });
+            it('have matcher packages', function () {
+                $packages = $this->config->getMatcherPackages();
+                Assertion::count($packages, 2);
+            });
         });
         context('when config file not found', function () {
             it('throw ConfigurationFileNotFoundException', function () {
-                $throwExpection = false;
+                $throwException = false;
 
                 try {
                     $this->loader->loadFromFile(__DIR__ . '/fixtures/not_found_config.toml');
                 } catch (ConfigurationFileNotFoundException $exception) {
-                    $throwExpection = true;
+                    $throwException = true;
                 }
-                Assertion::true($throwExpection);
+                Assertion::true($throwException);
             });
         });
     });
-
-/*
-    describe('#getResultReporter', function() {
-        it('return expect\ResultReporter', function() {
-            Assertion::isInstanceOf($this->config->getResultReporter(), 'expect\ResultReporter');
-        });
-    });
-    describe('#getMatcherPackages', function() {
-        beforeEach(function() {
-            $this->matcherPackages = $this->config->getMatcherPackages();
-        });
-        it('return matcher packages', function() {
-            Assertion::isArray($this->matcherPackages);
-        });
-        context('when have one package', function() {
-            it('return one package', function() {
-                Assertion::count($this->matcherPackages, 1);
-            });
-        });
-    });
-*/
 });
