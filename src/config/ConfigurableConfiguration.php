@@ -13,26 +13,50 @@ namespace expect\config;
 
 use expect\Configuration;
 
+/**
+ * Implement of Configuration
+ *
+ * @package expect\config
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 trait ConfigurableConfiguration
 {
+
+    /**
+     * @var \expect\ResultReporter|null
+     */
     private $resultReporter = null;
-    private $matcherPackages = [];
 
-    public function getMatcherPackages()
-    {
-        return $this->matcherPackages;
-    }
+    /**
+     * @var \expect\PackageRegistrar[]
+     */
+    private $matcherRegistrars = [];
 
+    /**
+     * {@inheritdoc}
+     */
     public function getResultReporter()
     {
         return $this->resultReporter;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getMatcherRegistrars()
+    {
+        return $this->matcherRegistrars;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function merge(Configuration $config)
     {
-        $matcherPackages = array_merge(
-            $this->matcherPackages,
-            $config->getMatcherPackages()
+        $matcherRegistrars = array_merge(
+            $this->matcherRegistrars,
+            $config->getMatcherRegistrars()
         );
 
         $reporter = $config->getResultReporter();
@@ -41,6 +65,6 @@ trait ConfigurableConfiguration
             $reporter = $this->resultReporter;
         }
 
-        return new RuntimeConfiguration($matcherPackages, $reporter);
+        return new RuntimeConfiguration($matcherRegistrars, $reporter);
     }
 }

@@ -14,9 +14,9 @@ describe('ConfigurationLoader', function () {
             it('return Configuration instance', function () {
                 Assertion::isInstanceOf($this->config, 'expect\Configuration');
             });
-            it('have matcher packages', function () {
-                $packages = $this->config->getMatcherPackages();
-                Assertion::count($packages, 2);
+            it('have matcher package registrars', function () {
+                $registrars = $this->config->getMatcherRegistrars();
+                Assertion::count($registrars, 2);
             });
         });
         context('when config file not found', function () {

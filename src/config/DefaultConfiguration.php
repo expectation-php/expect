@@ -12,16 +12,26 @@
 namespace expect\config;
 
 use expect\Configuration;
-use expect\package\DefaultMatcherPackage;
+use expect\package\DefaultPackageRegistrar;
 use expect\reporter\ExceptionReporter;
 
+/**
+ * Default configuration
+ *
+ * @package expect\config
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 class DefaultConfiguration implements Configuration
 {
     use ConfigurableConfiguration;
 
+    /**
+     * Create a new default configuration
+     */
     public function __construct()
     {
         $this->resultReporter = new ExceptionReporter();
-        $this->matcherPackages[] = new DefaultMatcherPackage();
+        $this->matcherRegistrars[] = new DefaultPackageRegistrar();
     }
 }

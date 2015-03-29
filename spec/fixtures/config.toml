@@ -3,7 +3,7 @@
 #
 
 packages = [
-  "\\expect\\fixture\\package\\CustomPackage"
+  "\\expect\\fixture\\package\\CustomPackageRegistrar"
 ]
 
 reporter = "\\expect\\fixture\\reporter\\CustomReporter"

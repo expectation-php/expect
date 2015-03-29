@@ -30,7 +30,7 @@ class FileConfigurator implements Configurator
     public function configure()
     {
         $registry = new DefaultMatcherRegistry();
-        $packages = $this->config->getMatcherPackages();
+        $packages = $this->config->getMatcherRegistrars();
 
         foreach ($packages as $package) {
             $package->registerTo($registry);

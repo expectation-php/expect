@@ -14,13 +14,24 @@ namespace expect\config;
 use expect\Configuration;
 use expect\ResultReporter;
 
+/**
+ * Runtime configuration
+ *
+ * @package expect\config
+ * @author Noritaka Horio <holy.shared.design@gmail.com>
+ * @copyright Noritaka Horio <holy.shared.design@gmail.com>
+ */
 class RuntimeConfiguration implements Configuration
 {
     use ConfigurableConfiguration;
 
-    public function __construct(array $matcherPackages, ResultReporter $resultReporter)
+    /**
+     * @param \expect\PackageRegistrar[] $matcherRegistrars package registrars
+     * @param ResultReporter $resultReporter reporter of result
+     */
+    public function __construct(array $matcherRegistrars, ResultReporter $resultReporter)
     {
         $this->resultReporter = $resultReporter;
-        $this->matcherPackages = $matcherPackages;
+        $this->matcherRegistrars = $matcherRegistrars;
     }
 }

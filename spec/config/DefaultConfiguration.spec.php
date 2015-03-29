@@ -12,16 +12,16 @@ describe('DefaultConfiguration', function () {
             Assertion::isInstanceOf($this->config->getResultReporter(), 'expect\reporter\ExceptionReporter');
         });
     });
-    describe('#getMatcherPackages', function () {
+    describe('#getMatcherRegistrars', function () {
         beforeEach(function () {
-            $this->matcherPackages = $this->config->getMatcherPackages();
+            $this->matcherRegistrars = $this->config->getMatcherRegistrars();
         });
-        it('return matcher packages', function () {
-            Assertion::isArray($this->matcherPackages);
+        it('return matcher package registrars', function () {
+            Assertion::isArray($this->matcherRegistrars);
         });
-        context('when have one package', function () {
-            it('return one package', function () {
-                Assertion::count($this->matcherPackages, 1);
+        context('when have one package registrar', function () {
+            it('return one package registrar', function () {
+                Assertion::count($this->matcherRegistrars, 1);
             });
         });
     });
