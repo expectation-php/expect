@@ -11,7 +11,7 @@
 
 namespace expect\registry;
 
-use Easy\Collections\Dictionary;
+use Collections\Dictionary;
 use expect\MatcherDictionary;
 use expect\MatcherLookupTable;
 use expect\MatcherRegistry;

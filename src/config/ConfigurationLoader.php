@@ -11,7 +11,7 @@
 
 namespace expect\config;
 
-use Easy\Collections\Dictionary;
+use Collections\Dictionary;
 use Yosymfony\Toml\Toml;
 
 class ConfigurationLoader

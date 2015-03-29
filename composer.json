@@ -13,7 +13,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "easyframework/collections": "~3.2",
+        "easyframework/collections": "~4.0",
         "yosymfony/toml": "~0.3"
     },
     "require-dev": {
