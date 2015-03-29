@@ -25,7 +25,7 @@ use ArrayIterator;
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
-class MatcherPackage implements RegisterablePackage
+final class MatcherPackage implements RegisterablePackage
 {
     const MATCHER = '\expect\matcher\ReportableMatcher';
 
