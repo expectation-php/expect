@@ -13,6 +13,7 @@ namespace expect;
 
 use expect\package\MatcherClass;
 use expect\package\ReflectionIterator;
+use expect\package\ComposerJsonNotFoundException;
 use Noodlehaus\Config;
 use ArrayIterator;
 
@@ -103,9 +104,14 @@ class MatcherPackage implements RegisterablePackage
      * Create a new matcher package from composer.json
      *
      * @param string $composerJson composer.json path
+     * @throws \expect\package\ComposerJsonNotFoundException
      */
     public static function fromPackageFile($composerJson)
     {
+        if (file_exists($composerJson) === false) {
+            throw new ComposerJsonNotFoundException("File {$composerJson} not found.");
+        }
+
         $config = Config::load($composerJson);
         $autoload = $config->get('autoload.psr-4');
 

@@ -2,8 +2,10 @@
 
 use Assert\Assertion;
 use expect\MatcherPackage;
+use expect\package\ComposerJsonNotFoundException;
 use Prophecy\Argument;
 use Prophecy\Prophet;
+
 
 describe('MatcherPackage', function () {
     describe('#registerTo', function () {
@@ -37,6 +39,18 @@ describe('MatcherPackage', function () {
         it('return matcher package', function () {
             $this->package->registerTo($this->registry);
             $this->prophet->checkPredictions();
+        });
+        context('when composer.json not found', function() {
+            it('throw ComposerJsonNotFoundException exception', function() {
+                $thrownException = null;
+
+                try {
+                    MatcherPackage::fromPackageFile('not_found_composer.json');
+                } catch (ComposerJsonNotFoundException $exception) {
+                    $thrownException = $exception;
+                }
+                Assertion::isInstanceOf($thrownException, 'expect\package\ComposerJsonNotFoundException');
+            });
         });
     });
 });
