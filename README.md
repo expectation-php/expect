@@ -17,14 +17,29 @@ Basic usage
 use expect\Expect;
 use expect\configurator\FileConfigurator;
 
-$configurator = new FileConfigurator(__DIR__ . '/config.toml');
+$configurator = new FileConfigurator(__DIR__ . '/.expect.toml');
 Expect::configure($configurator);
 
 Expect::that(true)->toEqual(true); //pass
 Expect::that(false)->toEqual(true); //failed
 ```
 
-### Learn detailed document
+Configuration file
+------------------------
+
+You can specify the **matcher package** and a **reporter** to be used in the configuration file.  
+Configuration file in toml format, examples are as follows.
+
+```toml
+packages = [
+  "\\expect\\fixture\\package\\CustomPackageRegistrar"
+]
+
+reporter = "\\expect\\reporter\\ExceptionReporter"
+```
+
+Learn detailed document
+------------------------
 
 * API Document - [http://expectation-php.github.io/expect/](http://expectation-php.github.io/expect/)
 * Matcher packages
