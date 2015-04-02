@@ -51,9 +51,7 @@ class DefaultMatcherFactory implements MatcherFactory
      */
     public function create($name, array $arguments = [])
     {
-        $matcherName = ucfirst($name);
-
-        $matcherClass = $this->container->get($matcherName);
+        $matcherClass = $this->container->get($name);
 
         if (count($arguments) <= 1) {
             $matcher = $matcherClass->newInstance($arguments);

@@ -10,14 +10,14 @@ describe('DefaultMatcherFactory', function () {
     describe('#create', function () {
         beforeEach(function () {
             $dictionary = new MatcherDictionary([
-                'ToBeTrue' => new MatcherClass('expect\matcher', 'ToBeTrue'),
-                'ToEqual'  => new MatcherClass('expect\matcher', 'ToEqual')
+                'toBeTrue' => new MatcherClass('expect\matcher', 'ToBeTrue'),
+                'toEqual'  => new MatcherClass('expect\matcher', 'ToEqual')
             ]);
             $this->factory = new DefaultMatcherFactory($dictionary);
         });
         context('when no arguments', function () {
             beforeEach(function () {
-                $this->matcher = $this->factory->create('ToBeTrue', []);
+                $this->matcher = $this->factory->create('toBeTrue', []);
             });
             it('return matcher instance', function () {
                 Assertion::isInstanceOf($this->matcher, 'expect\matcher\ToBeTrue');
@@ -25,7 +25,7 @@ describe('DefaultMatcherFactory', function () {
         });
         context('when there are arguments', function () {
             beforeEach(function () {
-                $this->matcher = $this->factory->create('ToEqual', [ 'foo' ]);
+                $this->matcher = $this->factory->create('toEqual', [ 'foo' ]);
             });
             it('return matcher instance', function () {
                 Assertion::isInstanceOf($this->matcher, 'expect\matcher\ToEqual');

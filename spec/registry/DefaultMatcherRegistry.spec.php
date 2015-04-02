@@ -41,7 +41,7 @@ describe('DefaultMatcherRegistry', function () {
         });
         context('when matcher registered', function () {
             it('return matcher class', function () {
-                $result = $this->registry->get('ToEqual');
+                $result = $this->registry->get('toEqual');
                 Assertion::isInstanceOf($result, 'expect\package\MatcherClass');
             });
         });
@@ -66,7 +66,7 @@ describe('DefaultMatcherRegistry', function () {
         context('when have matcher', function () {
             it('return true', function () {
                 $this->registry->register(new MatcherClass('\\expect\\matcher', 'ToEqual'));
-                $result = $this->registry->has('ToEqual');
+                $result = $this->registry->has('toEqual');
 
                 Assertion::true($result);
             });
