@@ -32,7 +32,7 @@ describe('ConfigurationLoader', function () {
                 Assertion::true($throwException);
             });
         });
-        context('when reporter can not load', function () {
+        context('when can not load reporter', function () {
             it('throw NotAvailableException', function () {
                 $throwException = false;
 
@@ -44,7 +44,7 @@ describe('ConfigurationLoader', function () {
                 Assertion::true($throwException);
             });
         });
-        context('when packages can not load', function () {
+        context('when can not load packages', function () {
             it('throw NotAvailableException', function () {
                 $throwException = false;
 
