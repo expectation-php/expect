@@ -29,7 +29,7 @@ class RuntimeConfiguration implements Configuration
      * @param \expect\PackageRegistrar[] $matcherRegistrars package registrars
      * @param ResultReporter $resultReporter reporter of result
      */
-    public function __construct(array $matcherRegistrars, ResultReporter $resultReporter)
+    public function __construct(array $matcherRegistrars = [], ResultReporter $resultReporter = null)
     {
         $this->resultReporter = $resultReporter;
         $this->matcherRegistrars = $matcherRegistrars;
