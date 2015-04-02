@@ -15,13 +15,6 @@ use expect\FailedMessage;
 use expect\Result;
 use expect\ResultReporter;
 
-class CanNotUseReporter
+class NotAvailableReporter
 {
-    public function reportFailed(FailedMessage $message)
-    {
-    }
-
-    public function reportNegativeFailed(FailedMessage $message)
-    {
-    }
 }

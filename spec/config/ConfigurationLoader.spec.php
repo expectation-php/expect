@@ -32,20 +32,18 @@ describe('ConfigurationLoader', function () {
                 Assertion::true($throwException);
             });
         });
-
         context('when reporter can not load', function () {
             it('throw NotAvailableException', function () {
                 $throwException = false;
 
                 try {
-                    $this->loader->loadFromFile(__DIR__ . '/../fixtures/can_not_use_reporter.toml');
+                    $this->loader->loadFromFile(__DIR__ . '/../fixtures/not_available_reporter.toml');
                 } catch (NotAvailableException $exception) {
                     $throwException = true;
                 }
                 Assertion::true($throwException);
             });
         });
-
         context('when packages can not load', function () {
             it('throw NotAvailableException', function () {
                 $throwException = false;
@@ -58,6 +56,5 @@ describe('ConfigurationLoader', function () {
                 Assertion::true($throwException);
             });
         });
-
     });
 });

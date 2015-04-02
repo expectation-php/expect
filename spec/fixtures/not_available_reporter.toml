@@ -6,4 +6,4 @@ packages = [
   "\\expect\\fixture\\package\\CustomPackageRegistrar"
 ]
 
-reporter = "\\expect\\fixture\\reporter\\CanNotUseReporter"
+reporter = "\\expect\\fixture\\reporter\\NotAvailableReporter"
