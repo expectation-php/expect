@@ -63,16 +63,12 @@ final class ToBeGreaterThan implements ReportableMatcher
      */
     public function reportFailed(FailedMessage $message)
     {
+        $detail = $this->createDetailMessage();
         $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' to be greater than ')
             ->appendValue($this->expected)
-            ->appendText("\n\n")
-            ->appendText('    expected: >= ')
-            ->appendValue($this->expected)
-            ->appendText("\n")
-            ->appendText('         got:    ')
-            ->appendValue($this->actual);
+            ->appendText($detail);
     }
 
     /**
@@ -80,15 +76,27 @@ final class ToBeGreaterThan implements ReportableMatcher
      */
     public function reportNegativeFailed(FailedMessage $message)
     {
+        $detail = $this->createDetailMessage(' not');
         $message->appendText('Expected ')
             ->appendValue($this->actual)
             ->appendText(' not to be greater than ')
             ->appendValue($this->expected)
-            ->appendText("\n\n")
-            ->appendText('    expected not: >= ')
+            ->appendText($detail);
+    }
+
+    private function createDetailMessage($prefixMessage = '')
+    {
+        $message = FailedMessage::fromString("\n\n");
+        $message->appendText('    expected')
+            ->appendText($prefixMessage)
+            ->appendText(': >= ')
             ->appendValue($this->expected)
             ->appendText("\n")
-            ->appendText('             got:    ')
+            ->appendSpace(strlen($prefixMessage))
+            ->appendText('         got:    ')
             ->appendValue($this->actual);
+
+        return (string) $message;
     }
+
 }
