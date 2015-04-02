@@ -2,8 +2,8 @@
 
 use Assert\Assertion;
 use expect\config\ConfigurationFileNotFoundException;
-use expect\config\NotAvailableException;
 use expect\config\ConfigurationLoader;
+use expect\config\NotAvailableException;
 
 describe('ConfigurationLoader', function () {
     describe('#loadFromFile', function () {

@@ -8,17 +8,15 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\config;
 
 use Collections\Dictionary;
-use Yosymfony\Toml\Toml;
 use ReflectionClass;
 use RuntimeException;
+use Yosymfony\Toml\Toml;
 
 class ConfigurationLoader
 {
-
     const REPORTER = '\expect\ResultReporter';
     const PACKAGE_REGISTRAR = '\expect\PackageRegistrar';
 
@@ -58,6 +56,7 @@ class ConfigurationLoader
      * Create a few new package registrars
      *
      * @param array $packages
+     *
      * @return \expect\PackageRegistrar[]
      */
     private function createPackages(array $packages)
@@ -80,6 +79,7 @@ class ConfigurationLoader
      * Create a new result reporter
      *
      * @param string $reporter
+     *
      * @return \expect\ResultReporter
      */
     private function createReporter($reporter)

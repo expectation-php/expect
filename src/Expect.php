@@ -8,7 +8,6 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect;
 
 use expect\configurator\DefaultConfigurator;
@@ -16,13 +15,11 @@ use expect\configurator\DefaultConfigurator;
 /**
  * Expect
  *
- * @package expect
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 final class Expect implements Configurable
 {
-
     /**
      * @var \expect\ContextFactory
      */

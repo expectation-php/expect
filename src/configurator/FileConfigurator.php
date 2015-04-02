@@ -8,7 +8,6 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\configurator;
 
 use expect\config\ConfigurationLoader;
@@ -22,13 +21,11 @@ use expect\registry\DefaultMatcherRegistry;
  *
  * Configure by the toml file
  *
- * @package expect\configurator
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 class FileConfigurator implements Configurator
 {
-
     /**
      * @var \expect\Configuration
      */
@@ -36,6 +33,7 @@ class FileConfigurator implements Configurator
 
     /**
      * @param string $configFile
+     *
      * @throws \expect\config\ConfigurationFileNotFoundException
      */
     public function __construct($configFile)

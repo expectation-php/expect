@@ -8,20 +8,17 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect;
 
+use ArrayIterator;
+use expect\package\ComposerJsonNotFoundException;
 use expect\package\MatcherClass;
 use expect\package\ReflectionIterator;
-use expect\package\ComposerJsonNotFoundException;
 use Noodlehaus\Config;
-use ArrayIterator;
-
 
 /**
  * Matcher package
  *
- * @package expect
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
@@ -42,7 +39,7 @@ final class MatcherPackage implements RegisterablePackage
     /**
      * Create a new macther package
      *
-     * @param string $namespace namespace of package
+     * @param string $namespace          namespace of package
      * @param string $namespaceDirectory directory of package
      */
     public function __construct($namespace, $namespaceDirectory)
@@ -104,6 +101,7 @@ final class MatcherPackage implements RegisterablePackage
      * Create a new matcher package from composer.json
      *
      * @param string $composerJson composer.json path
+     *
      * @throws \expect\package\ComposerJsonNotFoundException
      */
     public static function fromPackageFile($composerJson)
@@ -123,5 +121,4 @@ final class MatcherPackage implements RegisterablePackage
 
         return new self($namespace, $namespaceDirectory);
     }
-
 }

@@ -8,14 +8,12 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\config;
 
 use RuntimeException;
 
 class NotAvailableException extends RuntimeException
 {
-
     public static function createForReporter($interface)
     {
         return new self("Reporter is not available.\nBecause it is because do not implement the {$interface}.");
@@ -25,5 +23,4 @@ class NotAvailableException extends RuntimeException
     {
         return new self("Package is not available.\nBecause it is because do not implement the {$interface}.");
     }
-
 }
