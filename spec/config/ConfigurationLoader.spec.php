@@ -2,6 +2,7 @@
 
 use Assert\Assertion;
 use expect\config\ConfigurationFileNotFoundException;
+use expect\config\NotAvailableException;
 use expect\config\ConfigurationLoader;
 
 describe('ConfigurationLoader', function () {
@@ -31,5 +32,32 @@ describe('ConfigurationLoader', function () {
                 Assertion::true($throwException);
             });
         });
+
+        context('when reporter can not load', function () {
+            it('throw NotAvailableException', function () {
+                $throwException = false;
+
+                try {
+                    $this->loader->loadFromFile(__DIR__ . '/../fixtures/can_not_use_reporter.toml');
+                } catch (NotAvailableException $exception) {
+                    $throwException = true;
+                }
+                Assertion::true($throwException);
+            });
+        });
+
+        context('when packages can not load', function () {
+            it('throw NotAvailableException', function () {
+                $throwException = false;
+
+                try {
+                    $this->loader->loadFromFile(__DIR__ . '/../fixtures/not_available_package_registrar.toml');
+                } catch (NotAvailableException $exception) {
+                    $throwException = true;
+                }
+                Assertion::true($throwException);
+            });
+        });
+
     });
 });

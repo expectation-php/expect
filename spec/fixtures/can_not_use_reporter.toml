@@ -1,0 +1,9 @@
+#
+# Expect Configuration
+#
+
+packages = [
+  "\\expect\\fixture\\package\\CustomPackageRegistrar"
+]
+
+reporter = "\\expect\\fixture\\reporter\\CanNotUseReporter"
