@@ -38,7 +38,7 @@ final class Expect implements Configurable
         if ($useConfigurator === null) {
             $useConfigurator = new DefaultConfigurator();
         }
-        static::$contextFactory = $useConfigurator->configure();
+        self::$contextFactory = $useConfigurator->configure();
     }
 
     /**
@@ -48,7 +48,7 @@ final class Expect implements Configurable
      */
     public static function that($actual)
     {
-        $context = static::$contextFactory->newContext();
+        $context = self::$contextFactory->newContext();
 
         return $context->actual($actual);
     }
