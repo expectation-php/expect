@@ -18,14 +18,12 @@ class NotAvailableException extends RuntimeException
 
     public static function createForReporter($interface)
     {
-        return new self("Reporter is not available.\n
-            Because it is because do not implement the {$interface}.");
+        return new self("Reporter is not available.\nBecause it is because do not implement the {$interface}.");
     }
 
     public static function createForPackage($interface)
     {
-        return new self("Package is not available.\n
-            Because it is because do not implement the {$interface}.");
+        return new self("Package is not available.\nBecause it is because do not implement the {$interface}.");
     }
 
 }
