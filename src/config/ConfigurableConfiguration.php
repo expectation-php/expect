@@ -8,7 +8,6 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\config;
 
 use expect\Configuration;
@@ -16,13 +15,11 @@ use expect\Configuration;
 /**
  * Implement of Configuration
  *
- * @package expect\config
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */
 trait ConfigurableConfiguration
 {
-
     /**
      * @var \expect\ResultReporter|null
      */

@@ -8,7 +8,6 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\package;
 
 use expect\MatcherRegistry;
@@ -22,7 +21,6 @@ use expect\PackageRegistrar;
  */
 final class DefaultPackageRegistrar implements PackageRegistrar
 {
-
     /**
      * {@inheritdoc}
      */
@@ -31,5 +29,4 @@ final class DefaultPackageRegistrar implements PackageRegistrar
         $package = new DefaultMatcherPackage();
         $package->registerTo($registry);
     }
-
 }

@@ -8,38 +8,36 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\package;
 
 use ReflectionClass;
 
 class MatcherClass
 {
-    private $namespace;
-    private $className;
+    /**
+     * @var ReflectionClass
+     */
+    private $reflection;
 
     public function __construct($namespace, $className)
     {
-        $this->namespace = $namespace;
-        $this->className = $className;
+        $matcherClassName = $namespace . '\\' . $className;
+        $this->reflection = new ReflectionClass($matcherClassName);
     }
 
     public function getName()
     {
-        return $this->namespace.'\\'.$this->className;
+        return $this->reflection->getName();
     }
 
     public function getClassName()
     {
-        return $this->className;
+        return $this->reflection->getShortName();
     }
 
     public function newInstance(array $arguments = [])
     {
-        $className = $this->getName();
-        $reflectionClass = new ReflectionClass($className);
-
-        return $reflectionClass->newInstanceArgs($arguments);
+        return $this->reflection->newInstanceArgs($arguments);
     }
 
     public function __toString()

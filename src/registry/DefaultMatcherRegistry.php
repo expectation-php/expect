@@ -8,7 +8,6 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\registry;
 
 use Collections\Dictionary;
@@ -29,12 +28,13 @@ final class DefaultMatcherRegistry implements MatcherRegistry
     public function register(MatcherClass $matcherClass)
     {
         $name = $matcherClass->getClassName();
+        $registerKeyName = lcfirst($name);
 
-        if ($this->has($name)) {
-            throw new MatcherAlreadyRegistered("$name is not registered");
+        if ($this->has($registerKeyName)) {
+            throw new MatcherAlreadyRegistered("{$registerKeyName} is registered");
         }
 
-        $this->matchers->set($name, $matcherClass);
+        $this->matchers->set($registerKeyName, $matcherClass);
     }
 
     public function count()

@@ -1,0 +1,7 @@
+#
+# Expect Configuration
+#
+
+packages = [
+  "\\expect\\fixture\\package\\NotAvailablePackageRegistrar"
+]

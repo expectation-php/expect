@@ -5,9 +5,9 @@ namespace expect\example;
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use DomainException;
-use RuntimeException;
 use expect\configurator\FileConfigurator;
 use expect\Expect;
+use RuntimeException;
 
 $configurator = new FileConfigurator(__DIR__ . '/config.toml');
 Expect::configure($configurator);

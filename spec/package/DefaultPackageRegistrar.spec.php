@@ -5,7 +5,6 @@ use expect\package\DefaultPackageRegistrar;
 use Prophecy\Argument;
 use Prophecy\Prophet;
 
-
 describe('DefaultPackageRegistrar', function () {
     beforeEach(function () {
         $this->prophet = new Prophet();

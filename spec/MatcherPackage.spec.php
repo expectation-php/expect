@@ -6,7 +6,6 @@ use expect\package\ComposerJsonNotFoundException;
 use Prophecy\Argument;
 use Prophecy\Prophet;
 
-
 describe('MatcherPackage', function () {
     describe('#registerTo', function () {
         beforeEach(function () {
@@ -40,8 +39,8 @@ describe('MatcherPackage', function () {
             $this->package->registerTo($this->registry);
             $this->prophet->checkPredictions();
         });
-        context('when composer.json not found', function() {
-            it('throw ComposerJsonNotFoundException exception', function() {
+        context('when composer.json not found', function () {
+            it('throw ComposerJsonNotFoundException exception', function () {
                 $thrownException = null;
 
                 try {

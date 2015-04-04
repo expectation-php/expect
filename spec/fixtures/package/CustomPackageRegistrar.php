@@ -14,7 +14,6 @@ use expect\MatcherPackage;
 use expect\MatcherRegistry;
 use expect\PackageRegistrar;
 
-
 class CustomPackageRegistrar implements PackageRegistrar
 {
     /**

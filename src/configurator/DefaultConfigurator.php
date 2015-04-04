@@ -8,22 +8,20 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-
 namespace expect\configurator;
 
 use expect\Configurator;
 use expect\context\DefaultContextFactory;
 use expect\factory\DefaultMatcherFactory;
+use expect\package\DefaultPackageRegistrar;
 use expect\registry\DefaultMatcherRegistry;
 use expect\reporter\ExceptionReporter;
-use expect\package\DefaultPackageRegistrar;
 
 /**
  * Default configurator
  *
  * Configure by the default
  *
- * @package expect\configurator
  * @author Noritaka Horio <holy.shared.design@gmail.com>
  * @copyright Noritaka Horio <holy.shared.design@gmail.com>
  */

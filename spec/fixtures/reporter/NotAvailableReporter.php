@@ -8,10 +8,12 @@
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
  */
-namespace expect\registry;
+namespace expect\fixture\reporter;
 
-use Exception;
+use expect\FailedMessage;
+use expect\Result;
+use expect\ResultReporter;
 
-final class MatcherAlreadyRegistered extends Exception
+class NotAvailableReporter
 {
 }
