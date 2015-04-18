@@ -10,7 +10,7 @@
  */
 namespace expect;
 
-use expect\registry\MatcherNotRegistered;
+use expect\registry\MatcherNotRegisteredException;
 
 /**
  * Implementation of container.
@@ -56,7 +56,7 @@ trait MatcherLookupTable
     public function get($name)
     {
         if ($this->hasNot($name)) {
-            throw new MatcherNotRegistered("$name is not registered");
+            throw new MatcherNotRegisteredException("$name is not registered");
         }
 
         $matcherClass = $this->matchers->get($name);

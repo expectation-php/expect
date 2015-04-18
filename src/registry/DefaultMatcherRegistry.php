@@ -31,7 +31,7 @@ final class DefaultMatcherRegistry implements MatcherRegistry
         $registerKeyName = lcfirst($name);
 
         if ($this->has($registerKeyName)) {
-            throw new MatcherAlreadyRegistered("{$registerKeyName} is registered");
+            throw new MatcherAlreadyRegisteredException("{$registerKeyName} is registered");
         }
 
         $this->matchers->set($registerKeyName, $matcherClass);
