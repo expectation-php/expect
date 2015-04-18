@@ -3,8 +3,8 @@
 use Assert\Assertion;
 use expect\package\MatcherClass;
 use expect\registry\DefaultMatcherRegistry;
-use expect\registry\MatcherAlreadyRegistered;
-use expect\registry\MatcherNotRegistered;
+use expect\registry\MatcherAlreadyRegisteredException;
+use expect\registry\MatcherNotRegisteredException;
 
 describe('DefaultMatcherRegistry', function () {
 
@@ -23,7 +23,7 @@ describe('DefaultMatcherRegistry', function () {
 
                 try {
                     $this->registry->register($b);
-                } catch (MatcherAlreadyRegistered $exception) {
+                } catch (MatcherAlreadyRegisteredException $exception) {
                     $thrownException = true;
                 }
                 Assertion::true($thrownException);
@@ -46,12 +46,12 @@ describe('DefaultMatcherRegistry', function () {
             });
         });
         context('when matcher not registered', function () {
-            it('throw MatcherNotRegistered', function () {
+            it('throw MatcherNotRegisteredException', function () {
                 $thrownException = false;
 
                 try {
                     $this->registry->get('foo');
-                } catch (MatcherNotRegistered $exception) {
+                } catch (MatcherNotRegisteredException $exception) {
                     $thrownException = true;
                 }
                 Assertion::true($thrownException);
