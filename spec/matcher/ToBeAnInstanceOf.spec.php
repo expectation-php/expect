@@ -26,18 +26,35 @@ describe('ToBeAnInstanceOf', function () {
     });
 
     describe('#reportFailed', function () {
-        beforeEach(function () {
-            $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
-            $this->message = new FailedMessage();
+        context('when actual value is class name', function () {
+            beforeEach(function () {
+                $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
+                $this->message = new FailedMessage();
 
-            $this->expectedMessage  = "Expected stdClass to be an instance of expect\Matcher\n\n";
-            $this->expectedMessage .= "    expected: expect\Matcher\n";
-            $this->expectedMessage .= "         got: stdClass";
+                $this->expectedMessage  = "Expected stdClass to be an instance of expect\Matcher\n\n";
+                $this->expectedMessage .= "    expected: expect\Matcher\n";
+                $this->expectedMessage .= "         got: stdClass";
+            });
+            it('report failed message', function () {
+                $this->matcher->match(new stdClass());
+                $this->matcher->reportFailed($this->message);
+                Assertion::same((string) $this->message, $this->expectedMessage);
+            });
         });
-        it('report failed message', function () {
-            $this->matcher->match(new stdClass());
-            $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, $this->expectedMessage);
+        context('when actual value is null', function () {
+            beforeEach(function () {
+                $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
+                $this->message = new FailedMessage();
+
+                $this->expectedMessage  = "Expected null to be an instance of expect\Matcher\n\n";
+                $this->expectedMessage .= "    expected: expect\Matcher\n";
+                $this->expectedMessage .= "         got: null";
+            });
+            it('report failed message', function () {
+                $this->matcher->match(null);
+                $this->matcher->reportFailed($this->message);
+                Assertion::same((string) $this->message, $this->expectedMessage);
+            });
         });
     });
 
