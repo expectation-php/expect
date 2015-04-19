@@ -26,7 +26,7 @@ describe('ToBeAnInstanceOf', function () {
     });
 
     describe('#reportFailed', function () {
-        context('when actual value is class name', function() {
+        context('when actual value is class name', function () {
             beforeEach(function () {
                 $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
                 $this->message = new FailedMessage();
@@ -41,7 +41,7 @@ describe('ToBeAnInstanceOf', function () {
                 Assertion::same((string) $this->message, $this->expectedMessage);
             });
         });
-        context('when actual value is null', function() {
+        context('when actual value is null', function () {
             beforeEach(function () {
                 $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
                 $this->message = new FailedMessage();
