@@ -1,0 +1,4 @@
+Expected 100 not to be greater than 100
+
+    expected not: >= 100
+             got:    100
