@@ -1,0 +1,1 @@
+Expected \RuntimeException to be thrown, none thrown

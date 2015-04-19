@@ -33,10 +33,11 @@ describe('ToThrow', function () {
             $this->message = new FailedMessage();
         });
         it('report failed message', function () {
-            $this->matcher->match(function () {
-            });
+            $this->matcher->match(function () {});
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "Expected \RuntimeException to be thrown, none thrown");
+
+            $message = $this->loadFixture('text:toThrow:failedMessage');
+            Assertion::same((string) $this->message, $message);
         });
     });
 
@@ -46,10 +47,11 @@ describe('ToThrow', function () {
             $this->message = new FailedMessage();
         });
         it('report failed message', function () {
-            $this->matcher->match(function () {
-            });
+            $this->matcher->match(function () {});
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "Expected \RuntimeException not to be thrown");
+
+            $message = $this->loadFixture('text:toThrow:negativeFailedMessage');
+            Assertion::same((string) $this->message, $message);
         });
     });
 

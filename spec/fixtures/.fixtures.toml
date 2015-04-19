@@ -1,0 +1,3 @@
+[text.toThrow]
+failedMessage = "messages/toThrow.failedMessage.txt"
+negativeFailedMessage = "messages/toThrow.negativeFailedMessage.txt"
