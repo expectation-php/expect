@@ -51,7 +51,9 @@ describe('ToContain', function () {
         it('report failed message', function () {
             $this->matcher->match(['bar']);
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "Expected array to contain 'foo'");
+
+            $message = $this->loadFixture('text:toContain:failedMessage');
+            Assertion::same((string) $this->message, $message);
         });
     });
 
@@ -63,7 +65,9 @@ describe('ToContain', function () {
         it('report failed message', function () {
             $this->matcher->match('foo bar');
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "Expected string not to contain 'foo', 'bar'");
+
+            $message = $this->loadFixture('text:toContain:negativeFailedMessage');
+            Assertion::same((string) $this->message, $message);
         });
     });
 

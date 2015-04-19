@@ -24,7 +24,8 @@
         "cloak/peridot-cloak-plugin": "~1.3",
         "cloak/robo-coveralls-kit": "~1.1",
         "robo-peridot/robo-peridot": "~1.1",
-        "codegyre/robo": "~0.5"
+        "codegyre/robo": "~0.5",
+        "holyshared/peridot-file-fixture-plugin": "~0.1"
     },
     "autoload": {
         "psr-4": {

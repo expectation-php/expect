@@ -1,0 +1,4 @@
+Expected expect\matcher\ToBeAnInstanceOf not to be an instance of expect\matcher\ToBeAnInstanceOf
+
+    expected not: expect\matcher\ToBeAnInstanceOf
+             got: expect\matcher\ToBeAnInstanceOf
