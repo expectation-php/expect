@@ -1,3 +1,63 @@
+[text.toEqual]
+failedMessage = "messages/toEqual.failedMessage.txt"
+negativeFailedMessage = "messages/toEqual.negativeFailedMessage.txt"
+
+[text.toBeAnInstanceOf]
+failedMessage = "messages/toBeAnInstanceOf.failedMessage.txt"
+negativeFailedMessage = "messages/toBeAnInstanceOf.negativeFailedMessage.txt"
+
+[text.toBeAn]
+failedMessage = "messages/toBeAn.failedMessage.txt"
+negativeFailedMessage = "messages/toBeAn.negativeFailedMessage.txt"
+
+[text.toContain]
+failedMessage = "messages/toContain.failedMessage.txt"
+negativeFailedMessage = "messages/toContain.negativeFailedMessage.txt"
+
+[text.toBeWithin]
+failedMessage = "messages/toBeWithin.failedMessage.txt"
+negativeFailedMessage = "messages/toBeWithin.negativeFailedMessage.txt"
+
+[text.toBeTruthy]
+failedMessage = "messages/toBeTruthy.failedMessage.txt"
+negativeFailedMessage = "messages/toBeTruthy.negativeFailedMessage.txt"
+
+[text.toBeFalsey]
+failedMessage = "messages/toBeFalsey.failedMessage.txt"
+negativeFailedMessage = "messages/toBeFalsey.negativeFailedMessage.txt"
+
 [text.toThrow]
 failedMessage = "messages/toThrow.failedMessage.txt"
 negativeFailedMessage = "messages/toThrow.negativeFailedMessage.txt"
+
+[text.toMatch]
+failedMessage = "messages/toMatch.failedMessage.txt"
+negativeFailedMessage = "messages/toMatch.negativeFailedMessage.txt"
+
+[text.toStartWith]
+failedMessage = "messages/toStartWith.failedMessage.txt"
+negativeFailedMessage = "messages/toStartWith.negativeFailedMessage.txt"
+
+[text.toEndWith]
+failedMessage = "messages/toEndWith.failedMessage.txt"
+negativeFailedMessage = "messages/toEndWith.negativeFailedMessage.txt"
+
+[text.toPrint]
+failedMessage = "messages/toPrint.failedMessage.txt"
+negativeFailedMessage = "messages/toPrint.negativeFailedMessage.txt"
+
+[text.toHaveLength]
+failedMessage = "messages/toHaveLength.failedMessage.txt"
+negativeFailedMessage = "messages/toHaveLength.negativeFailedMessage.txt"
+
+[text.toHaveKey]
+failedMessage = "messages/toHaveKey.failedMessage.txt"
+negativeFailedMessage = "messages/toHaveKey.negativeFailedMessage.txt"
+
+[text.toBeLessThan]
+failedMessage = "messages/toBeLessThan.failedMessage.txt"
+negativeFailedMessage = "messages/toBeLessThan.negativeFailedMessage.txt"
+
+[text.toBeGreaterThan]
+failedMessage = "messages/toBeGreaterThan.failedMessage.txt"
+negativeFailedMessage = "messages/toBeGreaterThan.negativeFailedMessage.txt"
