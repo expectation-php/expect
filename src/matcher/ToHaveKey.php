@@ -11,6 +11,8 @@
 namespace expect\matcher;
 
 use expect\FailedMessage;
+use InvalidArgumentException;
+
 
 /**
  * Verify key exists.
@@ -50,6 +52,10 @@ final class ToHaveKey implements ReportableMatcher
      */
     public function match($actual)
     {
+        if (is_array($actual) === false) {
+            throw new InvalidArgumentException("The actual value is not a array");
+        }
+
         $this->actual = $actual;
 
         return array_key_exists($this->expected, $this->actual);
