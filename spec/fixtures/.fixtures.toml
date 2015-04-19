@@ -6,6 +6,9 @@ negativeFailedMessage = "messages/toEqual.negativeFailedMessage.txt"
 failedMessage = "messages/toBeAnInstanceOf.failedMessage.txt"
 negativeFailedMessage = "messages/toBeAnInstanceOf.negativeFailedMessage.txt"
 
+[text.toBeAnInstanceOf.null]
+failedMessage = "messages/toBeAnInstanceOf.null.failedMessage.txt"
+
 [text.toBeAn]
 failedMessage = "messages/toBeAn.failedMessage.txt"
 negativeFailedMessage = "messages/toBeAn.negativeFailedMessage.txt"

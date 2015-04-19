@@ -43,15 +43,13 @@ describe('ToBeAnInstanceOf', function () {
             beforeEach(function () {
                 $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
                 $this->message = new FailedMessage();
-
-                $this->expectedMessage  = "Expected null to be an instance of expect\Matcher\n\n";
-                $this->expectedMessage .= "    expected: expect\Matcher\n";
-                $this->expectedMessage .= "         got: null";
             });
             it('report failed message', function () {
                 $this->matcher->match(null);
                 $this->matcher->reportFailed($this->message);
-                Assertion::same((string) $this->message, $this->expectedMessage);
+
+                $message = $this->loadFixture('text:toBeAnInstanceOf:null:failedMessage');
+                Assertion::same((string) $this->message, $message);
             });
         });
     });
