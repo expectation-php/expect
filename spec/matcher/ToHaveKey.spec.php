@@ -32,7 +32,9 @@ describe('ToHaveKey', function () {
         it('report failed message', function () {
             $this->matcher->match([ 'bar' => 1 ]);
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, "Expected array to have the key 'foo'");
+
+            $message = $this->loadFixture('text:toHaveKey:failedMessage');
+            Assertion::same((string) $this->message, $message);
         });
     });
 
@@ -44,7 +46,9 @@ describe('ToHaveKey', function () {
         it('report failed message', function () {
             $this->matcher->match([ 'foo' => 1 ]);
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, "Expected array not to have the key 'foo'");
+
+            $message = $this->loadFixture('text:toHaveKey:negativeFailedMessage');
+            Assertion::same((string) $this->message, $message);
         });
     });
 });

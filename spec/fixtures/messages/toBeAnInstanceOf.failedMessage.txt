@@ -1,0 +1,4 @@
+Expected stdClass to be an instance of expect\Matcher
+
+    expected: expect\Matcher
+         got: stdClass

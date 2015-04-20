@@ -34,13 +34,14 @@ class FailedMessage implements Message
     /**
      * Append the text to the last.
      *
-     * @param string $text
+     * @param mixed $value
      *
      * @return $this
      */
-    public function appendText($text)
+    public function appendText($value)
     {
-        $this->message = $this->message.$text;
+        $text = $this->stringify($value);
+        $this->message = $this->message . $text;
 
         return $this;
     }
@@ -55,7 +56,7 @@ class FailedMessage implements Message
     public function appendSpace($length)
     {
         $paddingLength = (int) $length;
-        $this->message = $this->message.str_pad('', $paddingLength, ' ');
+        $this->message = $this->message . str_pad('', $paddingLength, ' ');
 
         return $this;
     }
@@ -69,8 +70,8 @@ class FailedMessage implements Message
      */
     public function appendValue($value)
     {
-        $appendValue = $this->stringify($value);
-        $this->message = $this->message.$appendValue;
+        $appendValue = $this->formatValue($value);
+        $this->message = $this->message . $appendValue;
 
         return $this;
     }
@@ -87,10 +88,10 @@ class FailedMessage implements Message
         $appendValues = [];
 
         foreach ($values as $value) {
-            $appendValues[] = $this->stringify($value);
+            $appendValues[] = $this->formatValue($value);
         }
 
-        $this->message = $this->message.implode(', ', $appendValues);
+        $this->message = $this->message . implode(', ', $appendValues);
 
         return $this;
     }
@@ -99,7 +100,7 @@ class FailedMessage implements Message
     {
         $prefix = (string) $this;
         $suffix = (string) $message;
-        $concatenatedMessage = trim($prefix)."\n".trim($suffix);
+        $concatenatedMessage = trim($prefix) . "\n" . trim($suffix);
 
         return static::fromString($concatenatedMessage);
     }
@@ -119,15 +120,26 @@ class FailedMessage implements Message
         return $this->message;
     }
 
+    private function formatValue($value)
+    {
+        $text = $this->stringify($value);
+
+        if (is_string($value)) {
+            $text = "'" . $text . "'";
+        }
+
+        return $text;
+    }
+
     private function stringify($value)
     {
-        if (is_string($value)) {
-            $appendValue = "'".$value."'";
-        } elseif (is_null($value)) {
+        $appendValue = $value;
+
+        if (is_null($value)) {
             $appendValue = 'null';
-        } elseif (is_bool($value)) {
+        } else if (is_bool($value)) {
             $appendValue = $this->boolToString($value);
-        } else {
+        } else if (is_string($value) === false) {
             $appendValue = rtrim(print_r($value, true));
         }
 

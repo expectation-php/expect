@@ -28,15 +28,13 @@ describe('ToBeAn', function () {
         beforeEach(function () {
             $this->matcher = new ToBeAn("string");
             $this->message = new FailedMessage();
-
-            $this->expectedMessage  = "Expected 1 to be an string\n\n";
-            $this->expectedMessage .= "    expected: string\n";
-            $this->expectedMessage .= "         got: integer";
         });
         it('report failed message', function () {
             $this->matcher->match(1);
             $this->matcher->reportFailed($this->message);
-            Assertion::same((string) $this->message, $this->expectedMessage);
+
+            $message = $this->loadFixture('text:toBeAn:failedMessage');
+            Assertion::same((string) $this->message, $message);
         });
     });
 
@@ -44,15 +42,13 @@ describe('ToBeAn', function () {
         beforeEach(function () {
             $this->matcher = new ToBeAn("string");
             $this->message = new FailedMessage();
-
-            $this->expectedMessage  = "Expected 'foo' not to be an string\n\n";
-            $this->expectedMessage .= "    expected not: string\n";
-            $this->expectedMessage .= "             got: string";
         });
         it('report failed message', function () {
             $this->matcher->match("foo");
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, $this->expectedMessage);
+
+            $message = $this->loadFixture('text:toBeAn:negativeFailedMessage');
+            Assertion::same((string) $this->message, $message);
         });
     });
 

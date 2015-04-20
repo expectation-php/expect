@@ -1,0 +1,4 @@
+Expected 'foo' not to be an string
+
+    expected not: string
+             got: string

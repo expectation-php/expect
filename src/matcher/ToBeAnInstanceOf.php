@@ -57,10 +57,17 @@ final class ToBeAnInstanceOf implements ReportableMatcher
      */
     public function match($actual)
     {
+        $result = false;
         $this->actual = $actual;
-        $this->className = get_class($this->actual);
 
-        return $this->actual instanceof $this->expected;
+        if (is_object($this->actual)) {
+            $this->className = get_class($this->actual);
+            $result = $this->actual instanceof $this->expected;
+        } else {
+            $this->className = $actual;
+        }
+
+        return $result;
     }
 
     /**
