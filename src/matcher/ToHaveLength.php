@@ -46,7 +46,7 @@ final class ToHaveLength implements ReportableMatcher
     private $type;
 
     /**
-     * @var string
+     * @var int
      */
     private $length;
 
@@ -67,10 +67,10 @@ final class ToHaveLength implements ReportableMatcher
     {
         $this->actual = $actual;
 
-        if (is_string($this->actual) === true) {
+        if (is_string($this->actual)) {
             $this->type = 'string';
             $this->length = mb_strlen($this->actual);
-        } elseif (is_array($this->actual) === true) {
+        } elseif (is_array($this->actual)) {
             $this->type = 'array';
             $this->length = count($this->actual);
         } elseif ($this->actual instanceof Countable) {

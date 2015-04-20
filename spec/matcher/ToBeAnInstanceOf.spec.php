@@ -26,34 +26,30 @@ describe('ToBeAnInstanceOf', function () {
     });
 
     describe('#reportFailed', function () {
-        context('when actual value is class name', function() {
+        context('when actual value is class name', function () {
             beforeEach(function () {
                 $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
                 $this->message = new FailedMessage();
-
-                $this->expectedMessage  = "Expected stdClass to be an instance of expect\Matcher\n\n";
-                $this->expectedMessage .= "    expected: expect\Matcher\n";
-                $this->expectedMessage .= "         got: stdClass";
             });
             it('report failed message', function () {
                 $this->matcher->match(new stdClass());
                 $this->matcher->reportFailed($this->message);
-                Assertion::same((string) $this->message, $this->expectedMessage);
+
+                $message = $this->loadFixture('text:toBeAnInstanceOf:failedMessage');
+                Assertion::same((string) $this->message, $message);
             });
         });
-        context('when actual value is null', function() {
+        context('when actual value is null', function () {
             beforeEach(function () {
                 $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
                 $this->message = new FailedMessage();
-
-                $this->expectedMessage  = "Expected null to be an instance of expect\Matcher\n\n";
-                $this->expectedMessage .= "    expected: expect\Matcher\n";
-                $this->expectedMessage .= "         got: null";
             });
             it('report failed message', function () {
                 $this->matcher->match(null);
                 $this->matcher->reportFailed($this->message);
-                Assertion::same((string) $this->message, $this->expectedMessage);
+
+                $message = $this->loadFixture('text:toBeAnInstanceOf:null:failedMessage');
+                Assertion::same((string) $this->message, $message);
             });
         });
     });
@@ -62,15 +58,13 @@ describe('ToBeAnInstanceOf', function () {
         beforeEach(function () {
             $this->matcher = new ToBeAnInstanceOf("expect\matcher\ToBeAnInstanceOf");
             $this->message = new FailedMessage();
-
-            $this->expectedMessage  = "Expected expect\matcher\ToBeAnInstanceOf not to be an instance of expect\matcher\ToBeAnInstanceOf\n\n";
-            $this->expectedMessage .= "    expected not: expect\matcher\ToBeAnInstanceOf\n";
-            $this->expectedMessage .= "             got: expect\matcher\ToBeAnInstanceOf";
         });
         it('report failed message', function () {
             $this->matcher->match($this->matcher);
             $this->matcher->reportNegativeFailed($this->message);
-            Assertion::same((string) $this->message, $this->expectedMessage);
+
+            $message = $this->loadFixture('text:toBeAnInstanceOf:negativeFailedMessage');
+            Assertion::same((string) $this->message, $message);
         });
     });
 

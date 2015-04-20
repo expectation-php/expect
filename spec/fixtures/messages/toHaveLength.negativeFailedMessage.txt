@@ -1,0 +1,4 @@
+Expected string not to have a length of 3
+
+    expected not: 3
+          length: 3
