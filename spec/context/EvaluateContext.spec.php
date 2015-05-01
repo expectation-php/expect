@@ -3,10 +3,14 @@
 use Assert\Assertion;
 use expect\Configuration;
 use expect\context\EvaluateContext;
+use expect\matcher\ReportableMatcher;
+use expect\ResultReporter;
+use expect\FailedMessage;
+use expect\MatcherFactory;
 use Prophecy\Argument;
 use Prophecy\Prophet;
 
-describe('EvaluateContext', function () {
+describe(EvaluateContext::class, function () {
     describe('#evaluate', function () {
         context('when positive evaluate', function () {
             beforeEach(function () {
@@ -15,16 +19,16 @@ describe('EvaluateContext', function () {
                 $this->actual = true;
                 $this->expected = false;
 
-                $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
+                $matcher = $this->prophet->prophesize(ReportableMatcher::class);
                 $matcher->match($this->actual)->willReturn(false);
-                $matcher->reportFailed(Argument::type('expect\FailedMessage'))
+                $matcher->reportFailed(Argument::type(FailedMessage::class))
                     ->shouldBeCalled();
 
-                $factory = $this->prophet->prophesize('expect\MatcherFactory');
+                $factory = $this->prophet->prophesize(MatcherFactory::class);
                 $factory->create('toEqual', [ $this->expected ])->willReturn($matcher->reveal());
 
-                $reporter = $this->prophet->prophesize('expect\ResultReporter');
-                $reporter->reportFailed(Argument::type('expect\FailedMessage'))
+                $reporter = $this->prophet->prophesize(ResultReporter::class);
+                $reporter->reportFailed(Argument::type(FailedMessage::class))
                     ->shouldBeCalled();
 
                 $this->context = new EvaluateContext(
@@ -45,16 +49,16 @@ describe('EvaluateContext', function () {
                 $this->actual = true;
                 $this->expected = true;
 
-                $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
+                $matcher = $this->prophet->prophesize(ReportableMatcher::class);
                 $matcher->match($this->actual)->willReturn(true);
-                $matcher->reportNegativeFailed(Argument::type('expect\FailedMessage'))
+                $matcher->reportNegativeFailed(Argument::type(FailedMessage::class))
                     ->shouldBeCalled();
 
-                $factory = $this->prophet->prophesize('expect\MatcherFactory');
+                $factory = $this->prophet->prophesize(MatcherFactory::class);
                 $factory->create('toEqual', [ $this->expected ])->willReturn($matcher->reveal());
 
-                $reporter = $this->prophet->prophesize('expect\ResultReporter');
-                $reporter->reportNegativeFailed(Argument::type('expect\FailedMessage'))
+                $reporter = $this->prophet->prophesize(ResultReporter::class);
+                $reporter->reportNegativeFailed(Argument::type(FailedMessage::class))
                     ->shouldBeCalled();
 
                 $this->context = new EvaluateContext(
