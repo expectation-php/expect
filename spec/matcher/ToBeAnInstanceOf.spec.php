@@ -4,12 +4,13 @@ use \stdClass;
 use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToBeAnInstanceOf;
+use expect\Matcher;
 
-describe('ToBeAnInstanceOf', function () {
+describe(ToBeAnInstanceOf::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {
-            $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
+            $this->matcher = new ToBeAnInstanceOf(Matcher::class);
         });
         context('when match', function () {
             it('return true', function () {
@@ -28,7 +29,7 @@ describe('ToBeAnInstanceOf', function () {
     describe('#reportFailed', function () {
         context('when actual value is class name', function () {
             beforeEach(function () {
-                $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
+                $this->matcher = new ToBeAnInstanceOf(Matcher::class);
                 $this->message = new FailedMessage();
             });
             it('report failed message', function () {
@@ -41,7 +42,7 @@ describe('ToBeAnInstanceOf', function () {
         });
         context('when actual value is null', function () {
             beforeEach(function () {
-                $this->matcher = new ToBeAnInstanceOf("expect\Matcher");
+                $this->matcher = new ToBeAnInstanceOf(Matcher::class);
                 $this->message = new FailedMessage();
             });
             it('report failed message', function () {
@@ -56,7 +57,7 @@ describe('ToBeAnInstanceOf', function () {
 
     describe('#reportNegativeFailed', function () {
         beforeEach(function () {
-            $this->matcher = new ToBeAnInstanceOf("expect\matcher\ToBeAnInstanceOf");
+            $this->matcher = new ToBeAnInstanceOf(ToBeAnInstanceOf::class);
             $this->message = new FailedMessage();
         });
         it('report failed message', function () {
