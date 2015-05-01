@@ -14,12 +14,12 @@ Expect::configure($configurator);
 
 Expect::that(function () {
     throw new RuntimeException();
-})->toThrow('\RuntimeException'); //pass
+})->toThrow(RuntimeException::class); //pass
 
 Expect::that(function () {
     //Not do anything
-})->toThrow('\RuntimeException'); //failed
+})->toThrow(RuntimeException::class); //failed
 
 Expect::that(function () {
     throw new DomainException();
-})->toThrow('\RuntimeException'); //failed
+})->toThrow(RuntimeException::class); //failed
