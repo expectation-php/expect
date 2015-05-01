@@ -3,7 +3,7 @@
 use Assert\Assertion;
 use expect\matcher\ToBeNull;
 
-describe('ToBeNull', function () {
+describe(ToBeNull::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {

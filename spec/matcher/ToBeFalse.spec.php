@@ -4,7 +4,7 @@ use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToBeFalse;
 
-describe('ToBeFalse', function () {
+describe(ToBeFalse::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {
