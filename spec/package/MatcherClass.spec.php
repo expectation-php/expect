@@ -3,7 +3,7 @@
 use Assert\Assertion;
 use expect\package\MatcherClass;
 
-describe('MatcherClass', function () {
+describe(MatcherClass::class, function () {
     beforeEach(function () {
         $this->matcherClass = new MatcherClass('expect\\matcher', 'ToEqual');
     });
