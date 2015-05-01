@@ -1,7 +1,7 @@
 <?php
 
 use cloak\peridot\CloakPlugin;
-use holyshared\fixture\peridot\FileFixturePlugin;
+use holyshared\peridot\FileFixturePlugin;
 use Evenement\EventEmitterInterface;
 use Peridot\Reporter\Dot\DotReporterPlugin;
 
