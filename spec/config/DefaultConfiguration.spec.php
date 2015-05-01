@@ -2,14 +2,15 @@
 
 use Assert\Assertion;
 use expect\config\DefaultConfiguration;
+use expect\reporter\ExceptionReporter;
 
-describe('DefaultConfiguration', function () {
+describe(DefaultConfiguration::class, function () {
     beforeEach(function () {
         $this->config = new DefaultConfiguration();
     });
     describe('#getResultReporter', function () {
         it('return expect\ExceptionReporter', function () {
-            Assertion::isInstanceOf($this->config->getResultReporter(), 'expect\reporter\ExceptionReporter');
+            Assertion::isInstanceOf($this->config->getResultReporter(), ExceptionReporter::class);
         });
     });
     describe('#getMatcherRegistrars', function () {

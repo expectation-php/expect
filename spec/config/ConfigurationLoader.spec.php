@@ -4,8 +4,9 @@ use Assert\Assertion;
 use expect\config\ConfigurationFileNotFoundException;
 use expect\config\ConfigurationLoader;
 use expect\config\NotAvailableException;
+use expect\Configuration;
 
-describe('ConfigurationLoader', function () {
+describe(ConfigurationLoader::class, function () {
     describe('#loadFromFile', function () {
         context('when config file found', function () {
             beforeEach(function () {
@@ -13,7 +14,7 @@ describe('ConfigurationLoader', function () {
                 $this->config = $this->loader->loadFromFile(__DIR__ . '/../fixtures/config.toml');
             });
             it('return Configuration instance', function () {
-                Assertion::isInstanceOf($this->config, 'expect\Configuration');
+                Assertion::isInstanceOf($this->config, Configuration::class);
             });
             it('have matcher package registrars', function () {
                 $registrars = $this->config->getMatcherRegistrars();
