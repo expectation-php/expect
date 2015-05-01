@@ -3,6 +3,7 @@
 use Assert\Assertion;
 use expect\configurator\FileConfigurator;
 use expect\Expect;
+use expect\Context;
 
 describe('Utility', function () {
     beforeEach(function () {
@@ -14,7 +15,7 @@ describe('Utility', function () {
     describe('expect()', function () {
         it('configure expect package', function () {
             $context = \expect\expect(true);
-            Assertion::isInstanceOf($context, 'expect\Context');
+            Assertion::isInstanceOf($context, Context::class);
         });
     });
 });
