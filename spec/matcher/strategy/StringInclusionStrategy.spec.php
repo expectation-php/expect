@@ -2,8 +2,9 @@
 
 use Assert\Assertion;
 use expect\matcher\strategy\StringInclusionStrategy;
+use expect\matcher\strategy\InclusionResult;
 
-describe('StringInclusionStrategy', function () {
+describe(StringInclusionStrategy::class, function () {
     beforeEach(function () {
         $this->strategy = new StringInclusionStrategy('foo var');
     });
@@ -12,7 +13,7 @@ describe('StringInclusionStrategy', function () {
             $this->result = $this->strategy->match(['foo', 'bar']);
         });
         it('return expect\matcher\strategy\InclusionResult instance', function () {
-            Assertion::isInstanceOf($this->result, 'expect\matcher\strategy\InclusionResult');
+            Assertion::isInstanceOf($this->result, InclusionResult::class);
         });
         describe('result', function () {
             beforeEach(function () {
