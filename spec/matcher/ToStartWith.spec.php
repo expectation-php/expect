@@ -4,7 +4,7 @@ use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToStartWith;
 
-describe('ToStartWith', function () {
+describe(ToStartWith::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {

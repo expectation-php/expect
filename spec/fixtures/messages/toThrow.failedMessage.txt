@@ -1,1 +1,1 @@
-Expected \RuntimeException to be thrown, none thrown
+Expected RuntimeException to be thrown, none thrown

@@ -4,7 +4,7 @@ use Assert\Assertion;
 use expect\FailedMessage;
 use expect\reporter\TextMessageReporter;
 
-describe('TextMessageReporter', function () {
+describe(TextMessageReporter::class, function () {
     beforeEach(function () {
         $this->reporter = new TextMessageReporter();
     });

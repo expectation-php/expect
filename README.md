@@ -123,6 +123,11 @@ Expect::that(1)->toBeA('integer'); //pass
 Expect::that('foo')->toBeA('integer'); //failed
 ```
 
+```php
+Expect::that([])->toBeA('array'); //pass
+Expect::that('foo')->toBeArray('array'); //failed
+```
+
 ### toMatch
 
 ```php

@@ -2,8 +2,10 @@
 
 use Assert\Assertion;
 use expect\package\ReflectionIterator;
+use expect\fixture\matcher\ToEql;
+use \ReflectionClass;
 
-describe('ReflectionIterator', function () {
+describe(ReflectionIterator::class, function () {
     beforeEach(function () {
         $this->path = realpath(__DIR__ . '/../fixtures/matcher/ToEql.php');
         $this->iterator = new ReflectionIterator('expect\\fixture\\matcher', __DIR__ . '/../fixtures/matcher');
@@ -13,8 +15,8 @@ describe('ReflectionIterator', function () {
             $this->reflection = $this->iterator->current();
         });
         it('return current matcher class', function () {
-            Assertion::isInstanceOf($this->reflection, '\ReflectionClass');
-            Assertion::same($this->reflection->getName(), 'expect\fixture\matcher\ToEql');
+            Assertion::isInstanceOf($this->reflection, ReflectionClass::class);
+            Assertion::same($this->reflection->getName(), ToEql::class);
         });
     });
     describe('#key', function () {
