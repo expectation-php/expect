@@ -3,7 +3,7 @@
 use Assert\Assertion;
 use expect\matcher\TruthyMatcher;
 
-describe('TruthyMatcher', function () {
+describe(TruthyMatcher::class, function () {
     describe('#match', function () {
         beforeEach(function () {
             $this->matcher = new TruthyMatcher();
