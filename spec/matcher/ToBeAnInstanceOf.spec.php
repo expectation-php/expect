@@ -1,6 +1,5 @@
 <?php
 
-use \stdClass;
 use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToBeAnInstanceOf;

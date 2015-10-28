@@ -1,6 +1,5 @@
 <?php
 
-use \RuntimeException;
 use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToThrow;

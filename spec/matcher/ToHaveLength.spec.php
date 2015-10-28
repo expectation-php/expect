@@ -1,6 +1,5 @@
 <?php
 
-use \ArrayIterator;
 use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToHaveLength;

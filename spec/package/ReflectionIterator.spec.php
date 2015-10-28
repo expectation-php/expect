@@ -3,7 +3,6 @@
 use Assert\Assertion;
 use expect\package\ReflectionIterator;
 use expect\fixture\matcher\ToEql;
-use \ReflectionClass;
 
 describe(ReflectionIterator::class, function () {
     beforeEach(function () {
