@@ -20,12 +20,12 @@
     "require-dev": {
         "peridot-php/peridot": "~1.16",
         "peridot-php/peridot-dot-reporter": "~1.0",
-        "beberlei/assert": "~2.3",
-        "phpspec/prophecy": "~1.4",
+        "beberlei/assert": "~2.4",
+        "phpspec/prophecy": "~1.5",
         "cloak/peridot-cloak-plugin": "~2.0",
         "cloak/robo-coveralls-kit": "~2.1",
         "holyshared/robo-peridot": "~2.0",
-        "codegyre/robo": "~0.5",
+        "codegyre/robo": "~0.6",
         "holyshared/peridot-file-fixture-plugin": "~1.0"
     },
     "autoload": {
