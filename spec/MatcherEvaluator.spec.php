@@ -2,7 +2,7 @@
 
 use Assert\Assertion;
 use expect\MatcherEvaluator;
-use expect\Matcher;
+use expect\matcher\ReportableMatcher;
 use expect\Result;
 use Prophecy\Argument;
 use Prophecy\Prophet;
@@ -17,7 +17,7 @@ describe(MatcherEvaluator::class, function () {
 
                     $actual = true;
 
-                    $matcher = $this->prophet->prophesize(Matcher::class);
+                    $matcher = $this->prophet->prophesize(ReportableMatcher::class);
                     $matcher->match($actual)->willReturn(true);
 
                     $matcherStub = $matcher->reveal();
@@ -38,7 +38,7 @@ describe(MatcherEvaluator::class, function () {
 
                     $actual = true;
 
-                    $matcher = $this->prophet->prophesize(Matcher::class);
+                    $matcher = $this->prophet->prophesize(ReportableMatcher::class);
                     $matcher->match($actual)->willReturn(false);
 
                     $matcherStub = $matcher->reveal();
@@ -61,7 +61,7 @@ describe(MatcherEvaluator::class, function () {
 
                     $actual = true;
 
-                    $matcher = $this->prophet->prophesize(Matcher::class);
+                    $matcher = $this->prophet->prophesize(ReportableMatcher::class);
                     $matcher->match($actual)->willReturn(false);
 
                     $matcherStub = $matcher->reveal();
@@ -82,7 +82,7 @@ describe(MatcherEvaluator::class, function () {
 
                     $actual = true;
 
-                    $matcher = $this->prophet->prophesize(Matcher::class);
+                    $matcher = $this->prophet->prophesize(ReportableMatcher::class);
                     $matcher->match($actual)->willReturn(true);
 
                     $matcherStub = $matcher->reveal();
