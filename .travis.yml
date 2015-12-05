@@ -16,3 +16,5 @@ after_success:
 matrix:
   fast_finish: true
 sudo: false
+notifications:
+  email: false
