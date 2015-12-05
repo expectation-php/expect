@@ -4,8 +4,10 @@ use Assert\Assertion;
 use expect\factory\DefaultMatcherFactory;
 use expect\MatcherDictionary;
 use expect\package\MatcherClass;
+use expect\matcher\ToBeTrue;
+use expect\matcher\ToEqual;
 
-describe('DefaultMatcherFactory', function () {
+describe(DefaultMatcherFactory::class, function () {
 
     describe('#create', function () {
         beforeEach(function () {
@@ -20,7 +22,7 @@ describe('DefaultMatcherFactory', function () {
                 $this->matcher = $this->factory->create('toBeTrue', []);
             });
             it('return matcher instance', function () {
-                Assertion::isInstanceOf($this->matcher, 'expect\matcher\ToBeTrue');
+                Assertion::isInstanceOf($this->matcher, ToBeTrue::class);
             });
         });
         context('when there are arguments', function () {
@@ -28,7 +30,7 @@ describe('DefaultMatcherFactory', function () {
                 $this->matcher = $this->factory->create('toEqual', [ 'foo' ]);
             });
             it('return matcher instance', function () {
-                Assertion::isInstanceOf($this->matcher, 'expect\matcher\ToEqual');
+                Assertion::isInstanceOf($this->matcher, ToEqual::class);
             });
         });
     });

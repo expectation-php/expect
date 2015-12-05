@@ -4,7 +4,7 @@ use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToBeEmpty;
 
-describe('ToBeEmpty', function () {
+describe(ToBeEmpty::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {

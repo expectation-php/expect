@@ -3,7 +3,7 @@
 use Assert\Assertion;
 use expect\FailedMessage;
 
-describe('FailedMessage', function () {
+describe(FailedMessage::class, function () {
 
     describe('#appendText', function () {
         beforeEach(function () {
@@ -15,7 +15,7 @@ describe('FailedMessage', function () {
         });
         it('return expect\FailedMessage instance', function () {
             $result = $this->message->appendText('expected');
-            Assertion::isInstanceOf($result, 'expect\FailedMessage');
+            Assertion::isInstanceOf($result, FailedMessage::class);
         });
     });
 
@@ -25,7 +25,7 @@ describe('FailedMessage', function () {
         });
         it('return expect\FailedMessage instance', function () {
             $result = $this->message->appendValue("expected");
-            Assertion::isInstanceOf($result, 'expect\FailedMessage');
+            Assertion::isInstanceOf($result, FailedMessage::class);
         });
         context('when integer value', function () {
             it('append string', function () {

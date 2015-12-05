@@ -4,7 +4,7 @@ use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToBeFloat;
 
-describe('ToBeFloat', function () {
+describe(ToBeFloat::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {

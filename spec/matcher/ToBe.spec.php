@@ -3,7 +3,7 @@
 use Assert\Assertion;
 use expect\matcher\ToBe;
 
-describe('ToBe', function () {
+describe(ToBe::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {

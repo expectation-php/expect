@@ -4,7 +4,7 @@ use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToBeInteger;
 
-describe('ToBeInteger', function () {
+describe(ToBeInteger::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {

@@ -1,6 +1,5 @@
 <?php
 
-use \RuntimeException;
 use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToThrow;
@@ -8,7 +7,7 @@ use expect\matcher\ToThrow;
 describe('ToThrow', function () {
     describe('#match', function () {
         beforeEach(function () {
-            $this->matcher = new ToThrow('\RuntimeException');
+            $this->matcher = new ToThrow(RuntimeException::class);
         });
         context('when match', function () {
             it('return true', function () {
@@ -29,7 +28,7 @@ describe('ToThrow', function () {
 
     describe('#reportFailed', function () {
         beforeEach(function () {
-            $this->matcher = new ToThrow('\RuntimeException');
+            $this->matcher = new ToThrow(RuntimeException::class);
             $this->message = new FailedMessage();
         });
         it('report failed message', function () {
@@ -43,7 +42,7 @@ describe('ToThrow', function () {
 
     describe('#reportNegativeFailed', function () {
         beforeEach(function () {
-            $this->matcher = new ToThrow('\RuntimeException');
+            $this->matcher = new ToThrow(RuntimeException::class);
             $this->message = new FailedMessage();
         });
         it('report failed message', function () {

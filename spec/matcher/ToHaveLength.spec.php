@@ -1,11 +1,10 @@
 <?php
 
-use \ArrayIterator;
 use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToHaveLength;
 
-describe('ToHaveLength', function () {
+describe(ToHaveLength::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {

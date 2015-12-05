@@ -3,16 +3,19 @@
 use Assert\Assertion;
 use expect\MatcherPackage;
 use expect\package\ComposerJsonNotFoundException;
+use expect\MatcherRegistry;
+use expect\package\MatcherClass;
 use Prophecy\Argument;
 use Prophecy\Prophet;
 
-describe('MatcherPackage', function () {
+
+describe(MatcherPackage::class, function () {
     describe('#registerTo', function () {
         beforeEach(function () {
             $this->prophet = new Prophet();
 
-            $registry = $this->prophet->prophesize('expect\MatcherRegistry');
-            $registry->register(Argument::type('expect\package\MatcherClass'))
+            $registry = $this->prophet->prophesize(MatcherRegistry::class);
+            $registry->register(Argument::type(MatcherClass::class))
                 ->shouldBeCalledTimes(1); //ToEql only
 
             $this->registry = $registry->reveal();
@@ -28,8 +31,8 @@ describe('MatcherPackage', function () {
         beforeEach(function () {
             $this->prophet = new Prophet();
 
-            $registry = $this->prophet->prophesize('expect\MatcherRegistry');
-            $registry->register(Argument::type('expect\package\MatcherClass'))
+            $registry = $this->prophet->prophesize(MatcherRegistry::class);
+            $registry->register(Argument::type(MatcherClass::class))
                 ->shouldBeCalledTimes(1); //ToEql only
 
             $this->registry = $registry->reveal();
@@ -48,7 +51,7 @@ describe('MatcherPackage', function () {
                 } catch (ComposerJsonNotFoundException $exception) {
                     $thrownException = $exception;
                 }
-                Assertion::isInstanceOf($thrownException, 'expect\package\ComposerJsonNotFoundException');
+                Assertion::isInstanceOf($thrownException, ComposerJsonNotFoundException::class);
             });
         });
     });

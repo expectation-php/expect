@@ -4,7 +4,7 @@ use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToContain;
 
-describe('ToContain', function () {
+describe(ToContain::class, function () {
 
     describe('#match', function () {
         context('when string', function () {

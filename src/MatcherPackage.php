@@ -14,6 +14,7 @@ use ArrayIterator;
 use expect\package\ComposerJsonNotFoundException;
 use expect\package\MatcherClass;
 use expect\package\ReflectionIterator;
+use expect\matcher\ReportableMatcher;
 use Noodlehaus\Config;
 
 /**
@@ -24,7 +25,6 @@ use Noodlehaus\Config;
  */
 final class MatcherPackage implements RegisterablePackage
 {
-    const MATCHER = '\expect\matcher\ReportableMatcher';
 
     /**
      * @var string
@@ -72,7 +72,7 @@ final class MatcherPackage implements RegisterablePackage
         );
 
         foreach ($reflectionIterator as $reflection) {
-            if ($reflection->implementsInterface(static::MATCHER) === false) {
+            if ($reflection->implementsInterface(ReportableMatcher::class) === false) {
                 continue;
             }
 

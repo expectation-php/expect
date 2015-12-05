@@ -2,8 +2,9 @@
 
 use Assert\Assertion;
 use expect\matcher\strategy\ArrayInclusionStrategy;
+use expect\matcher\strategy\InclusionResult;
 
-describe('ArrayInclusionStrategy', function () {
+describe(ArrayInclusionStrategy::class, function () {
     beforeEach(function () {
         $this->strategy = new ArrayInclusionStrategy([1, 2]);
     });
@@ -12,7 +13,7 @@ describe('ArrayInclusionStrategy', function () {
             $this->result = $this->strategy->match([1, 2, 3]);
         });
         it('return expect\matcher\strategy\InclusionResult instance', function () {
-            Assertion::isInstanceOf($this->result, 'expect\matcher\strategy\InclusionResult');
+            Assertion::isInstanceOf($this->result, InclusionResult::class);
         });
         describe('result', function () {
             beforeEach(function () {

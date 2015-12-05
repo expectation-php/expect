@@ -4,7 +4,7 @@ use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToBeBoolean;
 
-describe('ToBeBoolean', function () {
+describe(ToBeBoolean::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {

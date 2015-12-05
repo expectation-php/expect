@@ -4,7 +4,7 @@ use Assert\Assertion;
 use expect\FailedMessage;
 use expect\matcher\ToEndWith;
 
-describe('ToEndWith', function () {
+describe(ToEndWith::class, function () {
 
     describe('#match', function () {
         beforeEach(function () {

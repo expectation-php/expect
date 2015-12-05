@@ -3,7 +3,7 @@
 use Assert\Assertion;
 use expect\matcher\PatternMatcher;
 
-describe('PatternMatcher', function () {
+describe(PatternMatcher::class, function () {
     describe('#match', function () {
         beforeEach(function () {
             $this->matcher = new PatternMatcher('/foo/');

@@ -3,16 +3,19 @@
 use Assert\Assertion;
 use expect\Matcher;
 use expect\Result;
+use expect\ResultReporter;
+use expect\matcher\ReportableMatcher;
+use expect\FailedMessage;
 use Prophecy\Argument;
 use Prophecy\Prophet;
 
-describe('Result', function () {
+describe(Result::class, function () {
 
     describe('#isPassed', function () {
         beforeEach(function () {
             $this->prophet = new Prophet();
 
-            $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
+            $matcher = $this->prophet->prophesize(ReportableMatcher::class);
             $this->matcher = $matcher->reveal();
         });
         context('when passed', function () {
@@ -33,7 +36,7 @@ describe('Result', function () {
         beforeEach(function () {
             $this->prophet = new Prophet();
 
-            $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
+            $matcher = $this->prophet->prophesize(ReportableMatcher::class);
             $this->matcher = $matcher->reveal();
         });
         context('when passed', function () {
@@ -55,11 +58,11 @@ describe('Result', function () {
             beforeEach(function () {
                 $this->prophet = new Prophet();
 
-                $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
+                $matcher = $this->prophet->prophesize(ReportableMatcher::class);
                 $this->result = new Result(true, false, $matcher->reveal(), false);
 
-                $resultReporter = $this->prophet->prophesize('expect\ResultReporter');
-                $resultReporter->reportFailed(Argument::type('expect\FailedMessage'))
+                $resultReporter = $this->prophet->prophesize(ResultReporter::class);
+                $resultReporter->reportFailed(Argument::type(FailedMessage::class))
                     ->shouldBeCalled();
 
                 $this->resultReporter = $resultReporter->reveal();
@@ -73,11 +76,11 @@ describe('Result', function () {
             beforeEach(function () {
                 $this->prophet = new Prophet();
 
-                $matcher = $this->prophet->prophesize('expect\matcher\ReportableMatcher');
+                $matcher = $this->prophet->prophesize(ReportableMatcher::class);
                 $this->result = new Result(true, true, $matcher->reveal(), false);
 
-                $resultReporter = $this->prophet->prophesize('expect\ResultReporter');
-                $resultReporter->reportNegativeFailed(Argument::type('expect\FailedMessage'))
+                $resultReporter = $this->prophet->prophesize(ResultReporter::class);
+                $resultReporter->reportNegativeFailed(Argument::type(FailedMessage::class))
                     ->shouldBeCalled();
 
                 $this->resultReporter = $resultReporter->reveal();

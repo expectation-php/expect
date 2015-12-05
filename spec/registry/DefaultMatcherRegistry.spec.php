@@ -5,8 +5,9 @@ use expect\package\MatcherClass;
 use expect\registry\DefaultMatcherRegistry;
 use expect\registry\MatcherAlreadyRegisteredException;
 use expect\registry\MatcherNotRegisteredException;
+use expect\MatcherContainer;
 
-describe('DefaultMatcherRegistry', function () {
+describe(DefaultMatcherRegistry::class, function () {
 
     describe('#register', function () {
         beforeEach(function () {
@@ -42,7 +43,7 @@ describe('DefaultMatcherRegistry', function () {
         context('when matcher registered', function () {
             it('return matcher class', function () {
                 $result = $this->registry->get('toEqual');
-                Assertion::isInstanceOf($result, 'expect\package\MatcherClass');
+                Assertion::isInstanceOf($result, MatcherClass::class);
             });
         });
         context('when matcher not registered', function () {
@@ -87,7 +88,7 @@ describe('DefaultMatcherRegistry', function () {
             $this->dictionary = $registry->toDictionary();
         });
         it('return expect\MatcherContainer instance', function () {
-            Assertion::isInstanceOf($this->dictionary, 'expect\MatcherContainer');
+            Assertion::isInstanceOf($this->dictionary, MatcherContainer::class);
         });
         context('when have one matcher', function () {
             it('return dictionay have one matcher', function () {
