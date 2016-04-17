@@ -115,8 +115,11 @@ final class MatcherPackage implements RegisterablePackage
 
         $composerJsonDirectory = dirname($composerJson);
 
-        $namespace = array_shift(array_keys($autoload));
-        $namespaceDirectory = array_shift(array_values($autoload));
+        $keys = array_keys($autoload);
+        $namespace = array_shift($keys);
+
+        $values = array_values($autoload);
+        $namespaceDirectory = array_shift($values);
         $namespaceDirectory = realpath($composerJsonDirectory . '/' . $namespaceDirectory);
 
         return new self($namespace, $namespaceDirectory);
