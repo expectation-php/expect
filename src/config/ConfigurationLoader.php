@@ -10,7 +10,7 @@
  */
 namespace expect\config;
 
-use Collections\Dictionary;
+use expect\Dictionary;
 use ReflectionClass;
 use RuntimeException;
 use Yosymfony\Toml\Toml;

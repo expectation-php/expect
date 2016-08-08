@@ -10,8 +10,6 @@
  */
 namespace expect;
 
-use Collections\Dictionary;
-
 /**
  * Immutable container of matcher.
  *
