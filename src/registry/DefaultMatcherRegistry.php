@@ -10,7 +10,7 @@
  */
 namespace expect\registry;
 
-use Collections\Dictionary;
+use expect\Dictionary;
 use expect\MatcherDictionary;
 use expect\MatcherLookupTable;
 use expect\MatcherRegistry;
