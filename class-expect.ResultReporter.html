@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Interface expect\ResultReporter | Expect</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-expect.html">
+						expect<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-expect.config.html">
+						config					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.configurator.html">
+						configurator					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.context.html">
+						context					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.factory.html">
+						factory					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.matcher.html">
+						matcher<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-expect.matcher.strategy.html">
+						strategy					</a>
+
+						</li>
+							</ul></li>
+				<li>
+					<a href="namespace-expect.package.html">
+						package					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.registry.html">
+						registry					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.reporter.html">
+						reporter					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-expect.Dictionary.html">Dictionary</a></li>
+				<li><a href="class-expect.Expect.html">Expect</a></li>
+				<li><a href="class-expect.FailedMessage.html">FailedMessage</a></li>
+				<li><a href="class-expect.MatcherDictionary.html">MatcherDictionary</a></li>
+				<li><a href="class-expect.MatcherEvaluator.html">MatcherEvaluator</a></li>
+				<li><a href="class-expect.MatcherPackage.html">MatcherPackage</a></li>
+				<li><a href="class-expect.Result.html">Result</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-expect.Configurable.html">Configurable</a></li>
+				<li><a href="class-expect.Configuration.html">Configuration</a></li>
+				<li><a href="class-expect.Configurator.html">Configurator</a></li>
+				<li><a href="class-expect.Context.html">Context</a></li>
+				<li><a href="class-expect.ContextFactory.html">ContextFactory</a></li>
+				<li><a href="class-expect.Evaluator.html">Evaluator</a></li>
+				<li><a href="class-expect.Matcher.html">Matcher</a></li>
+				<li><a href="class-expect.MatcherContainer.html">MatcherContainer</a></li>
+				<li><a href="class-expect.MatcherFactory.html">MatcherFactory</a></li>
+				<li><a href="class-expect.MatcherRegistry.html">MatcherRegistry</a></li>
+				<li><a href="class-expect.Message.html">Message</a></li>
+				<li><a href="class-expect.PackageRegistrar.html">PackageRegistrar</a></li>
+				<li><a href="class-expect.RegisterablePackage.html">RegisterablePackage</a></li>
+				<li class="active"><a href="class-expect.ResultReporter.html">ResultReporter</a></li>
+			</ul>
+
+			<h3>Traits</h3>
+			<ul>
+				<li><a href="class-expect.MatcherLookupTable.html">MatcherLookupTable</a></li>
+			</ul>
+
+
+
+			<h3>Functions</h3>
+			<ul>
+				<li><a href="function-expect.expect.html">expect</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-expect.html" title="Summary of expect"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Interface ResultReporter</h1>
+
+
+
+
+
+
+
+	<div>
+		<h4>Direct known implementers</h4>
+			<a href="class-expect.reporter.ExceptionReporter.html">expect\reporter\ExceptionReporter</a>, 
+			<a href="class-expect.reporter.TextMessageReporter.html">expect\reporter\TextMessageReporter</a>
+	</div>
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-expect.html">expect</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-expect.ResultReporter.html#13-18" title="Go to source code">ResultReporter.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="reportFailed" id="_reportFailed">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_reportFailed">#</a>
+		<code><a href="source-class-expect.ResultReporter.html#15" title="Go to source code">reportFailed</a>( <span><code><a href="class-expect.FailedMessage.html">expect\FailedMessage</a></code> <var>$message</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="reportNegativeFailed" id="_reportNegativeFailed">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_reportNegativeFailed">#</a>
+		<code><a href="source-class-expect.ResultReporter.html#17" title="Go to source code">reportNegativeFailed</a>( <span><code><a href="class-expect.FailedMessage.html">expect\FailedMessage</a></code> <var>$message</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		Expect API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class expect\MatcherEvaluator | Expect</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-expect.html">
+						expect<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-expect.config.html">
+						config					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.configurator.html">
+						configurator					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.context.html">
+						context					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.factory.html">
+						factory					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.matcher.html">
+						matcher<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-expect.matcher.strategy.html">
+						strategy					</a>
+
+						</li>
+							</ul></li>
+				<li>
+					<a href="namespace-expect.package.html">
+						package					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.registry.html">
+						registry					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.reporter.html">
+						reporter					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-expect.Dictionary.html">Dictionary</a></li>
+				<li><a href="class-expect.Expect.html">Expect</a></li>
+				<li><a href="class-expect.FailedMessage.html">FailedMessage</a></li>
+				<li><a href="class-expect.MatcherDictionary.html">MatcherDictionary</a></li>
+				<li class="active"><a href="class-expect.MatcherEvaluator.html">MatcherEvaluator</a></li>
+				<li><a href="class-expect.MatcherPackage.html">MatcherPackage</a></li>
+				<li><a href="class-expect.Result.html">Result</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-expect.Configurable.html">Configurable</a></li>
+				<li><a href="class-expect.Configuration.html">Configuration</a></li>
+				<li><a href="class-expect.Configurator.html">Configurator</a></li>
+				<li><a href="class-expect.Context.html">Context</a></li>
+				<li><a href="class-expect.ContextFactory.html">ContextFactory</a></li>
+				<li><a href="class-expect.Evaluator.html">Evaluator</a></li>
+				<li><a href="class-expect.Matcher.html">Matcher</a></li>
+				<li><a href="class-expect.MatcherContainer.html">MatcherContainer</a></li>
+				<li><a href="class-expect.MatcherFactory.html">MatcherFactory</a></li>
+				<li><a href="class-expect.MatcherRegistry.html">MatcherRegistry</a></li>
+				<li><a href="class-expect.Message.html">Message</a></li>
+				<li><a href="class-expect.PackageRegistrar.html">PackageRegistrar</a></li>
+				<li><a href="class-expect.RegisterablePackage.html">RegisterablePackage</a></li>
+				<li><a href="class-expect.ResultReporter.html">ResultReporter</a></li>
+			</ul>
+
+			<h3>Traits</h3>
+			<ul>
+				<li><a href="class-expect.MatcherLookupTable.html">MatcherLookupTable</a></li>
+			</ul>
+
+
+
+			<h3>Functions</h3>
+			<ul>
+				<li><a href="function-expect.expect.html">expect</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-expect.html" title="Summary of expect"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class MatcherEvaluator</h1>
+
+
+	<div class="description">
+	<p>Evaluate the matcher.</p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>expect\MatcherEvaluator</span></b>			
+			 implements 
+				<a href="class-expect.Evaluator.html"><span>expect\Evaluator</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-expect.html">expect</a><br>
+		
+
+				<b>Copyright:</b>
+				Noritaka Horio <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x68;&#111;&#108;&#121;&#46;&#115;&#104;&#97;&#114;&#101;&#100;.&#x64;&#x65;&#x73;&#x69;&#x67;&#x6e;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x68;&#111;&#108;&#121;&#46;&#115;&#104;&#97;&#114;&#101;&#100;.&#x64;&#x65;&#x73;&#x69;&#x67;&#x6e;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+				<b>Author:</b>
+				Noritaka Horio <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x68;&#111;&#108;&#121;&#46;&#115;&#104;&#97;&#114;&#101;&#100;.&#x64;&#x65;&#x73;&#x69;&#x67;&#x6e;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x68;&#111;&#108;&#121;&#46;&#115;&#104;&#97;&#114;&#101;&#100;.&#x64;&#x65;&#x73;&#x69;&#x67;&#x6e;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+			<b>Located at</b> <a href="source-class-expect.MatcherEvaluator.html#15-109" title="Go to source code">MatcherEvaluator.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#62-71" title="Go to source code">__construct</a>( <span><code><a href="class-expect.matcher.ReportableMatcher.html">expect\matcher\ReportableMatcher</a></code> <var>$matcher</var></span> )</code>
+
+		<div class="description short">
+			<p>Create a matcher evaluator.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Create a matcher evaluator.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$matcher</var></dt>
+					<dd>The use matcher</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="negated" id="_negated">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-expect.MatcherEvaluator.html">expect\MatcherEvaluator</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_negated">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#73-83" title="Go to source code">negated</a>( )</code>
+
+		<div class="description short">
+			<p>Change state to nagative evaluation.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Change state to nagative evaluation.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-expect.MatcherEvaluator.html">expect\MatcherEvaluator</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="evaluate" id="_evaluate">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-expect.Result.html">expect\Result</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_evaluate">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#85-100" title="Go to source code">evaluate</a>( <span>mixed <var>$actual</var></span> )</code>
+
+		<div class="description short">
+			<p>Evaluate the value of actual.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Evaluate the value of actual.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$actual</var></dt>
+					<dd>value of actual</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-expect.Result.html">expect\Result</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="fromMatcher" id="_fromMatcher">
+
+		<td class="attributes"><code>
+			 public static
+
+			<code><a href="class-expect.Evaluator.html">expect\Evaluator</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_fromMatcher">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#102-108" title="Go to source code">fromMatcher</a>( <span><code><a href="class-expect.matcher.ReportableMatcher.html">expect\matcher\ReportableMatcher</a></code> <var>$matcher</var></span> )</code>
+
+		<div class="description short">
+			<p>Create the evaluator from matcher.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Create the evaluator from matcher.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$matcher</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-expect.Evaluator.html">expect\Evaluator</a></code>
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-expect.Evaluator.html#_fromMatcher">expect\Evaluator::fromMatcher()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+	<table class="summary methods" id="magicMethods">
+	<caption>Magic methods summary</caption>
+	<tr data-order="toEqual" id="m_toEqual">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toEqual">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#18" title="Go to source code">toEqual</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBe" id="m_toBe">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBe">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#19" title="Go to source code">toBe</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeTrue" id="m_toBeTrue">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeTrue">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#20" title="Go to source code">toBeTrue</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeTruthy" id="m_toBeTruthy">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeTruthy">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#21" title="Go to source code">toBeTruthy</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeFalse" id="m_toBeFalse">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeFalse">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#22" title="Go to source code">toBeFalse</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeFalsy" id="m_toBeFalsy">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeFalsy">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#23" title="Go to source code">toBeFalsy</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeNull" id="m_toBeNull">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeNull">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#24" title="Go to source code">toBeNull</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeA" id="m_toBeA">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeA">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#25" title="Go to source code">toBeA</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeAn" id="m_toBeAn">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeAn">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#26" title="Go to source code">toBeAn</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeString" id="m_toBeString">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeString">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#27" title="Go to source code">toBeString</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeInteger" id="m_toBeInteger">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeInteger">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#28" title="Go to source code">toBeInteger</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeFloat" id="m_toBeFloat">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeFloat">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#29" title="Go to source code">toBeFloat</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeBoolean" id="m_toBeBoolean">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeBoolean">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#30" title="Go to source code">toBeBoolean</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeAnInstanceOf" id="m_toBeAnInstanceOf">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeAnInstanceOf">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#31" title="Go to source code">toBeAnInstanceOf</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toThrow" id="m_toThrow">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toThrow">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#32" title="Go to source code">toThrow</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toHaveLength" id="m_toHaveLength">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toHaveLength">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#33" title="Go to source code">toHaveLength</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeEmpty" id="m_toBeEmpty">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeEmpty">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#34" title="Go to source code">toBeEmpty</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toPrint" id="m_toPrint">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toPrint">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#35" title="Go to source code">toPrint</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toMatch" id="m_toMatch">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toMatch">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#36" title="Go to source code">toMatch</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toStartWith" id="m_toStartWith">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toStartWith">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#37" title="Go to source code">toStartWith</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toEndWith" id="m_toEndWith">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toEndWith">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#38" title="Go to source code">toEndWith</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toContain" id="m_toContain">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toContain">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#39" title="Go to source code">toContain</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toHaveKey" id="m_toHaveKey">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toHaveKey">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#40" title="Go to source code">toHaveKey</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeGreaterThan" id="m_toBeGreaterThan">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeGreaterThan">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#41" title="Go to source code">toBeGreaterThan</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeLessThan" id="m_toBeLessThan">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeLessThan">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#42" title="Go to source code">toBeLessThan</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeAbove" id="m_toBeAbove">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeAbove">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#43" title="Go to source code">toBeAbove</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeBelow" id="m_toBeBelow">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeBelow">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#44" title="Go to source code">toBeBelow</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="toBeWithin" id="m_toBeWithin">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#m_toBeWithin">#</a>
+		<code><a href="source-class-expect.MatcherEvaluator.html#45" title="Go to source code">toBeWithin</a>( <span>integer <var>$to</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$to</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		Expect API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

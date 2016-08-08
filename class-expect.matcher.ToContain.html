@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class expect\matcher\ToContain | Expect</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-expect.html">
+						expect<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-expect.config.html">
+						config					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.configurator.html">
+						configurator					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.context.html">
+						context					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.factory.html">
+						factory					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-expect.matcher.html">
+						matcher<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-expect.matcher.strategy.html">
+						strategy					</a>
+
+						</li>
+							</ul></li>
+				<li>
+					<a href="namespace-expect.package.html">
+						package					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.registry.html">
+						registry					</a>
+
+						</li>
+				<li>
+					<a href="namespace-expect.reporter.html">
+						reporter					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-expect.matcher.PatternMatcher.html">PatternMatcher</a></li>
+				<li><a href="class-expect.matcher.ToBe.html">ToBe</a></li>
+				<li><a href="class-expect.matcher.ToBeA.html">ToBeA</a></li>
+				<li><a href="class-expect.matcher.ToBeAbove.html">ToBeAbove</a></li>
+				<li><a href="class-expect.matcher.ToBeAn.html">ToBeAn</a></li>
+				<li><a href="class-expect.matcher.ToBeAnInstanceOf.html">ToBeAnInstanceOf</a></li>
+				<li><a href="class-expect.matcher.ToBeArray.html">ToBeArray</a></li>
+				<li><a href="class-expect.matcher.ToBeBelow.html">ToBeBelow</a></li>
+				<li><a href="class-expect.matcher.ToBeBoolean.html">ToBeBoolean</a></li>
+				<li><a href="class-expect.matcher.ToBeEmpty.html">ToBeEmpty</a></li>
+				<li><a href="class-expect.matcher.ToBeFalse.html">ToBeFalse</a></li>
+				<li><a href="class-expect.matcher.ToBeFalsey.html">ToBeFalsey</a></li>
+				<li><a href="class-expect.matcher.ToBeFloat.html">ToBeFloat</a></li>
+				<li><a href="class-expect.matcher.ToBeGreaterThan.html">ToBeGreaterThan</a></li>
+				<li><a href="class-expect.matcher.ToBeInteger.html">ToBeInteger</a></li>
+				<li><a href="class-expect.matcher.ToBeLessThan.html">ToBeLessThan</a></li>
+				<li><a href="class-expect.matcher.ToBeNull.html">ToBeNull</a></li>
+				<li><a href="class-expect.matcher.ToBeString.html">ToBeString</a></li>
+				<li><a href="class-expect.matcher.ToBeTrue.html">ToBeTrue</a></li>
+				<li><a href="class-expect.matcher.ToBeTruthy.html">ToBeTruthy</a></li>
+				<li><a href="class-expect.matcher.ToBeWithin.html">ToBeWithin</a></li>
+				<li class="active"><a href="class-expect.matcher.ToContain.html">ToContain</a></li>
+				<li><a href="class-expect.matcher.ToEndWith.html">ToEndWith</a></li>
+				<li><a href="class-expect.matcher.ToEqual.html">ToEqual</a></li>
+				<li><a href="class-expect.matcher.ToHaveKey.html">ToHaveKey</a></li>
+				<li><a href="class-expect.matcher.ToHaveLength.html">ToHaveLength</a></li>
+				<li><a href="class-expect.matcher.ToMatch.html">ToMatch</a></li>
+				<li><a href="class-expect.matcher.ToPrint.html">ToPrint</a></li>
+				<li><a href="class-expect.matcher.ToStartWith.html">ToStartWith</a></li>
+				<li><a href="class-expect.matcher.ToThrow.html">ToThrow</a></li>
+				<li><a href="class-expect.matcher.TruthyMatcher.html">TruthyMatcher</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-expect.matcher.ReportableMatcher.html">ReportableMatcher</a></li>
+			</ul>
+
+			<h3>Traits</h3>
+			<ul>
+				<li><a href="class-expect.matcher.EqualMatcherDelegatable.html">EqualMatcherDelegatable</a></li>
+				<li><a href="class-expect.matcher.GreaterThanMatcherDelegatable.html">GreaterThanMatcherDelegatable</a></li>
+				<li><a href="class-expect.matcher.LengthMatcherDelegatable.html">LengthMatcherDelegatable</a></li>
+				<li><a href="class-expect.matcher.LessThanMatcherDelegatable.html">LessThanMatcherDelegatable</a></li>
+				<li><a href="class-expect.matcher.TypeMatcherDelegatable.html">TypeMatcherDelegatable</a></li>
+			</ul>
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-expect.matcher.html" title="Summary of expect\matcher"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class ToContain</h1>
+
+
+	<div class="description">
+	<p>Verify whether the value is all included.</p>
+
+<p><code>
+$matcher = new ToContain([ 'foo' ]);
+$matcher->match('foo'); //return true</p>
+
+<p>$matcher = new ToContain([ 'foo', 'bar' ]);
+$matcher->match('foo'); //return false</p>
+
+<p>$matcher = new ToContain([ 1, 2 ]);
+$matcher->match([ 1, 2 ]); //return true
+<code></p>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>expect\matcher\ToContain</span></b>			
+			 implements 
+				<a href="class-expect.matcher.ReportableMatcher.html"><span>expect\matcher\ReportableMatcher</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		<b>Final</b><br>
+		
+		<b>Namespace:</b> <a href="namespace-expect.html">expect</a>\<a href="namespace-expect.matcher.html">matcher</a><br>
+		
+
+				<b>Copyright:</b>
+				Noritaka Horio <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x68;&#111;&#108;&#121;&#46;&#115;&#104;&#97;&#114;&#101;&#100;.&#x64;&#x65;&#x73;&#x69;&#x67;&#x6e;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x68;&#111;&#108;&#121;&#46;&#115;&#104;&#97;&#114;&#101;&#100;.&#x64;&#x65;&#x73;&#x69;&#x67;&#x6e;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+				<b>Author:</b>
+				Noritaka Horio <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x68;&#111;&#108;&#121;&#46;&#115;&#104;&#97;&#114;&#101;&#100;.&#x64;&#x65;&#x73;&#x69;&#x67;&#x6e;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#x68;&#111;&#108;&#121;&#46;&#115;&#104;&#97;&#114;&#101;&#100;.&#x64;&#x65;&#x73;&#x69;&#x67;&#x6e;&#x40;&#x67;&#x6d;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a><br>
+			<b>Located at</b> <a href="source-class-expect.matcher.ToContain.html#18-118" title="Go to source code">matcher/ToContain.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-expect.matcher.ToContain.html#57-63" title="Go to source code">__construct</a>( <span>strng|array <var>$expected</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$expected</var></dt>
+					<dd></dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="match" id="_match">
+
+		<td class="attributes"><code>
+			 public 
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_match">#</a>
+		<code><a href="source-class-expect.matcher.ToContain.html#65-76" title="Go to source code">match</a>( <span>mixed <var>$actual</var></span> )</code>
+
+		<div class="description short">
+			<p>Verify whether the value is consistent with what is expected.
+Returns true if the value matches the contents to be expected.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Verify whether the value is consistent with what is expected.
+Returns true if the value matches the contents to be expected.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$actual</var></dt>
+					<dd>value of actual</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean<br>results of evaluation
+				</div>
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-expect.Matcher.html#_match">expect\Matcher::match()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="reportFailed" id="_reportFailed">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_reportFailed">#</a>
+		<code><a href="source-class-expect.matcher.ToContain.html#78-89" title="Go to source code">reportFailed</a>( <span><code><a href="class-expect.FailedMessage.html">expect\FailedMessage</a></code> <var>$message</var></span> )</code>
+
+		<div class="description short">
+			<p>Report the reason for the failure of positive evaluation.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Report the reason for the failure of positive evaluation.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$message</var></dt>
+					<dd>message</dd>
+				</dl></div>
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-expect.matcher.ReportableMatcher.html#_reportFailed">expect\matcher\ReportableMatcher::reportFailed()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="reportNegativeFailed" id="_reportNegativeFailed">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_reportNegativeFailed">#</a>
+		<code><a href="source-class-expect.matcher.ToContain.html#91-102" title="Go to source code">reportNegativeFailed</a>( <span><code><a href="class-expect.FailedMessage.html">expect\FailedMessage</a></code> <var>$message</var></span> )</code>
+
+		<div class="description short">
+			<p>Report the reason for the failure of negative evaluation.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Report the reason for the failure of negative evaluation.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$message</var></dt>
+					<dd>message</dd>
+				</dl></div>
+
+
+
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-expect.matcher.ReportableMatcher.html#_reportNegativeFailed">expect\matcher\ReportableMatcher::reportNegativeFailed()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		Expect API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
